@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<!--
+  Content Security Policy: defense in depth.
+  * default-src none  : nothing loads unless explicitly allowed below.
+  * script-src sha256  : ONLY this app's own inline code (pinned by a cryptographic
+                         hash) may run. Any injected or swapped-in code, plus dynamic
+                         code execution, is refused by the browser.
+  * connect-src none  : no network requests of any kind, so the app cannot phone home
+                        or send the child's data anywhere. (Standard Notes save/load
+                        uses postMessage, which CSP does not restrict, so it still works.)
+  * img/font/object/etc none : no external or data resources are loaded.
+  * base-uri / form-action none : block base-tag and form hijacking tricks.
+-->
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-RyyFviTtzoM51blFBwm9ZPRJvf/3wv8t+iDKDo0iy+w='; style-src 'unsafe-inline'; img-src 'none'; font-src 'none'; media-src 'none'; connect-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'; child-src 'none'; worker-src 'none'; object-src 'none'; manifest-src 'none'" />
+<meta name="referrer" content="no-referrer" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<title>Math Tutor</title>
+<style>
+  :root{
+    /* These fall back for standalone use; Standard Notes overrides them with the active theme. */
+    --bg: var(--sn-stylekit-background-color, #f7f9fc);
+    --fg: var(--sn-stylekit-foreground-color, #1f2937);
+    --panel: var(--sn-stylekit-contrast-background-color, #ffffff);
+    --border: var(--sn-stylekit-border-color, #e3e8ef);
+    --muted: var(--sn-stylekit-neutral-color, #6b7280);
+    --font: var(--sn-stylekit-editor-font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif);
+    /* Fun accents (kid palette) */
+    --accent:#3b82f6; --accent2:#8b5cf6; --good:#16a34a; --good-bg:#dcfce7;
+    --bad:#d97706; --bad-bg:#fef3c7; --star:#f59e0b; --shadow:0 2px 0 rgba(0,0,0,.08);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;height:100%}
+  body{
+    background:var(--bg); color:var(--fg); font-family:var(--font);
+    -webkit-text-size-adjust:100%; line-height:1.35;
+  }
+  #root{max-width:680px;margin:0 auto;padding:16px 14px 28px}
+
+  /* ---------- Home ---------- */
+  .hero{text-align:center;padding:10px 6px 14px}
+  .hero-title{font-size:1.5rem;font-weight:800}
+  .hero-stars{margin-top:6px;font-size:1.05rem;color:var(--muted)}
+  .hero-stars b{color:var(--star)}
+  .section{font-size:1.05rem;margin:18px 4px 8px;font-weight:800}
+  .section .sub{font-weight:500;color:var(--muted);font-size:.85rem}
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+  @media(min-width:520px){.grid{grid-template-columns:repeat(3,1fr)}}
+  .card{
+    appearance:none;border:2px solid var(--border);background:var(--panel);color:var(--fg);
+    border-radius:18px;padding:14px 10px 12px;cursor:pointer;text-align:center;
+    display:flex;flex-direction:column;align-items:center;gap:4px;box-shadow:var(--shadow);
+    transition:transform .06s ease, border-color .15s;
+  }
+  .card:active{transform:translateY(2px) scale(.98)}
+  .card:hover{border-color:var(--accent)}
+  .card-emoji{font-size:2.1rem;line-height:1}
+  .card-label{font-weight:800;font-size:1.02rem}
+  .card-level{display:flex;gap:4px;margin-top:2px}
+  .dot{width:9px;height:9px;border-radius:50%;background:var(--border)}
+  .dot.on{background:var(--accent)}
+  .card-meta{font-size:.78rem;color:var(--muted)}
+  .testlink{
+    margin-top:8px;font-size:.74rem;border:none;background:transparent;color:var(--accent2);
+    cursor:pointer;text-decoration:underline;padding:4px;
+  }
+  .parent-note{margin:22px 6px 0;font-size:.82rem;color:var(--muted);text-align:center}
+
+  /* ---------- Practice ---------- */
+  .topbar{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px}
+  .back,.hint{
+    appearance:none;border:2px solid var(--border);background:var(--panel);color:var(--fg);
+    border-radius:12px;padding:8px 12px;font-size:.9rem;font-weight:700;cursor:pointer;
+  }
+  .hint{border-color:#fcd34d;background:#fffbeb;color:#92400e}
+  .topic-name{font-weight:800;font-size:1.05rem}
+  .practbar,.testbar{
+    text-align:center;font-size:.85rem;color:var(--muted);margin:2px 0 10px;
+    background:var(--panel);border:1px solid var(--border);border-radius:999px;padding:5px 10px
+  }
+  .testbar{color:var(--accent2);border-color:var(--accent2)}
+  .prompt{
+    background:var(--panel);border:2px solid var(--border);border-radius:20px;
+    padding:26px 18px;text-align:center;font-size:2rem;font-weight:800;
+    min-height:96px;display:flex;align-items:center;justify-content:center;line-height:1.25;
+  }
+  .hintbox{margin-top:10px;background:#fffbeb;border:2px solid #fcd34d;color:#92400e;
+    border-radius:14px;padding:12px 14px;font-size:1rem}
+
+  /* number answer + pad */
+  .answerbox{
+    margin:14px auto 10px;width:min(280px,90%);text-align:center;font-size:2.4rem;font-weight:800;
+    border:3px dashed var(--accent);border-radius:16px;padding:10px;min-height:64px;background:var(--panel)
+  }
+  .answerbox .ph{color:var(--border)}
+  .pad{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:340px;margin:0 auto}
+  .key{
+    appearance:none;border:2px solid var(--border);background:var(--panel);color:var(--fg);
+    font-size:1.6rem;font-weight:800;border-radius:16px;padding:16px 0;cursor:pointer;
+    box-shadow:var(--shadow);min-height:60px
+  }
+  .key:active{transform:translateY(2px)}
+  .key.go{background:var(--good);border-color:var(--good);color:#fff}
+  .key.del{background:#f3f4f6;color:#374151}
+
+  /* choices */
+  .choices{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:16px}
+  .choice{
+    appearance:none;border:2px solid var(--accent);background:var(--panel);color:var(--fg);
+    font-size:1.7rem;font-weight:800;border-radius:16px;padding:22px 8px;cursor:pointer;box-shadow:var(--shadow)
+  }
+  .choice:active{transform:translateY(2px)}
+
+  /* feedback */
+  .feedback{margin-top:16px;border-radius:18px;padding:16px 16px;border:2px solid}
+  .feedback.ok{background:var(--good-bg);border-color:var(--good)}
+  .feedback.no{background:var(--bad-bg);border-color:var(--bad)}
+  .cheer{font-size:1.4rem;font-weight:800;text-align:center}
+  .correct-answer{text-align:center;margin-top:6px;font-size:1.1rem}
+  .why{margin-top:12px;font-size:1.02rem;background:rgba(255,255,255,.6);border-radius:12px;padding:12px}
+  .levelup{margin-top:12px;text-align:center;font-weight:800;color:var(--good);font-size:1.1rem}
+  .leveldown{margin-top:12px;text-align:center;font-weight:700;color:var(--bad)}
+  .next{
+    display:block;width:100%;margin-top:16px;appearance:none;border:none;cursor:pointer;
+    background:var(--accent);color:#fff;font-size:1.2rem;font-weight:800;border-radius:16px;padding:16px;box-shadow:var(--shadow)
+  }
+  .next:active{transform:translateY(2px)}
+
+  /* test done */
+  .done{text-align:center;padding:18px 8px}
+  .done-emoji{font-size:3rem}
+  .done-title{font-size:1.4rem;font-weight:800;margin-top:6px}
+  .done-score{margin-top:8px;font-size:1.1rem}
+  .done-level{margin-top:6px;font-size:1.1rem;color:var(--accent2)}
+  .done .next{margin-top:18px}
+  .done .hint{display:inline-block;margin-top:12px}
+
+  /* ---------- Progress report ---------- */
+  .grownups{
+    display:block;width:100%;margin:18px auto 0;appearance:none;cursor:pointer;
+    border:2px solid var(--border);background:var(--panel);color:var(--muted);
+    border-radius:14px;padding:12px;font-size:.9rem;font-weight:700
+  }
+  .grownups:hover{border-color:var(--accent2);color:var(--accent2)}
+  .report .topbar span{width:54px}
+  .stats3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:6px 0 14px}
+  .stat{background:var(--panel);border:2px solid var(--border);border-radius:16px;padding:12px 6px;text-align:center}
+  .statnum{font-size:1.35rem;font-weight:800}
+  .statlbl{font-size:.78rem;color:var(--muted);margin-top:2px}
+  .callouts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  @media(max-width:460px){.callouts{grid-template-columns:1fr}}
+  .callout{border-radius:16px;padding:12px;border:2px solid}
+  .callout.good{background:var(--good-bg);border-color:var(--good)}
+  .callout.focus{background:var(--bad-bg);border-color:var(--bad)}
+  .co-h{font-weight:800;font-size:.95rem;margin-bottom:8px}
+  .co-b{display:flex;flex-wrap:wrap;gap:6px}
+  .chip{font-size:.85rem;font-weight:700;background:var(--panel);border:1px solid var(--border);border-radius:999px;padding:5px 10px}
+  .rlist{display:flex;flex-direction:column;gap:10px}
+  .rrow{background:var(--panel);border:2px solid var(--border);border-radius:14px;padding:11px 13px}
+  .rtop{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+  .rname{font-weight:800}
+  .stretchtag{font-size:.68rem;font-weight:700;color:var(--accent2);border:1px solid var(--accent2);border-radius:6px;padding:1px 5px;vertical-align:middle}
+  .rlvl{font-size:.85rem;color:var(--muted);white-space:nowrap}
+  .rbest{color:var(--good)}
+  .rbar{height:10px;background:var(--border);border-radius:999px;margin:8px 0 6px;overflow:hidden}
+  .rfill{height:100%;border-radius:999px;background:var(--muted);transition:width .3s}
+  .rfill.hi{background:var(--good)} .rfill.mid{background:var(--accent)} .rfill.lo{background:var(--bad)}
+  .rmeta{font-size:.8rem;color:var(--muted)}
+  .empty{margin:30px 8px;text-align:center;color:var(--muted);font-size:1.05rem;line-height:1.5}
+  .resetwrap{margin-top:20px;text-align:center}
+  .resetbtn{appearance:none;cursor:pointer;border:2px solid var(--border);background:transparent;
+    color:var(--muted);border-radius:12px;padding:9px 14px;font-size:.85rem;font-weight:700}
+  .resetbtn:hover{border-color:var(--bad);color:var(--bad)}
+  .resetconfirm{background:var(--bad-bg);border:2px solid var(--bad);border-radius:14px;padding:14px;
+    font-weight:700;color:#92400e}
+  .resetconfirm>div{margin-top:10px;display:flex;gap:10px;justify-content:center}
+  .danger{appearance:none;cursor:pointer;border:none;background:#dc2626;color:#fff;font-weight:800;
+    border-radius:12px;padding:9px 16px;font-size:.9rem}
+</style>
+</head>
+<body>
+  <div id="root">Loading…</div>
+  <script>
+(()=>{var Z=Object.create;var D=Object.defineProperty;var ee=Object.getOwnPropertyDescriptor;var te=Object.getOwnPropertyNames;var se=Object.getPrototypeOf,ne=Object.prototype.hasOwnProperty;var oe=(t,e)=>()=>{try{return e||t((e={exports:{}}).exports,e),e.exports}catch(n){throw e=0,n}};var ae=(t,e,n,a)=>{if(e&&typeof e=="object"||typeof e=="function")for(let r of te(e))!ne.call(t,r)&&r!==n&&D(t,r,{get:()=>e[r],enumerable:!(a=ee(e,r))||a.enumerable});return t};var ie=(t,e,n)=>(n=t!=null?Z(se(t)):{},ae(e||!t||!t.__esModule?D(n,"default",{value:t,enumerable:!0}):n,t));var L=oe((S,M)=>{(function(t,e){if(typeof S=="object"&&typeof M=="object")M.exports=e();else if(typeof define=="function"&&define.amd)define([],e);else{var n=e();for(var a in n)(typeof S=="object"?S:t)[a]=n[a]}})(self,()=>(()=>{"use strict";var t,e,n={d:(s,o)=>{for(var i in o)n.o(o,i)&&!n.o(s,i)&&Object.defineProperty(s,i,{enumerable:!0,get:o[i]})},o:(s,o)=>Object.prototype.hasOwnProperty.call(s,o)},a={};n.d(a,{default:()=>r}),(function(s){s.StreamContextItem="stream-context-item",s.SaveItems="save-items",s.ComponentRegistered="component-registered",s.ActivateThemes="themes",s.ThemesActivated="themes-activated",s.SetComponentData="set-component-data"})(t||(t={})),(function(s){s.Component="component"})(e||(e={}));let r=new class{constructor(){this.component={activeThemes:[],acceptsThemes:!0},this.sentMessages=[],this.messageQueue=[],this.subscriptions=[],this.generateNotePreview=!0}initialize(s={}){if(this.contentWindow)throw"Cannot initialize mediator more than once";this.contentWindow=window,this.coallesedSavingDelay=s.debounceSave!==void 0?s.debounceSave:250,this.registerMessageHandler(),this.postMessage(t.StreamContextItem,{},o=>{let{item:i}=o;(!this.lastStreamedItem||this.lastStreamedItem.uuid!==i.uuid)&&this.pendingSaveTimeout&&(clearTimeout(this.pendingSaveTimeout),this.performSavingOfItems(this.pendingSaveParams),this.pendingSaveTimeout=void 0,this.pendingSaveParams=void 0),this.lastStreamedItem=i,this.lastStreamedItem.isMetadataUpdate||this.subscriptions.forEach(d=>{d(this.text,this.meta)})})}subscribe(s){return this.subscriptions.push(s),this.lastStreamedItem&&setTimeout(()=>{s(this.text,this.meta)}),()=>{let o=this.subscriptions.indexOf(s);o>=0&&this.subscriptions.splice(o,1)}}get text(){var s,o;return this.checkNoteExists(),((o=(s=this.lastStreamedItem)===null||s===void 0?void 0:s.content)===null||o===void 0?void 0:o.text)||""}get meta(){var s;return this.checkNoteExists(),!((s=this.lastStreamedItem)===null||s===void 0)&&s.content?this.lastStreamedItem.content.appData[this.lastStreamedItem.content.editorIdentifier]:{}}get extensionMeta(){return this.component.data}get locked(){var s,o;return this.checkNoteExists(),(o=(s=this.lastStreamedItem)===null||s===void 0?void 0:s.content)===null||o===void 0?void 0:o.appData["org.standardnotes.sn"].locked}get preview(){var s,o;return this.checkNoteExists(),(o=(s=this.lastStreamedItem)===null||s===void 0?void 0:s.content)===null||o===void 0?void 0:o.preview_plain}set text(s){this.checkNoteExists(),this.lastStreamedItem.content.text=s,this.saveNote(this.lastStreamedItem)}set preview(s){this.checkNoteExists(),this.generateNotePreview=!1,this.lastStreamedItem.content.preview_plain=s}set meta(s){this.checkNoteExists(),this.lastStreamedItem.content.appData[this.lastStreamedItem.content.editorIdentifier]=s,this.saveNote(this.lastStreamedItem)}set extensionMeta(s){this.component.data=s,this.postMessage(t.SetComponentData,{componentData:s})}registerMessageHandler(){this.messageHandler=s=>{let{data:o}=s,i=(d=>{if(typeof d!="string")return!1;try{let u=JSON.parse(d),m=Object.prototype.toString.call(u);return m==="[object Object]"||m==="[object Array]"}catch(u){return!1}})(o)?JSON.parse(o):o;i&&this.handleMessage(i)},this.contentWindow.document.addEventListener("message",this.messageHandler,!1),this.contentWindow.addEventListener("message",this.messageHandler,!1)}handleMessage(s){var o,i;switch(s.action){case t.ComponentRegistered:this.component.sessionKey=s.sessionKey,s.componentData&&(this.component.data=s.componentData),this.onReady(s.data);break;case t.ActivateThemes:this.activateThemes(s.data.themes);break;default:{if(!s.original)return;let d=(o=this.sentMessages)===null||o===void 0?void 0:o.filter(u=>{var m;return u.messageId===((m=s.original)===null||m===void 0?void 0:m.messageId)})[0];if(!d)return;(i=d==null?void 0:d.callback)===null||i===void 0||i.call(d,s.data);break}}}onReady(s){this.component.environment=s.environment,this.component.platform=s.platform,this.component.uuid=s.uuid;for(let o of this.messageQueue)this.postMessage(o.action,o.data,o.callback);this.messageQueue=[],this.activateThemes(s.activeThemeUrls||[]),this.postMessage(t.ThemesActivated,{})}get isRunningInDesktopApplication(){return this.component.environment==="desktop"}get isRunningInMobileApplication(){return this.component.environment==="mobile"}get isRunningInBrowser(){return this.component.environment==="web"}postMessage(s,o,i){if(!this.component.sessionKey)return void this.messageQueue.push({action:s,data:o,api:e.Component,callback:i});let d={action:s,data:o,messageId:this.generateUUID(),sessionKey:this.component.sessionKey,api:e.Component},u=JSON.parse(JSON.stringify(d)),m;u.callback=i,this.sentMessages.push(u),m=this.isRunningInMobileApplication?JSON.stringify(d):d,this.contentWindow.parent.postMessage(m,"*")}activateThemes(s=[]){if(!this.component.acceptsThemes)return;let{activeThemes:o}=this.component;if(o&&o.sort().toString()==s.sort().toString())return;let i=s,d=[];for(let u of o)s.includes(u)?i=i.filter(m=>m!==u):d.push(u);for(let u of d)this.deactivateTheme(u);this.component.activeThemes=s;for(let u of i){if(!u)continue;let m=u.endsWith("/org.standardnotes.theme-focus/index.css")?"https://app.standardnotes.com/components/assets/org.standardnotes.theme-focus/index.css":u,b=this.contentWindow.document.createElement("link");b.id=btoa(u),b.href=m,b.type="text/css",b.rel="stylesheet",b.media="screen,print",b.className="custom-theme",this.contentWindow.document.getElementsByTagName("head")[0].appendChild(b)}this.onThemesChangeCallback&&this.onThemesChangeCallback()}themeElementForUrl(s){return Array.from(this.contentWindow.document.getElementsByClassName("custom-theme")).slice().find(o=>o.id==btoa(s))}deactivateTheme(s){let o=this.themeElementForUrl(s);o&&o.parentNode&&(o.setAttribute("disabled","true"),o.parentNode.removeChild(o))}generateUUID(){return crypto.randomUUID()}get platform(){return this.component.platform}get environment(){return this.component.environment}performSavingOfItems({items:s,callback:o}){this.generateNotePreview&&(s[0].content.preview_plain=((d,u=50)=>d.length<=u?d:d.substring(0,u)+"...")(s[0].content.text));let i=[];for(let d of s)i.push(this.jsonObjectForItem(d));this.postMessage(t.SaveItems,{items:i},()=>{o==null||o()})}saveNote(s,o){let i=[s];if(this.pendingSaveItems||(this.pendingSaveItems=[]),this.coallesedSavingDelay){this.pendingSaveTimeout&&clearTimeout(this.pendingSaveTimeout);let d=i.map(m=>m.uuid),u=this.pendingSaveItems.filter(m=>!d.includes(m.uuid));this.pendingSaveItems=u.concat(i),this.pendingSaveParams={items:this.pendingSaveItems,callback:o},this.pendingSaveTimeout=setTimeout(()=>{this.performSavingOfItems(this.pendingSaveParams),this.pendingSaveItems=[],this.pendingSaveTimeout=void 0,this.pendingSaveParams=null},this.coallesedSavingDelay)}else this.performSavingOfItems({items:i,callback:o})}jsonObjectForItem(s){let o=Object.assign({},s);return o.children=null,o.parent=null,o}checkNoteExists(){if(!this.lastStreamedItem)throw"Trying to interact with note before it is received from Standard Notes. Use subscribe function."}};return a.default})())});var y=ie(L());function W(t){let e=t>>>0;return function(){e|=0,e=e+1831565813|0;let n=Math.imul(e^e>>>15,1|e);return n=n+Math.imul(n^n>>>7,61|n)^n,((n^n>>>14)>>>0)/4294967296}}var l=(t,e,n)=>e+Math.floor(t()*(n-e+1)),v=(t,e)=>e[Math.floor(t()*e.length)],f={add:{label:"Adding",emoji:"\u2795",group:"core",max:6},sub:{label:"Taking Away",emoji:"\u2796",group:"core",max:6},place:{label:"Place Value",emoji:"\u{1F522}",group:"core",max:5},mult:{label:"Times Tables",emoji:"\u2716\uFE0F",group:"core",max:6},money:{label:"Money & Coins",emoji:"\u{1FA99}",group:"core",max:4},time:{label:"Telling Time",emoji:"\u{1F552}",group:"core",max:3},measure:{label:"Measuring",emoji:"\u{1F4CF}",group:"core",max:2},div:{label:"Sharing (Divide)",emoji:"\u{1F91D}",group:"stretch",max:4},fraction:{label:"Fractions",emoji:"\u{1F355}",group:"stretch",max:4},algebra:{label:"Mystery Number",emoji:"\u2753",group:"stretch",max:4}},k=["add","sub","place","mult","money","time","measure","div","fraction","algebra"];function T(t,e,n){let a=new Set([String(e)]),r=0;for(;a.size<4&&r++<50;){let o=n();o!=null&&a.add(String(o))}let s=Array.from(a);for(let o=s.length-1;o>0;o--){let i=Math.floor(t()*(o+1));[s[o],s[i]]=[s[i],s[o]]}return s}function re(t,e){let n,a;if(t===1)n=l(e,1,5),a=l(e,0,10-n);else if(t===2)n=l(e,5,14),a=l(e,1,Math.min(5,19-n));else if(t===3)n=l(e,6,9),a=l(e,11-n+1,9),a<1&&(a=l(e,2,9));else if(t===4)n=l(e,11,89),a=l(e,2,9);else if(t===5){let s=l(e,1,4),o=l(e,0,4),i=l(e,1,4),d=l(e,0,9-o);n=s*10+o,a=i*10+d}else n=l(e,15,79),a=l(e,15,79);let r=n+a;return{kind:"number",prompt:`${n} + ${a} = ?`,answer:r,explain:ce(n,a)}}function ce(t,e){let n=t+e;return t<10&&e<10?`Start at ${t} and count up ${e} more: you land on ${n}. \u270B Tip: use your fingers if you need to!`:t%10+e%10>9?`Break it up. Tens: ${Math.floor(t/10)*10} + ${Math.floor(e/10)*10} = ${Math.floor(t/10)*10+Math.floor(e/10)*10}. Ones: ${t%10} + ${e%10} = ${t%10+e%10} (that's a 10 to carry!). Put it together: ${n}.`:`Add the tens, then the ones. Tens: ${Math.floor(t/10)*10} + ${Math.floor(e/10)*10} = ${Math.floor(t/10)*10+Math.floor(e/10)*10}. Ones: ${t%10} + ${e%10} = ${t%10+e%10}. Together that makes ${n}.`}function le(t,e){let n,a;if(t===1)n=l(e,2,10),a=l(e,0,n);else if(t===2)n=l(e,10,19),a=l(e,1,n-10);else if(t===3)n=l(e,11,18),a=l(e,n%10+1,9);else if(t===4){let s=l(e,2,9),o=l(e,2,9);n=s*10+o,a=l(e,1,o)}else if(t===5){let s=l(e,2,9),o=l(e,0,4);n=s*10+o,a=l(e,o+1,9)}else n=l(e,30,89),a=l(e,11,n-5);let r=n-a;return{kind:"number",prompt:`${n} \u2212 ${a} = ?`,answer:r,explain:de(n,a)}}function de(t,e){let n=t-e;return t<=20?`Start at ${t} and count back ${e}: you reach ${n}. You can also think: "${e} plus what makes ${t}?" \u2192 ${n}.`:t%10<e%10?`The ones digit of ${t} is small, so we "borrow" a ten. After borrowing it works out to ${n}. Check: ${n} + ${e} = ${n+e} \u2713.`:`Take away the ones, then the tens. Answer is ${n}. Check by adding back: ${n} + ${e} = ${n+e} \u2713.`}function ue(t,e){if(t===1){let s=l(e,11,99),o=e()<.5,i=o?Math.floor(s/10):s%10;return{kind:"number",prompt:`In the number ${s}, how many ${o?"tens":"ones"}?`,answer:i,explain:`${s} is ${Math.floor(s/10)} tens and ${s%10} ones. So there are ${i} ${o?"tens":"ones"}.`}}if(t===2){let s=l(e,1,9),o=l(e,0,9),i=s*10+o;return{kind:"number",prompt:`${s} tens and ${o} ones make what number?`,answer:i,explain:`${s} tens is ${s*10}. Add ${o} ones: ${s*10} + ${o} = ${i}.`}}if(t===3){let s=l(e,1,99),o=l(e,1,99),i=s>o?">":s<o?"<":"=";return{kind:"choice",prompt:`Which sign goes between?
+
+${s} \u2610 ${o}`,answer:i,choices:["<","=",">"],explain:`${s} is ${i===">"?"bigger than":i==="<"?"smaller than":"equal to"} ${o}. The open mouth of < and > always eats the BIGGER number. So: ${s} ${i} ${o}.`}}if(t===4){let s=v(e,[2,5,10]),o=l(e,1,4)*s,i=[o,o+s,o+2*s,o+3*s],d=l(e,1,3),u=i[d],m=i.map((b,X)=>X===d?"?":b).join(", ");return{kind:"number",prompt:`Skip count by ${s}. What's missing?
+
+${m}`,answer:u,explain:`Counting by ${s}s, each number jumps up ${s}. The missing one is ${u}.`}}let n=l(e,100,999),a=v(e,["hundreds","tens","ones"]),r=a==="hundreds"?Math.floor(n/100):a==="tens"?Math.floor(n/10)%10:n%10;return{kind:"number",prompt:`In ${n}, how many ${a}?`,answer:r,explain:`${n} = ${Math.floor(n/100)} hundreds, ${Math.floor(n/10)%10} tens, ${n%10} ones. So ${r} ${a}.`}}function pe(t,e){if(t===1){let s=l(e,2,4),o=l(e,2,5);return{kind:"number",prompt:`${s} groups of ${o}.
+How many in all?`,answer:s*o,explain:`${s} groups of ${o} means ${Array(s).fill(o).join(" + ")} = ${s*o}. That's the same as ${s} \xD7 ${o}.`}}let n;t===2?n=2:t===3?n=5:t===4?n=10:n=v(e,[2,5,10]);let a,r;return t===6?(a=l(e,2,5),r=l(e,2,5)):(a=n,r=l(e,1,10),e()<.5&&([a,r]=[r,a])),{kind:"number",prompt:`${a} \xD7 ${r} = ?`,answer:a*r,explain:`${a} \xD7 ${r} means ${r} added ${a} times (or count by ${a}s, ${r} times). That makes ${a*r}.`}}function me(t,e){let n={penny:1,nickel:5,dime:10,quarter:25},a=[];t===1?a=[["penny",l(e,1,5)],["nickel",l(e,0,1)]]:t===2?a=[["dime",l(e,1,4)],["penny",l(e,0,4)]]:t===3?a=[["dime",l(e,1,3)],["nickel",l(e,1,2)],["penny",l(e,0,4)]]:a=[["quarter",l(e,1,2)],["dime",l(e,0,2)],["nickel",l(e,0,1)],["penny",l(e,0,4)]],a=a.filter(([,i])=>i>0),a.length===0&&(a=[["penny",3]]);let r=a.reduce((i,[d,u])=>i+n[d]*u,0),s=a.map(([i,d])=>`${d} ${i}${d>1?"s":""}`).join(", "),o=a.map(([i,d])=>`${d}\xD7${n[i]}\xA2`).join(" + ");return{kind:"number",prompt:`How many cents?
+
+${s}`,answer:r,explain:`Count it up: ${o} = ${r}\xA2. Tip: count the big coins first, then the little ones.`}}function he(t,e){let n=l(e,1,12),a,r;t===1?(a=0,r=`${n}:00`):t===2?(a=30,r=`${n}:30`):(a=v(e,[0,15,30,45]),r=`${n}:${String(a).padStart(2,"0")}`);let s=a===0?`${n} o'clock`:a===30?`half past ${n}`:a===15?`quarter past ${n}`:`quarter to ${n===12?1:n+1}`,o=()=>{let i=l(e,1,12),d=v(e,[0,15,30,45]);return`${i}:${String(d).padStart(2,"0")}`};return{kind:"choice",prompt:`The clock shows ${s}.
+Which time is that?`,answer:r,choices:T(e,r,o),explain:`"${s}" is written as ${r}. The first number is the hour, the second is the minutes after it.`}}function fe(t,e){if(t===1){let r=[["a pencil",18],["a bus",1e3],["an ant",1],["a door",200],["a shoe",25],["a spoon",15]],[s,o]=v(e,r),i,d;do[i,d]=v(e,r);while(d===o);let u=o>d?s:i;return{kind:"choice",prompt:"Which is LONGER?",answer:u,choices:T(e,u,()=>v(e,r)[0]),explain:`${u} is longer. We compare sizes by picturing them next to each other.`}}let n=l(e,2,9),a=l(e,2,9);return{kind:"number",prompt:`A ribbon is ${n} cm. You add ${a} cm more.
+How long now? (cm)`,answer:n+a,explain:`${n} cm and ${a} cm together: ${n} + ${a} = ${n+a} cm.`}}function ve(t,e){if(t===1){let o=l(e,1,5),i=2*o;return{kind:"number",prompt:`Share ${i} cookies fairly with 2 friends.
+How many each?`,answer:o,explain:`Sharing ${i} into 2 equal groups gives ${o} each, because ${o} + ${o} = ${i}.`}}if(t===2){let s=v(e,[2,5]),o=l(e,1,5),i=s*o;return{kind:"number",prompt:`Put ${i} toys into groups of ${s}.
+How many groups?`,answer:i/s,explain:`${i} split into groups of ${s} makes ${i/s} groups (${i} \xF7 ${s} = ${i/s}).`}}let n=v(e,[2,5,10]),a=l(e,1,5),r=n*a;return{kind:"number",prompt:`${r} \xF7 ${n} = ?`,answer:a,explain:`Ask: "${n} times what equals ${r}?" \u2192 ${a}, because ${n} \xD7 ${a} = ${r}.`}}function $e(t,e){if(t===1||t===2){let a=t===1?2:4,r=`1/${a}`;return{kind:"choice",prompt:`A pizza is cut into ${a===2?"two equal pieces":"four equal pieces"}.
+You eat ONE piece. How much did you eat?`,answer:r,choices:T(e,r,()=>`1/${v(e,[2,3,4,5])}`),explain:`One piece out of ${a} equal pieces is written ${r}. The bottom number is how many equal pieces in all.`}}if(t===3){let a=v(e,[2,3,4]),r=l(e,1,a-1),s=`${r}/${a}`;return{kind:"choice",prompt:`A shape has ${a} equal parts.
+${r} ${r>1?"parts are":"part is"} colored.
+What fraction is colored?`,answer:s,choices:T(e,s,()=>`${l(e,1,3)}/${v(e,[2,3,4,5])}`),explain:`${r} colored out of ${a} equal parts is ${s}. Top = colored parts, bottom = total parts.`}}return{kind:"choice",prompt:"Which is the BIGGER piece of the same pizza?",answer:"1/2",choices:["1/2","1/4","1/8"],explain:"1/2 is bigger. The MORE pieces you cut a pizza into, the SMALLER each piece gets. So 1/2 > 1/4 > 1/8."}}function be(t,e){if(t===1){let s=l(e,1,8),o=l(e,1,10-s+1),i=s+o;return{kind:"number",prompt:`${s} + \u2610 = ${i}
+What is \u2610?`,answer:o,explain:`Think backwards: ${i} \u2212 ${s} = ${o}. Check: ${s} + ${o} = ${i} \u2713.`}}if(t===2){let s=l(e,1,8),o=l(e,1,10-s+1),i=o+s;return{kind:"number",prompt:`\u2610 + ${s} = ${i}
+What is \u2610?`,answer:o,explain:`Take ${s} away from ${i}: ${i} \u2212 ${s} = ${o}. Check: ${o} + ${s} = ${i} \u2713.`}}if(t===3){let s=l(e,6,18),o=l(e,1,s-1),i=s-o;return{kind:"number",prompt:`${s} \u2212 \u2610 = ${i}
+What is \u2610?`,answer:o,explain:`${s} take away what leaves ${i}? It's ${o}, because ${s} \u2212 ${o} = ${i}.`}}let n=v(e,[2,5,10]),a=l(e,1,5),r=n*a;return{kind:"number",prompt:`${n} \xD7 \u2610 = ${r}
+What is \u2610?`,answer:a,explain:`How many ${n}s make ${r}? ${a}, because ${n} \xD7 ${a} = ${r}.`}}var ge={add:re,sub:le,place:ue,mult:pe,money:me,time:he,measure:fe,div:ve,fraction:$e,algebra:be};function I(t,e,n){let a=f[t].max,r=Math.max(1,Math.min(a,e||1)),s=ge[t](r,n);return Object.assign({topic:t,level:r},s)}function H(t,e){return String(e).trim()===String(t.answer).trim()}function B(){return{level:1,streak:0,wrong:0,attempts:0,correct:0,best:1}}function U(t,e,n){let a=Object.assign(B(),t),r=f[e].max;a.attempts++;let s=!1,o=!1;return n?(a.correct++,a.streak++,a.wrong=0,a.streak>=3&&a.level<r&&(a.level++,a.streak=0,s=!0)):(a.wrong++,a.streak=0,a.wrong>=2&&a.level>1&&(a.level--,a.wrong=0,o=!0)),a.level>a.best&&(a.best=a.level),{state:a,leveledUp:s,leveledDown:o}}function z(t){let e=f[t].max,n=[];for(let a=1;a<=e;a++)n.push(a);return n}function F(t,e){let n=1;for(let r of e)r.correct&&r.level>n&&(n=r.level);let a=1;for(let r of e.sort((s,o)=>s.level-o.level))if(r.correct)a=r.level;else break;return Math.max(1,Math.min(f[t].max,Math.max(a,n>a?a:n)))}function w(t,e,n,a){let r=Math.floor(Number(t));return Number.isFinite(r)?Math.max(e,Math.min(n,r)):a}function we(t,e){return typeof t!="string"?"":t.replace(/[\u0000-\u001F\u007F]/g,"").slice(0,e)}function A(t){let e=t&&typeof t=="object"&&!Array.isArray(t)?t:{},n=e.topics&&typeof e.topics=="object"&&!Array.isArray(e.topics)?e.topics:{},a=Object.create(null);for(let r of k){let s=n[r]&&typeof n[r]=="object"&&!Array.isArray(n[r])?n[r]:{},o=f[r].max,i=w(s.attempts,0,1e7,0),d={level:w(s.level,1,o,1),streak:w(s.streak,0,1e3,0),wrong:w(s.wrong,0,1e3,0),attempts:i,correct:w(s.correct,0,i,0),best:w(s.best,1,o,1)};d.best<d.level&&(d.best=d.level),a[r]=d}return{version:1,name:we(e.name,40),stars:w(e.stars,0,1e9,0),answered:w(e.answered,0,1e9,0),lastTopic:k.indexOf(e.lastTopic)!==-1?e.lastTopic:null,topics:a}}function _(t){let e=k.map(o=>{let i=Object.assign(B(),t.topics&&t.topics[o]||{}),d=f[o],u=i.attempts>0?i.correct/i.attempts:null,m=(i.best-1)/(d.max-1||1),b=i.attempts>0?m*.6+u*.4:null;return{topic:o,label:d.label,emoji:d.emoji,group:d.group,level:i.level,best:i.best,max:d.max,attempts:i.attempts,correct:i.correct,accuracy:u,score:b}}),n=e.filter(o=>o.attempts>0),a=o=>[...n].sort((i,d)=>o*(i.score-d.score)||o*(i.accuracy-d.accuracy)),r=n.reduce((o,i)=>o+i.attempts,0),s=n.reduce((o,i)=>o+i.correct,0);return{rows:e,attempted:n,strongest:a(-1),weakest:a(1),totalAnswered:t.answered||0,totalStars:t.stars||0,overallAccuracy:r>0?s/r:null,subjectsTried:n.length}}var J=(()=>{try{return window.parent&&window.parent!==window}catch(t){return!1}})(),Q="math-tutor-state-v1";function O(){return A({})}var p=O();function K(t){try{p=A(t)}catch(e){p=O()}}var Y=null;function C(){J?(y.default.extensionMeta=p,y.default.text=ke(),y.default.preview=`\u2B50 ${p.stars} stars \xB7 ${p.answered} answered`):(clearTimeout(Y),Y=setTimeout(()=>{try{localStorage.setItem(Q,JSON.stringify(p))}catch(t){}},150))}function ke(){let t=["Math Tutor progress",`\u2B50 ${p.stars} stars \xB7 ${p.answered} questions answered`,""];for(let e of k){let n=p.topics[e];n.attempts>0&&t.push(`${f[e].emoji} ${f[e].label}: Level ${n.level} (best ${n.best}) \u2014 ${n.correct}/${n.attempts} right`)}return t.join(`
+`)}var P=W((Date.now()^Math.random()*1e9)>>>0),g="home",c=null,x=!1,ye=()=>document.getElementById("root");function xe(){p=O(),x=!1,C()}function Se(t){c={topic:t,mode:"practice",problem:null,answered:!1,correct:!1,hint:!1,input:""},p.lastTopic=t,R(),g="practice",h()}function Te(t){c={topic:t,mode:"test",queue:z(t).slice(),results:[],problem:null,answered:!1,correct:!1,hint:!1,input:"",qNum:0},q(),g="practice",h()}function R(){let t=p.topics[c.topic];c.problem=I(c.topic,t.level,P),c.answered=!1,c.correct=!1,c.hint=!1,c.input=""}function q(){if(c.queue.length===0){je();return}let t=c.queue.shift();c.testLevel=t,c.qNum++,c.problem=I(c.topic,t,P),c.answered=!1,c.correct=!1,c.hint=!1,c.input=""}function je(){let t=F(c.topic,c.results),e=p.topics[c.topic];e.level=t,e.streak=0,e.wrong=0,t>e.best&&(e.best=t),C(),c.done=!0,c.suggested=t,h()}function E(t){if(c.answered)return;let e=c.problem,n=H(e,t);if(c.answered=!0,c.correct=n,c.given=t,c.mode==="practice"){p.answered++,n&&p.stars++;let a=U(p.topics[c.topic],c.topic,n);p.topics[c.topic]=a.state,c.leveledUp=a.leveledUp,c.leveledDown=a.leveledDown,C()}else c.results.push({level:c.testLevel,correct:n});h()}function $(t){return String(t).replace(/[&<>"]/g,e=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"})[e])}function G(t){let e=f[t],n=p.topics[t],a=Array.from({length:e.max},(r,s)=>`<span class="dot ${s<n.level?"on":""}"></span>`).join("");return`<button class="card" data-action="topic" data-topic="${t}">
+    <div class="card-emoji">${e.emoji}</div>
+    <div class="card-label">${$(e.label)}</div>
+    <div class="card-level">${a}</div>
+    <div class="card-meta">${n.attempts?`Level ${n.level} \xB7 \u2B50${n.correct}`:"Tap to start"}</div>
+  </button>`}function Me(){let t=p.name?`Hi ${$(p.name)}! `:"",e=k.filter(a=>f[a].group==="core").map(G).join(""),n=k.filter(a=>f[a].group==="stretch").map(G).join("");return`
+    <div class="home">
+      <header class="hero">
+        <div class="hero-title">${t}Let's do some math! \u{1F389}</div>
+        <div class="hero-stars">\u2B50 <b>${p.stars}</b> stars &nbsp;\xB7&nbsp; ${p.answered} questions done</div>
+      </header>
+      <h2 class="section">Practice</h2>
+      <div class="grid">${e}</div>
+      <h2 class="section">Stretch yourself \u{1F680} <span class="sub">(a little harder)</span></h2>
+      <div class="grid">${n}</div>
+      <p class="parent-note">Difficulty adjusts automatically as ${p.name||"your child"} answers.
+      Tap a subject, then use <b>Test my level</b> to find the right starting point.</p>
+      <button class="grownups" data-action="report">\u{1F4CA} For grown-ups: progress report</button>
+    </div>`}function V(t){return t===null?"\u2014":Math.round(t*100)+"%"}function Ie(t){return t===null?"":t>=.8?"hi":t>=.5?"mid":"lo"}function Ae(t){let e=Array.from({length:t.max},(a,r)=>`<span class="dot ${r<t.best?"on":""}"></span>`).join(""),n=t.accuracy===null?0:Math.round(t.accuracy*100);return`<div class="rrow">
+    <div class="rtop">
+      <span class="rname">${t.emoji} ${$(t.label)}${t.group==="stretch"?' <span class="stretchtag">stretch</span>':""}</span>
+      <span class="rlvl">Level ${t.level}${t.best>t.level?` <span class="rbest">(best ${t.best})</span>`:""}</span>
+    </div>
+    <div class="rbar"><div class="rfill ${Ie(t.accuracy)}" style="width:${n}%"></div></div>
+    <div class="rmeta">${t.correct} of ${t.attempts} correct \xB7 ${V(t.accuracy)}</div>
+  </div>`}function Ne(){let t=_(p);if(t.subjectsTried===0)return`
+      <div class="report">
+        <div class="topbar"><button class="back" data-action="home">\u2039 Back</button>
+          <div class="topic-name">\u{1F4CA} Progress report</div><span></span></div>
+        <div class="empty">No practice yet! Once ${$(p.name||"your child")} answers a few
+        questions, this page will show which subjects are going well and which to focus on.</div>
+      </div>`;let e=t.strongest.slice(0,2),n=t.weakest.slice(0,2).filter(s=>!e.includes(s)),a=(s,o)=>`<span class="chip ${o}">${s.emoji} ${$(s.label)}</span>`,r=x?`<div class="resetconfirm">Erase all stars and levels? This can't be undone.
+         <div><button class="danger" data-action="reset-yes">Yes, erase</button>
+         <button class="hint" data-action="reset-no">Cancel</button></div></div>`:'<button class="resetbtn" data-action="reset">Reset all progress</button>';return`
+    <div class="report">
+      <div class="topbar"><button class="back" data-action="home">\u2039 Back</button>
+        <div class="topic-name">\u{1F4CA} Progress report</div><span></span></div>
+
+      <div class="stats3">
+        <div class="stat"><div class="statnum">\u2B50 ${t.totalStars}</div><div class="statlbl">stars</div></div>
+        <div class="stat"><div class="statnum">${t.totalAnswered}</div><div class="statlbl">answered</div></div>
+        <div class="stat"><div class="statnum">${V(t.overallAccuracy)}</div><div class="statlbl">accuracy</div></div>
+      </div>
+
+      <div class="callouts">
+        <div class="callout good"><div class="co-h">\u{1F4AA} Strongest</div>
+          <div class="co-b">${e.map(s=>a(s,"g")).join("")||"\u2014"}</div></div>
+        ${n.length?`<div class="callout focus"><div class="co-h">\u{1F331} Practice next</div>
+          <div class="co-b">${n.map(s=>a(s,"f")).join("")}</div></div>`:""}
+      </div>
+
+      <h2 class="section">Every subject</h2>
+      <div class="rlist">${t.attempted.map(Ae).join("")}</div>
+
+      <div class="resetwrap">${r}</div>
+      <p class="parent-note">Mastery blends how far up the levels he's climbed with how often he's
+      right. "Practice next" just means the lowest right now \u2014 not a problem, just where a little
+      help goes furthest.</p>
+    </div>`}function Ee(){return`<div class="pad">${["1","2","3","4","5","6","7","8","9","\u232B","0","\u2713"].map(e=>`<button class="${e==="\u2713"?"key go":e==="\u232B"?"key del":"key"}" data-action="${e==="\u2713"?"pad-go":e==="\u232B"?"pad-del":"pad-num"}" data-k="${e}">${e}</button>`).join("")}</div>`}function Oe(){let t=c.problem,e=f[c.topic],n=c.mode==="test",a="";if(!c.answered)t.kind==="number"?a=`
+        <div class="answerbox" aria-label="your answer">${$(c.input)||"<span class='ph'>?</span>"}</div>
+        ${Ee()}`:a=`<div class="choices">${t.choices.map(i=>`<button class="choice" data-action="choice" data-c="${$(i)}">${$(i)}</button>`).join("")}</div>`;else{let i=c.correct,d=Pe(i),u="";c.leveledUp?u=`<div class="levelup">\u{1F199} Level up! Now Level ${p.topics[c.topic].level}</div>`:c.leveledDown&&(u=`<div class="leveldown">Let's practice a bit more \u2014 back to Level ${p.topics[c.topic].level} \u{1F4AA}</div>`),a=`
+      <div class="feedback ${i?"ok":"no"}" role="status" aria-live="polite">
+        <div class="cheer">${d}</div>
+        ${i?"":`<div class="correct-answer">The answer is <b>${$(t.answer)}</b></div>`}
+        <div class="why"><b>Why?</b> ${$(t.explain)}</div>
+        ${u}
+      </div>
+      <button class="next" data-action="next">${n?"Next \u2192":"Keep going \u2192"}</button>`}let r=!c.answered&&!c.hint?'<button class="hint" data-action="hint">\u{1F4A1} Hint</button>':"",s=c.hint&&!c.answered?`<div class="hintbox"><b>Hint:</b> ${$(c.problem.explain)}</div>`:"",o=n?`<div class="testbar">Skill check \xB7 question ${c.qNum} of ${f[c.topic].max}</div>`:`<div class="practbar">Level ${p.topics[c.topic].level} \xB7 \u2B50 ${p.stars}</div>`;return`
+    <div class="practice">
+      <div class="topbar">
+        <button class="back" data-action="home">\u2039 Back</button>
+        <div class="topic-name">${e.emoji} ${$(e.label)}</div>
+        ${r}
+      </div>
+      ${o}
+      <div class="prompt">${$(t.prompt).replace(/\n/g,"<br>")}</div>
+      ${s}
+      ${a}
+    </div>`}function Ce(){let t=f[c.topic],e=c.results.filter(n=>n.correct).length;return`
+    <div class="practice">
+      <div class="topbar"><button class="back" data-action="home">\u2039 Back</button>
+        <div class="topic-name">${t.emoji} ${$(t.label)}</div></div>
+      <div class="done">
+        <div class="done-emoji">\u{1F3AF}</div>
+        <div class="done-title">Skill check finished!</div>
+        <div class="done-score">You got ${e} of ${c.results.length} right.</div>
+        <div class="done-level">We'll start you at <b>Level ${c.suggested}</b>.</div>
+        <button class="next" data-action="topic" data-topic="${c.topic}">Start practicing \u2192</button>
+        <button class="hint" data-action="home">Back to subjects</button>
+      </div>
+    </div>`}function Pe(t){let e=["\u{1F389} Yes! Nailed it!","\u2B50 Awesome!","\u{1F4AA} You got it!","\u{1F31F} Brilliant!","\u{1F680} Way to go!","\u{1F44F} Correct!"],n=["Good try! \u{1F917}","Almost! Let's learn this one. \u{1F331}","Nice effort \u2014 here's the trick \u{1F447}","That's okay, mistakes help us learn! \u{1F499}"];return(t?e:n)[Math.floor(P()*(t?e.length:n.length))]}function h(){let t;g==="home"?t=Me():g==="report"?t=Ne():g==="practice"&&c.mode==="test"&&c.done?t=Ce():t=Oe(),ye().innerHTML=t,g==="home"&&Re(),g==="practice"&&c&&!c.answered&&c.problem&&c.problem.kind}function Re(){document.querySelectorAll(".card").forEach(t=>{let e=t.getAttribute("data-topic"),n=document.createElement("button");n.className="testlink",n.textContent="Test my level",n.setAttribute("data-action","test"),n.setAttribute("data-topic",e),t.appendChild(n)})}function qe(t){let e=t.target.closest("[data-action]");if(!e)return;let n=e.getAttribute("data-action"),a=e.getAttribute("data-topic");if(n==="test"||n==="testlink"){t.stopPropagation(),Te(a);return}switch(n){case"topic":Se(a);break;case"home":g="home",c=null,x=!1,h();break;case"report":g="report",x=!1,h();break;case"reset":x=!0,h();break;case"reset-no":x=!1,h();break;case"reset-yes":xe(),h();break;case"hint":c.hint=!0,h();break;case"next":c.mode==="test"?q():R(),h();break;case"choice":E(e.getAttribute("data-c"));break;case"pad-num":c.input=(c.input+e.getAttribute("data-k")).slice(0,6),h();break;case"pad-del":c.input=c.input.slice(0,-1),h();break;case"pad-go":c.input!==""&&E(c.input);break}}function De(t){if(g!=="practice"||!c||c.answered||!c.problem){g==="practice"&&c&&c.answered&&(t.key==="Enter"||t.key===" ")&&(c.mode==="test"?q():R(),h());return}c.problem.kind==="number"&&(t.key>="0"&&t.key<="9"?(c.input=(c.input+t.key).slice(0,6),h()):t.key==="Backspace"?(c.input=c.input.slice(0,-1),h()):t.key==="Enter"&&c.input!==""&&E(c.input))}function N(){document.addEventListener("click",qe),document.addEventListener("keydown",De),h()}var j=!1;if(J)y.default.initialize(),y.default.subscribe(()=>{if(j)return;j=!0;let t=y.default.extensionMeta;t&&t.version&&K(t),N()}),setTimeout(()=>{j||(j=!0,N())},1500);else{try{let t=localStorage.getItem(Q);t&&K(JSON.parse(t))}catch(t){}N()}})();
+
+</script>
+</body>
+</html>
