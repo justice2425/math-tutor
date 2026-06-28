@@ -1,9 +1,20 @@
 {
-  "identifier": "dev.cowork.kids-math-tutor",
-  "name": "Math Tutor",
-  "description": "A friendly, adaptive math practice editor for early learners (grade 2 and up). Generates problems, checks answers, explains the why, tests skill level, and adjusts difficulty automatically. Works fully offline; progress is saved in the note.",
-  "content_type": "SN|Component",
-  "area": "editor-editor",
+  "name": "math-tutor",
   "version": "1.0.0",
-  "url": "https://justice2425.github.io/math-tutor/index.html"
+  "description": "Adaptive math practice editor plugin for Standard Notes",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "test": "node test.mjs",
+    "test:ui": "node domtest.mjs"
+  },
+  "devDependencies": {
+    "esbuild": "^0.21.0",
+    "jsdom": "^24.0.0"
+  },
+  "dependencies": {
+    "sn-extension-api": "^0.4.0"
+  }
 }
+
