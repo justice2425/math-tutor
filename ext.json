@@ -1,9 +1,9 @@
 {
   "identifier": "dev.cowork.kids-math-tutor",
   "name": "Math Tutor",
-  "description": "A friendly, adaptive math practice editor for kids (grades K–12). Generates problems, checks answers, explains the why, tests skill level, and adjusts difficulty automatically. The Ask & Explain box includes a built-in computer-algebra engine: exact fractions, solving equations, simplifying/factoring, and derivatives. Works fully offline; progress is saved in the note.",
+  "description": "A friendly, adaptive math practice editor for kids (grades K–12). Generates problems, checks answers, explains the why, and adjusts difficulty automatically. Includes a built-in computer-algebra engine (exact fractions, equations, factoring, derivatives), a per-skill Mastery tracker (accuracy + speed), and a gamified Quest Board with points, levels, progress bars, and parent-approved quests. Works fully offline; progress is saved in the note.",
   "content_type": "SN|Component",
   "area": "editor-editor",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "url": "https://justice2425.github.io/math-tutor/index.html"
 }
