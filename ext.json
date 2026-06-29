@@ -4,6 +4,6 @@
   "description": "A friendly, adaptive math practice editor for early learners (grade 2 and up). Generates problems, checks answers, explains the why, tests skill level, and adjusts difficulty automatically. Works fully offline; progress is saved in the note.",
   "content_type": "SN|Component",
   "area": "editor-editor",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "url": "https://justice2425.github.io/math-tutor/index.html"
 }
