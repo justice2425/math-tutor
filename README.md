@@ -1,4 +1,4 @@
-# Math Tutor v1.19.0
+# Math Tutor v1.20.0
 
 A Standard Notes editor that gives kids adaptive math practice. This release is
 built on v1.18.0 (the version live on GitHub Pages as of August 10, 2026).
@@ -41,12 +41,41 @@ That cost is deliberate, so it isn't a useful trick for a child.
 The PIN is a deterrent, not strong security. Anyone who can open the browser's
 developer tools can edit the saved data directly.
 
-## What changed
+## What changed in v1.20.0
+
+v1.19 made practice too easy. Its difficulty rule settled near 4 in 5 right and climbed
+only one level per 3 right answers, while most subjects have 30–40 levels.
+
+- **Fast climb.** Each subject starts in climbing mode. Two right answers in a row (first
+  try, no hint) jump several levels: 5 for adding/subtracting, 4 for ×/÷, 2 for smaller
+  subjects. A miss steps back half a jump and halves the jump size. Once the jump size
+  drops below 2, the subject uses the normal rule. Pressing Easier ends climbing. After
+  "Find the right levels" or a skill check, jumps are limited to 2. Existing progress
+  gets climbing too.
+- **Harder target.** The normal rule is now 2 right → up, 1 miss → down, which settles near
+  7 in 10 right. It was 3 right → up (about 4 in 5).
+- **Mixed review at his actual level.** It used to be one level below.
+- **Trivial problems removed:**
+  - Fraction multiplication had a fraction equal to 1 (like 3/3) in about half of its
+    problems, and levels 5–8 were identical. Now fractions are always less than 1,
+    denominators grow with level (up to 12), and the wrong choices come from common
+    mistakes, such as adding across.
+  - Fraction comparison no longer uses fractions equal to 1.
+  - Division level 5 no longer drops back to "2 ÷ 2".
+  - From level 3 up, adding, subtracting, multiplying and dividing skip ×0, ×1, +0, −0,
+    ÷1 and "a ÷ a". Order of operations still has these; I left it alone.
+
+In a simple simulation of a strong student (about 80% right at level 19 of 40, starting
+at level 1), v1.19 needed about 51 answers to reach level 18 and he'd get 99% of his first
+50 right. v1.20 needs about 8 and he'd get about 74% right. This is a model, not
+measurements of your son; real levels don't form a perfectly smooth difficulty curve.
+
+## What changed in v1.19.0
 
 | Area | Change |
 |---|---|
-| Difficulty | 3 right in a row moves up a level, 1 miss moves down. This settles near 79% correct; the old 2-and-2 rule settled near 50%. |
-| Mixed review | New home-screen button: 10 questions, never the same topic twice in a row, favoring topics not seen lately (mastered ones included). It doesn't change levels. |
+| Difficulty | 3 right in a row moves up a level, 1 miss moves down; settled near 79% correct. *Changed in v1.20.* |
+| Mixed review | New home-screen button: 10 questions, never the same topic twice in a row, favoring topics not seen lately (mastered ones included). It doesn't change levels. It ran one level below; *now at his level in v1.20.* |
 | Mistake Gym | Missed problems return after 1, 3, 7, 21 and 60 days, instead of 1, 3, 7. |
 | Points | No points on levels below where he tapped **Easier**; they resume once he's back up. Practice shows recent accuracy ("✅ 8/10 lately"). The Store has a note for parents on phasing out tangible rewards. |
 | Timing | Parent switch for timed challenges. Sprints unlock per subject only at 80% accuracy over 10+ practice questions. |
@@ -74,7 +103,8 @@ its security policy, so a hand edit makes the whole app stop loading.
 short (`m` is the saved state, `g` the current session, `w()` redraws the screen).
 Useful tuning knobs (search for them):
 
-- `UP_AFTER` / `DOWN_AFTER`: staircase rule; `2`/`1` targets about 71% correct.
+- `UP_AFTER` / `DOWN_AFTER`: staircase rule; `2`/`1` targets about 71% correct, `3`/`1` about 79%.
+- `climbStart`: first jump size per subject.
 - `ts = [1, 3, 7, 21, 60]`: Mistake Gym intervals, in days.
 - `RETAIN_GAP_DAYS`: gap that counts as "remembered later".
 - `MIX_TOTAL`: mixed-review round length.
@@ -87,7 +117,7 @@ python3 build.py --test   # writes index.test.html, which keeps the test hook
 node tests/tests.mjs
 ```
 
-There are 75 checks covering the features above; all pass on this build. Don't upload
+There are 90 checks covering the features above; all pass on this build. Don't upload
 `index.test.html` to the repo.
 
 The included GitHub Action (`.github/workflows/check-build.yml`) fails if `index.html`
@@ -113,4 +143,4 @@ Whoever controls this repo controls the code running inside your notes app.
   editor's component data and a text summary goes into the note. Confirm on your setup if
   it matters to you (for example, siblings sharing one account would share one profile).
 - **File size.** The release is unminified so it matches the source, which makes it about
-  20% larger compressed than v1.18: roughly 167 KB vs 138 KB gzipped.
+  22% larger compressed than v1.18: roughly 168 KB vs 138 KB gzipped.

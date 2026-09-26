@@ -14,7 +14,7 @@
   * img/font/object/etc none : no external or data resources are loaded.
   * base-uri / form-action none : block base-tag and form hijacking tricks.
 -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-JHAN09+87Li9MQfw+xWd+P7XQBhf8XYviBIvnteqBJc='; style-src 'unsafe-inline'; img-src 'none'; font-src 'none'; media-src 'none'; connect-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'; child-src 'none'; worker-src 'none'; object-src 'none'; manifest-src 'none'" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-4yym+xRBcnMeCPZTjGjZ4yyrXVF5NsJFFuu+3e7mFqQ='; style-src 'unsafe-inline'; img-src 'none'; font-src 'none'; media-src 'none'; connect-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'; child-src 'none'; worker-src 'none'; object-src 'none'; manifest-src 'none'" />
 <meta name="referrer" content="no-referrer" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Math Tutor</title>
@@ -1051,8 +1051,8 @@ What number goes in the box?`,
     if (e === 2) {
       let r = P(s, 2, 8),
         c = P(s, 2, 8),
-        l = P(s, 1, r),
-        d = P(s, 1, c),
+        l = P(s, 1, r - 1),
+        d = P(s, 1, c - 1),
         h = l * c,
         f = d * r,
         $ = h > f ? ">" : h < f ? "<" : "=";
@@ -1100,16 +1100,29 @@ ${l}/${r} \u2610 ${d}/${c}`,
         explain: `Make the bottoms match (${f}): ${l}/${r} = ${l * c}/${f}, ${d}/${c} = ${d * r}/${f}. Add tops: ${h}/${f} = ${$}.`,
       };
     }
-    let t = P(s, 2, 6),
-      n = P(s, 2, 6),
-      a = P(s, 1, t),
-      o = P(s, 1, n),
-      i = As(a * o, t * n);
+    let hi = [6, 8, 10, 12][Math.min(3, Math.max(0, e - 5))],
+      t = P(s, 2, hi),
+      n = P(s, 2, hi),
+      a = P(s, 1, t - 1),
+      o = P(s, 1, n - 1),
+      i = As(a * o, t * n),
+      val = (a * o) / (t * n),
+      // Wrong choices come from common mistakes (adding across, etc.).
+      miss = [
+        [a + o, t + n],
+        [a * o, t + n],
+        [a * n, t * o],
+        [a + o, t * n],
+        [a * o, t],
+      ]
+        .filter(([x, y]) => y > 0 && Math.abs(x / y - val) > 1e-9)
+        .map(([x, y]) => As(x, y)),
+      mi = 0;
     return {
       kind: "choice",
       prompt: `${a}/${t} \xD7 ${o}/${n} = ?`,
       answer: i,
-      choices: js(s, i, () => an(s, 12)),
+      choices: js(s, i, () => (mi < miss.length ? miss[mi++] : an(s, 12))),
       f: { sub: "mul", n1: a, d1: t, n2: o, d2: n },
       explain: `Multiply straight across: tops ${a}\xD7${o} = ${a * o}, bottoms ${t}\xD7${n} = ${t * n}. That's ${a * o}/${t * n} = ${i}.`,
     };
@@ -9847,8 +9860,8 @@ How much is left? (${n})`,
     else if (e === 2) ((t = z(s, [2, 5])), (n = A(s, 1, 5)));
     else if (e <= 4) ((t = z(s, [2, 5, 10])), (n = A(s, 1, 5)));
     else {
-      let a = gn(e);
-      ((t = A(s, 2, Math.min(12, a))), (n = A(s, 1, a)));
+      let a = Math.max(6, gn(e));
+      ((t = A(s, 2, Math.min(12, a))), (n = A(s, 2, a)));
     }
     return ur(s, t * n, t);
   }
@@ -10161,19 +10174,45 @@ What is \u2610?`,
       mc: true,
     });
   }
+  var TRIVIAL_TOPICS = { add: 1, sub: 1, mult: 1, div: 1 },
+    TRIVIAL_RES = [
+      /(^|[^\d.\/])[01] ?[\u00d7x*] ?\d/,
+      /\d ?[\u00d7x*] ?[01]($|[^\d.\/])/,
+      /\d ?\u00f7 ?1($|[^\d.])/,
+      /(^|[^\d.])(\d+) ?\u00f7 ?\2($|[^\d.])/,
+      /(^|[^\d.])0 ?\+/,
+      /[+\u2212-] ?0($|[^\d.])/,
+    ];
+  function isTrivialPrompt(p) {
+    let s = String(p || "");
+    return TRIVIAL_RES.some((re) => re.test(s));
+  }
   function ht(e, s, t) {
     let n = _[e].max,
       a = Math.max(1, Math.min(n, s || 1)),
+      o;
+    for (let k = 0; k < 12; k++) {
       o = Object.assign({ topic: e, level: a }, kr[e](a, t));
+      if (!(a >= 3 && TRIVIAL_TOPICS[e] && isTrivialPrompt(o.prompt))) break;
+    }
     return Mr(o, t);
   }
   function xt(e, s) {
     return String(s).trim() === String(e.answer).trim();
   }
   // Staircase tuning: UP_AFTER right-in-a-row moves up a level, DOWN_AFTER
-  // misses in a row moves down. 3/1 settles near 79% correct; 2/1 near 71%.
-  var UP_AFTER = 3,
+  // misses in a row moves down. 2/1 settles near 71% correct; 3/1 near 79%.
+  var UP_AFTER = 2,
     DOWN_AFTER = 1;
+  // Fast climb: first jump size per subject (about 1/8 of its levels, at least 2).
+  function climbStart(S) {
+    return Math.max(2, Math.round(_[S].max / 8));
+  }
+  function migrateClimb(raw, t) {
+    if (!(raw && Number(raw.climbV) >= 1))
+      for (let S of Pe) t.topics[S].climb = climbStart(S);
+    t.climbV = 1;
+  }
   function Ea() {
     return {
       level: 1,
@@ -10186,14 +10225,41 @@ What is \u2610?`,
       lastAt: 0,
       grand: 0,
       easyFrom: 0,
+      climb: 0,
     };
   }
-  function qa(e, s, t) {
+  function qa(e, s, t, hinted) {
     let n = Object.assign(Ea(), e),
       a = _[s].max;
     n.attempts++;
     let o = false,
-      i = false;
+      i = false,
+      jump = false;
+    if (n.climb > 0) {
+      if (t)
+        ((n.correct++),
+          (n.wrong = 0),
+          hinted
+            ? (n.streak = 0)
+            : (n.streak++,
+              n.streak >= 2 &&
+                n.level < a &&
+                ((n.level = Math.min(a, n.level + n.climb)),
+                (n.streak = 0),
+                (o = true),
+                (jump = true))));
+      else
+        ((n.streak = 0),
+          (n.wrong = 0),
+          n.level > 1 &&
+            ((n.level = Math.max(1, n.level - Math.ceil(n.climb / 2))), (i = true)),
+          (n.climb = Math.floor(n.climb / 2)),
+          n.climb < 2 && (n.climb = 0));
+      return (
+        n.level > n.best && (n.best = n.level),
+        { state: n, leveledUp: o, leveledDown: i, jumped: jump }
+      );
+    }
     return (
       t
         ? (n.correct++,
@@ -10315,6 +10381,7 @@ What is \u2610?`,
           lastAt: te(q.lastAt, 0, 1e15, 0),
           grand: te(q.grand, 0, 4, 0),
           easyFrom: te(q.easyFrom, 0, F, 0),
+          climb: te(q.climb, 0, 20, 0),
         };
       (ie.best < ie.level && (ie.best = ie.level), (n[S] = ie));
     }
@@ -14785,6 +14852,7 @@ What is \u2610?`,
         Math.min(1e6, Math.floor(Number(s.robotFixed) || 0)),
       )),
       migrateMastery(s, t),
+      migrateClimb(s, t),
       t
     );
   }
@@ -15000,7 +15068,7 @@ What is \u2610?`,
     let t = mixPick(g.topic);
     ((g.topic = t),
       g.mixIdx++,
-      ai(ni(t, Math.max(1, m.topics[t].level - 1))));
+      ai(ni(t, m.topics[t].level)));
   }
   function nextProblem() {
     g.mode === "test" ? Yn() : g.mode === "mixed" ? mixNext() : xs();
@@ -15017,6 +15085,7 @@ What is \u2610?`,
     let s = m.topics[g.topic],
       t = _[g.topic].max,
       n = Math.max(1, Math.min(t, s.level + e));
+    e < 0 && (s.climb = 0);
     return n === s.level
       ? false
       : (e < 0 && !s.easyFrom && (s.easyFrom = s.level),
@@ -15041,6 +15110,7 @@ What is \u2610?`,
       (s.streak = 0),
       (s.wrong = 0),
       (s.easyFrom = 0),
+      (s.climb = Math.min(s.climb || 0, 2)),
       e > s.best && (s.best = e),
       Y(),
       (g.done = true),
@@ -15079,8 +15149,9 @@ What is \u2610?`,
         (r.timed++, (r.sumMs += i), i <= 8e3 && r.fast++);
       }
       if (g.mode === "practice") {
-        let a = qa(st0, g.topic, t);
+        let a = qa(st0, g.topic, t, g.hint);
         ((m.topics[g.topic] = a.state),
+          (g.jumped = !!a.jumped),
           (g.leveledUp = a.leveledUp),
           (g.leveledDown = a.leveledDown));
       } else
@@ -15944,6 +16015,7 @@ What is \u2610?`,
         let t = m.topics[s];
         ((t.level = e[s]),
           (t.easyFrom = 0),
+          (t.climb = Math.min(t.climb || 0, 2)),
           t.best < t.level && (t.best = t.level));
       }
       ((D.done = e),
@@ -16537,7 +16609,9 @@ What is \u2610?`,
         d = zn(l),
         h = "";
       (g.leveledUp
-        ? (h = `<div class="levelup">\u{1F199} Level up! Now Level ${m.topics[g.topic].level}</div>`)
+        ? (h = g.jumped
+            ? `<div class="levelup">\u{1F680} Big jump! Now Level ${m.topics[g.topic].level}</div>`
+            : `<div class="levelup">\u{1F199} Level up! Now Level ${m.topics[g.topic].level}</div>`)
         : g.leveledDown &&
           (h = `<div class="leveldown">Let's lock this in \u2014 Level ${m.topics[g.topic].level} for now \u{1F4AA}</div>`),
         (n = `
