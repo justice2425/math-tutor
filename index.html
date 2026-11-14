@@ -14,7 +14,7 @@
   * img/font/object/etc none : no external or data resources are loaded.
   * base-uri / form-action none : block base-tag and form hijacking tricks.
 -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-4yym+xRBcnMeCPZTjGjZ4yyrXVF5NsJFFuu+3e7mFqQ='; style-src 'unsafe-inline'; img-src 'none'; font-src 'none'; media-src 'none'; connect-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'; child-src 'none'; worker-src 'none'; object-src 'none'; manifest-src 'none'" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-GcrXv5fZKyE3p3p3ROH5xuthDxodgNO9eMV4sFkbfNo='; style-src 'unsafe-inline'; img-src 'none'; font-src 'none'; media-src 'none'; connect-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'; child-src 'none'; worker-src 'none'; object-src 'none'; manifest-src 'none'" />
 <meta name="referrer" content="no-referrer" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Math Tutor</title>
@@ -541,6 +541,53 @@
 .raterow .rlabel{font-weight:700}
 .ratebtn{border:2px solid var(--border,#e2e8f0);background:#fff;border-radius:999px;padding:6px 14px;font-size:.95rem;cursor:pointer}
 .ratebtn.on{border-color:#0ea5e9;background:#e0f2fe;font-weight:700}
+/* ---------- Stat Academy (baseball) ---------- */
+.bbbtn{background:linear-gradient(135deg,#0f766e,#1d4ed8);color:#fff;border-color:transparent}
+.bbtier{margin:18px 0 8px;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.bbtier h2{margin:0;font-size:1.1rem}
+.bbtier .sub,.bbhead .sub{color:var(--muted);font-size:.82rem;font-weight:600}
+.bbgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.bbtile{appearance:none;cursor:pointer;text-align:left;border:2px solid var(--border);background:var(--panel);color:var(--fg);border-radius:14px;padding:10px 12px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:2px;font:inherit}
+.bbtile:active{transform:translateY(2px)}.bbtile:hover{border-color:var(--accent)}
+.bbtile.done{border-color:var(--good)}
+.bbtile .bbe{font-size:1.4rem}.bbtile .bbn{font-weight:800;line-height:1.2}.bbtile .bba{font-size:.75rem;color:var(--muted)}
+.bbtile .bbp{font-size:.72rem;color:var(--good);font-weight:700}
+.bbquiz{appearance:none;cursor:pointer;border:2px dashed var(--accent2);background:var(--panel);color:var(--fg);border-radius:12px;padding:8px 12px;font:inherit;font-weight:700;margin-top:8px}
+.bbhead{display:flex;align-items:center;gap:12px;margin:10px 0 4px}
+.bbhead .bbe{font-size:2.6rem}
+.bbkid{font-size:1.1rem;font-weight:600;margin:6px 0 12px}
+.bbbox{background:var(--panel);border:2px solid var(--border);border-radius:14px;padding:12px 14px;margin:12px 0}
+.bbbox h3{margin:0 0 6px;font-size:1rem}.bbbox p{margin:6px 0}
+.bbprog{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.bbfacts{margin:0;padding-left:20px}.bbfacts li{margin:8px 0}
+.bbsrc{display:block;font-size:.72rem;color:var(--muted);margin-top:2px;word-break:break-word}
+.bbsmall{font-size:.82rem;color:var(--muted)}
+.bbformula{font-family:ui-monospace,Menlo,Consolas,monospace;background:var(--bg);border-radius:8px;padding:8px 10px;display:block;font-size:.95rem}
+.bbrow{display:flex;align-items:center;gap:10px;margin:6px 0}
+.bbrow .lbl{flex:1;font-weight:700}
+.bbstep{appearance:none;cursor:pointer;width:44px;height:44px;border-radius:12px;border:2px solid var(--border);background:var(--panel);color:var(--fg);font-size:1.3rem;font-weight:800}
+.bbstep:active{transform:translateY(2px)}
+.bbcount{min-width:30px;text-align:center;font-weight:800;font-size:1.15rem}
+.bbstat{display:flex;align-items:center;gap:8px;margin:8px 0}
+.bbstat b{width:44px}.bbval{width:52px;text-align:right;font-weight:800;font-variant-numeric:tabular-nums}
+.bbmeter{flex:1;height:14px;background:var(--bg);border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.bbmeter span{display:block;height:100%;background:var(--accent)}
+.bbgoal{font-size:.92rem;margin:6px 0}.bbgoal.ok{color:var(--good);font-weight:700}
+.bbcard{max-width:300px;margin:12px auto;border:4px solid var(--accent);border-radius:18px;background:var(--panel);padding:16px;text-align:center;box-shadow:var(--shadow)}
+.bbcard .nm{font-size:1.4rem;font-weight:900}.bbcard .sub{color:var(--muted);font-size:.85rem}
+.bbcard .row3{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:12px}
+.bbcard .row3 div{background:var(--bg);border-radius:10px;padding:8px 4px;font-size:.8rem;color:var(--muted)}
+.bbcard .row3 b{display:block;font-size:1.3rem;color:var(--fg)}
+.bbbadges{display:flex;justify-content:center;gap:10px;margin-top:10px;font-size:1.5rem}
+.bbbadges .off{opacity:.25;filter:grayscale(1)}
+.bbpa{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:10px 0}
+.bbpa span{background:var(--panel);border:2px solid var(--border);border-radius:10px;padding:6px 8px;font-weight:700;font-size:.9rem}
+.bbdec{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:8px 0}
+.bbdec button{appearance:none;cursor:pointer;border:2px solid var(--border);background:var(--panel);color:var(--fg);border-radius:10px;padding:6px 8px;font:inherit;font-weight:700}
+.bbdec button.on{border-color:var(--accent);background:var(--accent);color:#fff}
+.gopt.right{border-color:var(--good);background:var(--good-bg)}.gopt.wrong{border-color:var(--bad);background:var(--bad-bg)}
+.gopt small{font-weight:600;color:var(--muted);font-size:.85rem}
+.linkish{appearance:none;background:none;border:none;color:var(--accent);text-decoration:underline;cursor:pointer;font:inherit;padding:0}
 </style>
 </head>
 <body>
@@ -8708,12 +8755,12 @@ ${t} / ${a} = ${o} / ?`,
   }
   function mn(e) {
     return Ye.map((s, t) => ({ g: s, i: t }))
-      .filter((s) => e.includes(s.g.topic))
+      .filter((s) => !s.g.section && e.includes(s.g.topic))
       .sort((s, t) => s.g.grades[0] - t.g.grades[0] || s.i - t.i)
       .map((s) => s.g);
   }
   function va(e) {
-    return Ye.filter((s) => s.grades.includes(e));
+    return Ye.filter((s) => !s.section && s.grades.includes(e));
   }
   function Xi(e) {
     let s = mn(e);
@@ -14846,6 +14893,7 @@ What is \u2610?`,
       (t.facts = za(s.facts)),
       (t.store = Ba(s.store)),
       (t.season = to(s.season)),
+      (t.bb = bbSanitize(s.bb)),
       (t.bosses = no(s.bosses)),
       (t.robotFixed = Math.max(
         0,
@@ -14864,6 +14912,1890 @@ What is \u2610?`,
       }
     }
     t.masteryV = 2;
+  }
+  // ===================== Stat Academy: facts & data =====================
+  // Every fact a child can see lives here, with the sources it came from.
+  // tools/facts.mjs turns this file into docs/baseball-facts.md for review.
+  // Facts are a snapshot: see BB_ASOF. Edit text here, then rebuild.
+  var BB_ASOF = "the end of the 2026 regular season (September 27, 2026)",
+    BB_CHECKED = "November 14, 2026",
+    BB_SRC = {
+      mlb26: ["MLB.com: final stats leaders from the 2026 season (Sept 27, 2026)", "https://www.mlb.com/news/2026-mlb-regular-season-stat-leaders"],
+      ap26: ["AP: Alvarez and Moreno win batting titles, Misiorowski leads majors in ERA and strikeouts (Sept 2026)", "https://www.kiro7.com/sports/alvarez-moreno-win/CHMXD6SMUMYU5PHBNELMDP32EA/"],
+      nlpr: ["MLB press release: Statistics of the Negro Leagues officially enter the Major League record (May 29, 2024)", "https://www.mlb.com/press-release/press-release-statistics-of-the-negro-leagues-officially-enter-the-major-league-record"],
+      nlgames: ["Yahoo Sports: Negro Leagues statistics to be officially integrated into MLB historical record (2024)", "https://malaysia.news.yahoo.com/negro-leagues-statistics-to-be-officially-integrated-into-mlb-historical-record-212207260.html"],
+      cbsnl: ["CBS Sports: MLB adds Negro Leagues stats to record books (2024)", "https://www.cbssports.com/mlb/news/mlb-finally-integrates-negro-leagues-statistics-into-historical-records-where-does-josh-gibsons-name-land"],
+      nnl: ["National Baseball Hall of Fame: The Negro National League is founded", "https://baseballhall.org/discover/inside-pitch/negro-national-league-is-founded"],
+      paige: ["HISTORY: Fifty-nine-year-old Satchel Paige pitches three innings", "https://www.history.com/this-day-in-history/september-25/fifty-nine-year-old-satchel-paige-pitches-three-innings"],
+      paige42: ["World Book: 100 Years Ago: Baseball's Negro Leagues", "https://bth.worldbook.com/bth/?p=44046"],
+      brmisc: ["Baseball-Reference: Major League Miscellaneous Year-by-Year Averages (site updated Nov 13, 2026)", "https://www.baseball-reference.com/leagues/majors/misc.shtml"],
+      sabr68: ["SABR, Paul Hensler: A Farewell to Arms: The Major Leagues in 1968", "https://sabr.org/journal/article/a-farewell-to-arms-the-major-leagues-in-1968-and-the-transition-to-a-new-modern-era/"],
+      wiki68: ["Wikipedia: 1968 Major League Baseball season", "https://en.wikipedia.org/wiki/1968_Major_League_Baseball_season"],
+      br68: ["Baseball-Reference: 1968 Major League pitching leaders (ERA+ definition and leaders)", "https://www.baseball-reference.com/leagues/MLB/1968-pitching-leaders.shtml"],
+      hr: ["Yahoo Sports: MLB's home run records for a single season and all-time", "https://ca.sports.yahoo.com/news/mlbs-home-run-records-single-164225509.html"],
+      ichiro: ["MLB.com: 51 interesting stats about Ichiro", "https://www.mlb.com/news/ichiro-suzuki-amazing-stats"],
+      rose: ["Guinness World Records: most seasons with 200 hits (Rose 4,256 career hits; Ichiro 262 in 2004)", "https://www.guinnessworldrecords.com/world-records/most-seasons-with-200-hits-in-a-major-league-baseball-career"],
+      rickey: ["MLB.com: Man of steal: Henderson owned the basepaths", "https://www.mlb.com/news/rickey-henderson-top-moments"],
+      rickey2: ["CBS Sports: 10 mind-blowing Rickey Henderson statistics", "https://www.cbssports.com/mlb/news/10-mind-blowing-rickey-henderson-statistics-from-hall-of-fame-career-stolen-bases-leadoff-home-runs-and-more"],
+      ryan: ["MLB.com: 16 facts that illustrate Nolan Ryan's impact", "https://www.mlb.com/news/nolan-ryan-amazing-stats-and-facts"],
+      ryanbr: ["Baseball-Reference Bullpen: Nolan Ryan", "https://www.baseball-reference.com/bullpen/Nolan_Ryan"],
+      ryan73: ["ESPN: There will never be another pitcher like Nolan Ryan", "https://www.espn.com/mlb/story/_/id/29171065"],
+      cy: ["SABR: Mains: Records that will never be broken", "https://sabr.org/latest/mains-records-that-will-never-be-broken/"],
+      unbreak: ["Wikipedia: List of MLB records considered unbreakable", "https://en.wikipedia.org/wiki/List_of_Major_League_Baseball_records_considered_unbreakable"],
+      w300: ["Wikipedia: 300 win club", "https://en.wikipedia.org/wiki/300_win_club"],
+      saves: ["MLB.com: Game over: These closers have the most saves", "https://www.mlb.com/news/players-with-the-most-saves-in-mlb-history"],
+      saves2: ["Sports Illustrated: All-time MLB saves leaders", "https://www.si.com/mlb/2015/04/23/all-time-saves-leaders"],
+      savehist: ["SABR: April 7, 1969: Bill Singer credited with first official save", "https://sabr.org/?p=41610"],
+      obp: ["MLB.com glossary: On-base percentage", "https://www.mlb.com/glossary/standard-stats/on-base-percentage"],
+      abdef: ["Baseball-Reference Bullpen: Batting average (what counts as an at-bat)", "https://www.baseball-reference.com/bullpen/BA"],
+      obpf: ["Tangotiger wiki: On-Base Percentage (formula)", "https://tangotiger.net/wiki_archive/On-Base_Percentage.html"],
+      ops: ["Wikipedia: On-base plus slugging (includes OPS+)", "https://en.wikipedia.org/wiki/On-base_plus_slugging"],
+      palmer: ["SABR, Pete Palmer: Why OPS Works", "https://sabr.org/journal/article/why-ops-works/"],
+      whip: ["MLB.com glossary: WHIP", "https://www.mlb.com/glossary/standard-stats/walks-and-hits-per-inning-pitched"],
+      pedro: ["Sleeper: What is WHIP in baseball (Pedro Martinez 2000: 128 H, 32 BB, 217 IP)", "https://sleeper.com/blog/what-is-whip-in-baseball"],
+      relief: ["MLB.com: Every team's best all-time relief pitcher", "https://www.mlb.com/news/best-all-time-relief-pitcher-for-every-mlb-team"],
+      bahist: ["SABR: A Quick History of Offensive Baseball Statistics", "https://sabr.org/journal/article/a-quick-history-of-offensive-baseball-statistics-which-is-top-of-the-pops/"],
+      chadwick: ["Wikipedia: Batting average (baseball)", "https://en.wikipedia.org/wiki/Batting_average_(baseball)"],
+      slgold: ["SABR, John Thorn: The origin of the batting average", "https://sabr.org/?p=48664"],
+      ted: ["Britannica: Ted Williams", "https://www.britannica.com/biography/Ted-Williams"],
+      ted2: ["HISTORY: Ted Williams becomes last MLB player to hit .400", "https://www.history.com/this-day-in-history/ted-williams-becomes-last-player-to-hit-400"],
+      gwynn: ["World Book: Ted Williams, Baseball's Last .400 Hitter", "https://bth.worldbook.com/bth/?p=25619"],
+      triple: ["SABR, Bill Nowlin: 1967 Red Sox: Yaz and the Triple Crown", "https://sabr.org/?p=11594"],
+      fip: ["FanGraphs Library: FIP", "https://library.fangraphs.com/pitching/fip"],
+      fipmlb: ["MLB.com glossary: Fielding Independent Pitching", "https://www.mlb.com/glossary/advanced-stats/fielding-independent-pitching"],
+      thtg: ["The Hardball Times (FanGraphs) glossary: BABIP, K/9, K/BB, Pythagorean formula", "https://tht.fangraphs.com/tht-annual-2018/glossary/"],
+      thtg2: ["The Hardball Times (FanGraphs) glossary: FIP formula invented by Tangotiger", "https://tht.fangraphs.com/tools/glossary/"],
+      amher: ["American Heritage: baseball statistic (slugging = total bases per at-bat)", "https://americanheritage.com/baseball-statistic"],
+      br74: ["Baseball-Reference: 1974 Major League pitching leaders (ERA = 9 x ER / IP)", "https://www.baseball-reference.com/leagues/MLB/1974-pitching-leaders.shtml"],
+      fpct: ["MLB.com glossary: Fielding percentage", "https://www.mlb.com/glossary/standard-stats/fielding-percentage"],
+      babip300: ["Wikipedia: Batting average on balls in play", "https://en.wikipedia.org/wiki/Batting_average_on_balls_in_play"],
+      dips: ["Baseball Prospectus: looking back at Voros McCracken's DIPS article (Jan 23, 2001)", "https://www.baseballprospectus.com/?p=13257"],
+      wrc: ["FanGraphs Library: wRC and wRC+", "https://library.fangraphs.com/offense/wrc"],
+      woba: ["FanGraphs Library: wOBA", "https://library.fangraphs.com/offense/woba"],
+      war: ["FanGraphs: Unifying Replacement Level (2013)", "https://blogs.fangraphs.com/unifying-replacement-level/"],
+      warbr: ["Baseball-Reference: WAR Explained", "https://www.baseball-reference.com/about/war_explained.shtml"],
+      warbp: ["Baseball-Reference Bullpen: Wins Above Replacement", "https://www.baseball-reference.com/bullpen/Wins_Above_Replacement"],
+      warbp2: ["Baseball-Reference Bullpen: WAR (FanGraphs uses FIP; B-R uses runs allowed)", "https://www.baseball-reference.com/bullpen/WAR"],
+      la: ["MLB.com glossary: Launch angle", "https://www.mlb.com/glossary/statcast/launch-angle"],
+      barrel: ["MLB.com glossary: Barrel", "https://www.mlb.com/glossary/statcast/barrel"],
+      savant: ["Baseball Savant: Statcast glossary (hard-hit = 95+ mph)", "https://baseballsavant.mlb.com/"],
+      fast: ["MLB.com: This is the Statcast speed Hall of Fame", "https://www.mlb.com/news/speediest-plays-in-statcast-history"],
+      hardest: ["MLB.com: Statcast's hardest-hit balls (tracking began in 2015)", "https://www.mlb.com/news/the-hardest-hit-balls-in-statcast-history"],
+      sprint: ["MLB.com glossary: Statcast (Sprint Speed, Outs Above Average)", "https://mlb.com/glossary/statcast"],
+      bolt: ["MLB.com: Sprint Speed metric now tracks baserunners", "https://mlb.com/news/statcast-sprint-speed-tracks-baserunner-speed-c238268162"],
+      bolt30: ["Baseball Savant: Sprint Speed leaderboard (a Bolt is 30+ ft/sec)", "https://baseballsavant.mlb.com/leaderboard/sprint_speed?min=0&year=ALL"],
+      coors: ["SABR: Into Thin Air: What's All the Fuss About Coors Field?", "https://sabr.org/journal/article/into-thin-air-whats-all-the-fuss-about-coors-field/"],
+      coors2: ["9News: Coors Field fun facts (purple seats mark 5,280 feet)", "https://9news.com/article/sports/mlb/colorado-rockies/coors-field-fun-facts-about-the-home-of-the-rockies/73-429422875"],
+      humidor: ["Baseball Prospectus: the Coors Field humidor (first used 2002)", "https://www.baseballprospectus.com/?p=5386"],
+      k2018: ["Baseball-Reference Bullpen: 2018 Major League Baseball", "https://www.baseball-reference.com/bullpen/2018_MLB"],
+      clock: ["NBC Sports (AP): MLB game time drops 24 minutes in first year with pitch clock", "https://www.nbcsportsboston.com/mlb/mlb-game-time-drops-24-minutes-in-first-year-with-pitch-clock/556787/?amp=1"],
+      teams: ["MLB.com: Which teams won the most games in a season?", "https://www.mlb.com/news/most-mlb-wins-in-a-season-c289159676"],
+      losses: ["MLB.com: These teams lost at least 110 games", "https://mlb.com/news/teams-with-most-single-season-losses-in-mlb-history"],
+      gold: ["Wikipedia: Gold Glove Award", "https://en.wikipedia.org/wiki/Gold_Glove_Award"],
+      sabr50: ["SABR 50 at 50: Analytics", "https://sabr.org/50at50/analytics"],
+      sabr40: ["SABR: 40th Anniversary", "https://sabr.org/40years"],
+    },
+    // Facts by stat id. t = what the child sees. s = sources. q = optional quiz question
+    // {p: prompt, a: right answer, w: wrong answers}. Keep sentences short.
+    BB_FACTS = {
+      box: [
+        { t: "Barry Bonds hit the most home runs ever: 762 in his career, and 73 in one season (2001). Hank Aaron hit 755 and Babe Ruth hit 714.", s: ["hr"], q: { p: "Who hit the most home runs in one season?", a: "Barry Bonds (73)", w: ["Babe Ruth (60)", "Aaron Judge (62)", "Mark McGwire (70)"] } },
+        { t: "Pete Rose has the most hits in MLB history: 4,256.", s: ["rose"], q: { p: "Who has the most career hits?", a: "Pete Rose", w: ["Babe Ruth", "Ichiro Suzuki", "Josh Gibson"] } },
+        { t: "Ichiro Suzuki got 262 hits in 2004, the most ever in one season. He broke George Sisler's record of 257 from 1920.", s: ["ichiro"] },
+        { t: "Rickey Henderson stole 1,406 bases in his career and 130 in 1982. Both are records.", s: ["rickey"], q: { p: "Who stole the most bases ever?", a: "Rickey Henderson", w: ["Lou Brock", "Ty Cobb", "Babe Ruth"] } },
+        { t: "In 2026, Kyle Schwarber and Pete Crow-Armstrong tied for the MLB lead with 45 home runs. Alec Burleson led with 116 RBI and Nasim Nuñez led with 49 steals.", s: ["mlb26"] },
+      ],
+      avg: [
+        { t: "In 1871, a writer named H.A. Dobson suggested dividing hits by at-bats. That is the batting average we still use.", s: ["bahist"], q: { p: "Who first suggested hits divided by at-bats?", a: "H.A. Dobson", w: ["Babe Ruth", "Bill James", "Jackie Robinson"] } },
+        { t: "Ted Williams hit .406 in 1941, the last .400 season in the American or National League. He could have sat out the last day, but he played and went 6 for 8. (With the Negro Leagues counted, Josh Gibson hit .466 in 1943.)", s: ["ted", "ted2", "nlpr"], q: { p: "Who was the last American or National League player to hit .400?", a: "Ted Williams", w: ["Tony Gwynn", "Ichiro Suzuki", "Yordan Alvarez"] } },
+        { t: "Josh Gibson, a Negro Leagues star, has the highest career batting average in MLB records (.372) and the best single season (.466 in 1943).", s: ["nlpr"], q: { p: "Whose .372 is the highest career batting average in MLB records?", a: "Josh Gibson", w: ["Ty Cobb", "Ted Williams", "Babe Ruth"] } },
+        { t: "The 2026 batting champions were Yordan Alvarez (.316, American League) and Gabriel Moreno (.311, National League).", s: ["mlb26", "ap26"] },
+        { t: "Leading the league in batting average, home runs and RBI is called the Triple Crown. Miguel Cabrera did it in 2012 (.330, 44 HR, 139 RBI), the first since Carl Yastrzemski in 1967.", s: ["triple"] },
+      ],
+      era: [
+        { t: "ERA became an official stat in 1912 in the National League and 1913 in the American League.", s: ["nlpr"] },
+        { t: "Since ERA became official, the lowest single season belongs to Dutch Leonard: 0.96 in 1914. Before that, Tim Keefe had 0.86 in 1880.", s: ["nlpr"], q: { p: "Since ERA became official, whose single season ERA is the lowest?", a: "Dutch Leonard (0.96)", w: ["Bob Gibson (1.12)", "Satchel Paige (1.01)", "Jacob Misiorowski (1.80)"] } },
+        { t: "Satchel Paige's 1.01 ERA in 1944, in the Negro American League, is the third-lowest season in MLB records.", s: ["nlpr"] },
+        { t: "In 1968 Bob Gibson had a 1.12 ERA. For decades it was the lowest since 1920. Now Satchel Paige's 1.01 from 1944, added with the Negro Leagues stats, is lower.", s: ["sabr68", "nlpr"] },
+        { t: "In 2026, Jacob Misiorowski led the majors with a 1.80 ERA and 252 strikeouts.", s: ["mlb26", "ap26"] },
+      ],
+      wls: [
+        { t: "Cy Young won 511 games, the most ever. Walter Johnson is next with 417.", s: ["cy", "w300"], q: { p: "Which pitcher won the most games ever?", a: "Cy Young", w: ["Nolan Ryan", "Walter Johnson", "Satchel Paige"] } },
+        { t: "Old Hoss Radbourn won 59 games in 1884. Some record books now list 60. Record books can disagree when old box scores are re-checked!", s: ["cy", "unbreak"] },
+        { t: "Sportswriter Jerome Holtzman created the save in 1959. It became official in 1969, the first new official stat since the RBI in 1920.", s: ["savehist"], q: { p: "When did the save become an official stat?", a: "1969", w: ["1871", "1920", "2001"] } },
+        { t: "Mariano Rivera has the most saves: 652. Trevor Hoffman is next with 601. Francisco Rodríguez saved 62 games in 2008, the one-season record.", s: ["saves"] },
+        { t: "In 2026, Sonny Gray and Cristopher Sánchez led their leagues with 18 wins. Cade Smith and Bryan Baker led the majors with 41 saves.", s: ["mlb26"] },
+      ],
+      fld: [
+        { t: "In 1976, Bill James argued that counting plays made per game (range factor) says more about a fielder than fielding percentage.", s: ["sabr50"] },
+        { t: "The Gold Glove award for the best fielder at each position started in 1957.", s: ["gold"] },
+        { t: "Greg Maddux, a pitcher, won 18 Gold Gloves, the most ever. Brooks Robinson won 16 at third base, the most for a position player. Ozzie Smith won 13 at shortstop.", s: ["gold"], q: { p: "Who won the most Gold Gloves ever?", a: "Greg Maddux", w: ["Brooks Robinson", "Ozzie Smith", "Willie Mays"] } },
+      ],
+      tb: [
+        { t: "Slugging (total bases per at-bat) is older than batting average! Henry Chadwick wrote about it in 1867.", s: ["slgold"] },
+        { t: "A home run trot is 4 bases × 90 feet = 360 feet.", s: [] },
+      ],
+      obp: [
+        { t: "Dodgers executive Branch Rickey and statistician Allan Roth came up with on-base percentage in the 1940s and 50s. It only became official in 1984.", s: ["obp"], q: { p: "When did on-base percentage become official?", a: "1984", w: ["1871", "1920", "1969"] } },
+        { t: "Barry Bonds has the best single-season OBP: .609 in 2004. Josh Gibson's .564 in 1943 is third.", s: ["nlpr"] },
+        { t: "Ted Williams has the best career OBP in MLB records: .482.", s: ["nlpr"], q: { p: "Who has the best career on-base percentage?", a: "Ted Williams", w: ["Babe Ruth", "Josh Gibson", "Barry Bonds"] } },
+      ],
+      slg: [
+        { t: "Josh Gibson slugged .974 in 1937, the best season in MLB records. He also has the best career slugging: .718.", s: ["nlpr"], q: { p: "Who has the best career slugging percentage?", a: "Josh Gibson (.718)", w: ["Babe Ruth (.690)", "Barry Bonds", "Ted Williams"] } },
+        { t: "Before the Negro Leagues were added in 2024, the season record was Barry Bonds' .863 in 2001, and the career record was Babe Ruth's .690.", s: ["nlpr"] },
+      ],
+      ops: [
+        { t: "Pete Palmer invented OPS. He and John Thorn made it popular in their 1984 book, The Hidden Game of Baseball.", s: ["palmer", "ops"], q: { p: "Who invented OPS?", a: "Pete Palmer", w: ["Bill James", "Henry Chadwick", "Branch Rickey"] } },
+        { t: "By 2004, OPS was printed on Topps baseball cards.", s: ["ops"] },
+        { t: "Josh Gibson has the best OPS season (1.474 in 1937) and the best career OPS (1.177) in MLB records.", s: ["nlpr"] },
+        { t: "Yordan Alvarez led the majors with a 1.033 OPS in 2026.", s: ["mlb26"] },
+      ],
+      whip: [
+        { t: "Writer Daniel Okrent invented WHIP in 1979 for Rotisserie (fantasy) baseball. He first called it the innings pitched ratio.", s: ["whip"], q: { p: "WHIP was invented for what?", a: "Fantasy (Rotisserie) baseball", w: ["Little League", "The World Series", "Baseball cards"] } },
+        { t: "Pedro Martinez had a 0.737 WHIP in 2000: 128 hits plus 32 walks in 217 innings.", s: ["pedro"] },
+        { t: "Mariano Rivera's career WHIP of 1.00 is the lowest of any pitcher with 1,000 innings since 1920.", s: ["relief"] },
+      ],
+      k9: [
+        { t: "Nolan Ryan struck out 5,714 batters, the most ever. Randy Johnson is second with 4,875.", s: ["ryan", "ryanbr"], q: { p: "Who has the most career strikeouts?", a: "Nolan Ryan", w: ["Randy Johnson", "Cy Young", "Jacob Misiorowski"] } },
+        { t: "Ryan struck out 383 batters in 1973, the most in one season since 1900. He averaged 10.57 strikeouts per 9 innings that year.", s: ["ryan", "ryan73"] },
+        { t: "In 2018, for the first time ever, big leaguers struck out more often (41,207) than they got hits (41,019).", s: ["k2018"], q: { p: "In what year were there more strikeouts than hits for the first time?", a: "2018", w: ["1968", "1920", "2001"] } },
+        { t: "In 2026, Jacob Misiorowski led the majors with 252 strikeouts. Gavin Williams led the American League with 248.", s: ["mlb26"] },
+      ],
+      win: [
+        { t: "The 1906 Chicago Cubs went 116-36. Their .763 winning percentage is the best in the American or National League since 1900. The 2001 Seattle Mariners also won 116 (116-46).", s: ["teams"], q: { p: "Which American or National League team has the best winning percentage since 1900?", a: "1906 Cubs (.763)", w: ["2001 Mariners", "1998 Yankees", "1927 Yankees"] } },
+        { t: "The 2024 Chicago White Sox lost 121 games, the most since 1900. The 1899 Cleveland Spiders lost 134, the most ever.", s: ["losses"] },
+      ],
+      opsp: [
+        { t: "On the OPS+ scale, 150 or more is excellent, 125 is very good, and 75 or below is poor.", s: ["ops"] },
+        { t: "Babe Ruth's career OPS+ is 206.", s: ["ops"] },
+      ],
+      erap: [
+        { t: "Baseball-Reference figures ERA+ as 100 × league ERA ÷ the pitcher's ERA, adjusted for his ballparks.", s: ["br68"] },
+        { t: "In 1968, Bob Gibson had a 1.12 ERA and an ERA+ of 258.", s: ["br68", "sabr68"] },
+        { t: "Mariano Rivera's career ERA+ of 205 is the best ever, by a lot.", s: ["saves"], q: { p: "Who has the best career ERA+ ever?", a: "Mariano Rivera", w: ["Bob Gibson", "Cy Young", "Nolan Ryan"] } },
+      ],
+      park: [
+        { t: "Coors Field in Denver is about a mile above sea level. A row of purple seats in the upper deck marks exactly 5,280 feet.", s: ["coors2"] },
+        { t: "Scientists predicted a 400-foot fly ball would go about 440 feet in Denver, 10% farther. When researchers measured real fly balls, they did not travel as far as that prediction.", s: ["coors"] },
+        { t: "Since 2002, the Rockies have stored baseballs in a humidor, a room that keeps them from drying out.", s: ["humidor"], q: { p: "Why do the Rockies keep baseballs in a humidor?", a: "So they don't dry out and fly too far", w: ["To make them heavier for pitchers", "To keep them cold for hitters", "To make them white again"] } },
+      ],
+      babip: [
+        { t: "Across the majors, a BABIP of about .300 is average.", s: ["babip300"] },
+        { t: "In 2001, Voros McCracken showed that pitchers have much less control than people thought over whether balls in play become hits.", s: ["dips"], q: { p: "Who showed that pitchers have little control over balls in play?", a: "Voros McCracken", w: ["Babe Ruth", "Henry Chadwick", "Daniel Okrent"] } },
+      ],
+      fip: [
+        { t: "Voros McCracken came up with the idea behind FIP, and Tom Tango invented the exact formula.", s: ["thtg2"], q: { p: "Who invented the FIP formula?", a: "Tom Tango", w: ["Pete Palmer", "Henry Chadwick", "Daniel Okrent"] } },
+        { t: "The number added at the end of FIP is usually around 3.10. It puts FIP on the same scale as ERA.", s: ["fip"] },
+        { t: "FIP leaves out every ball hit into the field of play, because a pitcher has less control over those.", s: ["fipmlb"] },
+      ],
+      woba: [
+        { t: "Pete Palmer measured how many runs each event is worth: walk 0.33, single 0.47, double 0.83, triple 1.02, home run 1.40.", s: ["palmer"] },
+        { t: "Tom Tango created wOBA. It gives each way of reaching base its own weight, then scales it to look like OBP.", s: ["woba"], q: { p: "Who created wOBA?", a: "Tom Tango", w: ["Pete Palmer", "Bill James", "Daniel Okrent"] } },
+        { t: "On the wRC+ scale, 100 is league average, and each point above 100 is 1% better than average.", s: ["wrc"] },
+      ],
+      war: [
+        { t: "A team of replacement players would win about 48 games and lose about 114 (a .294 winning percentage).", s: ["war", "warbr"] },
+        { t: "Since 2013, FanGraphs and Baseball-Reference use the same replacement level: 1,000 WAR to share among all players each season.", s: ["war"] },
+        { t: "About 10 runs make 1 win, but not always.", s: ["warbr"] },
+        { t: "An average major league regular is usually worth about 2 WAR in a season.", s: ["warbp"] },
+        { t: "For pitchers, FanGraphs builds WAR from FIP, while Baseball-Reference uses runs allowed. So their WAR numbers can disagree.", s: ["warbp2"], q: { p: "Why can FanGraphs and Baseball-Reference give a pitcher different WAR?", a: "They use different formulas", w: ["One of them made a mistake", "They count different games", "WAR is a guess with no math"] } },
+        { t: "In 2026, Pete Crow-Armstrong led the majors with 10.6 WAR (FanGraphs). Yordan Alvarez and Bobby Witt Jr. led the American League with 6.8.", s: ["mlb26"] },
+      ],
+      ev: [
+        { t: "Statcast tracking began in 2015.", s: ["hardest"] },
+        { t: "The hardest-hit ball Statcast has measured: Oneil Cruz's 122.9 mph home run on May 25, 2025.", s: ["fast"], q: { p: "Who hit the hardest ball Statcast has ever measured?", a: "Oneil Cruz", w: ["Giancarlo Stanton", "Aaron Judge", "Pete Alonso"] } },
+        { t: "Giancarlo Stanton has hit the most balls at 120 mph or faster: 16.", s: ["fast"] },
+      ],
+      speed: [
+        { t: "Usain Bolt has reached about 37 feet per second.", s: ["bolt"] },
+        { t: "The fastest pitch ever tracked: 105.8 mph by Aroldis Chapman in 2010. In 2026, Jacob Misiorowski threw 105.5 mph, the fastest ever by a starting pitcher.", s: ["fast"], q: { p: "Who threw the fastest pitch ever tracked?", a: "Aroldis Chapman", w: ["Nolan Ryan", "Ben Joyce", "Jacob Misiorowski"] } },
+        { t: "Rickey Henderson's 1,406 steals × 90 feet = 126,540 feet. That's about 24 miles, almost a marathon!", s: ["rickey"] },
+      ],
+      origins: [
+        { t: "Henry Chadwick created the box score in 1859 and used K for strikeout.", s: ["chadwick"] },
+        { t: "In 1871, H.A. Dobson proposed batting average.", s: ["bahist"] },
+        { t: "ERA became official in 1912-13, and the RBI in 1920.", s: ["nlpr", "savehist"] },
+        { t: "The save became official in 1969 and OBP in 1984.", s: ["savehist", "obp"] },
+        { t: "SABR, the Society for American Baseball Research, was founded in Cooperstown in 1971. In 1980, Bill James named stat study \"sabermetrics\" after SABR.", s: ["sabr40", "sabr50"], q: { p: "What does SABR stand for?", a: "Society for American Baseball Research", w: ["Super All-Star Baseball Records", "Stats And Batting Rules", "Society of Ace Baseball Runners"] } },
+        { t: "Statcast started tracking every pitch and batted ball in 2015.", s: ["hardest"] },
+      ],
+      negro: [
+        { t: "On February 13, 1920, Rube Foster and other team owners started the Negro National League in Kansas City.", s: ["nnl"], q: { p: "Who led the founding of the Negro National League in 1920?", a: "Rube Foster", w: ["Jackie Robinson", "Babe Ruth", "Branch Rickey"] } },
+        { t: "In December 2020, MLB recognized seven Negro Leagues (1920-1948) as major leagues. In May 2024, their stats joined the official record book.", s: ["nlpr"], q: { p: "When did Negro Leagues stats join MLB's record book?", a: "2024", w: ["1920", "1947", "2001"] } },
+        { t: "MLB says the Negro Leagues records are about 75% complete, so research could still change the leaderboards.", s: ["nlpr"] },
+        { t: "Negro Leagues teams usually played 60 to 80 league games a season. Exhibition (barnstorming) games don't count in the records.", s: ["nlgames"] },
+        { t: "Josh Gibson now leads MLB records in career batting average (.372), slugging (.718) and OPS (1.177).", s: ["nlpr"] },
+        { t: "Satchel Paige pitched for years in the Negro Leagues. He first pitched in the American League at 42 in 1948, and his last game was at 59 in 1965, the oldest ever.", s: ["paige42", "paige"], q: { p: "How old was Satchel Paige in his last major league game?", a: "59", w: ["42", "35", "50"] } },
+        { t: "For more than 50 years, Black players were kept out of the American and National Leagues. So they built leagues of their own.", s: ["cbsnl"] },
+        { t: "In 1947, Jackie Robinson became the first Black player in the modern American or National League.", s: ["paige42"] },
+      ],
+      eras: [
+        { t: "Pitchers could throw spitballs until they were banned in 1920.", s: ["sabr68"] },
+        { t: "In 1908, an average game had only 6.77 runs (both teams together), the fewest in the record. In 1930 it was 11.10, the most since 1900.", s: ["brmisc"] },
+        { t: "In 1968, the league ERA was 2.98 in the American League and 2.99 in the National League.", s: ["sabr68"] },
+        { t: "After 1968, baseball lowered the pitcher's mound from 15 inches to 10 inches. In 1969, league ERAs rose to 3.62 (AL) and 3.59 (NL).", s: ["wiki68", "sabr68"], q: { p: "After 1968, how many inches lower did the pitcher's mound get?", a: "5", w: ["2", "10", "15"] } },
+        { t: "In 2023, a pitch clock made the average 9-inning game 24 minutes shorter.", s: ["clock"] },
+        { t: "In 2026, an average game had 8.96 runs (both teams together).", s: ["brmisc"] },
+      ],
+    },
+    // Where each stat's definition or formula comes from (shown on its page).
+    BB_DEFSRC = {
+      box: ["abdef"], avg: ["abdef"], era: ["br74", "nlpr"], wls: ["savehist"], fld: ["fpct", "sabr50"], tb: ["amher"],
+      obp: ["obp", "obpf"], slg: ["amher"], ops: ["ops"], whip: ["whip", "pedro"], k9: ["thtg"], win: ["thtg"],
+      opsp: ["ops"], erap: ["br68"], park: ["coors", "br68", "wrc"], babip: ["thtg", "babip300"], fip: ["fip", "fipmlb"],
+      woba: ["woba", "wrc", "palmer"], war: ["war", "warbr", "warbp2"], ev: ["la", "barrel", "savant"],
+      speed: ["sprint", "bolt30"], origins: [], negro: ["nlpr"], eras: ["brmisc", "clock", "k2018"],
+    },
+    // Runs per game (both teams together), 1876-2026, from Baseball-Reference's
+    // major-league misc table (BB_SRC.brmisc). Index 0 = 1876.
+    BB_RPG_START = 1876,
+    BB_RPG = [11.79, 11.33, 10.35, 10.6, 9.39, 10.2, 10.82, 11.57, 11, 9.91, 10.49, 12.14, 9.07, 11.68, 11.15, 11.08, 10.19, 13.14, 14.75, 13.15, 12.09, 11.75, 9.92, 10.5, 10.44, 9.97, 8.86, 8.88, 7.45, 7.79, 7.23, 7.06, 6.77, 7.1, 7.67, 9.03, 9.05, 8.08, 7.49, 7.59, 7.13, 7.18, 7.27, 7.74, 8.72, 9.71, 9.74, 9.63, 9.52, 10.26, 9.27, 9.5, 9.46, 10.37, 11.1, 9.62, 9.83, 8.96, 9.81, 9.79, 10.38, 9.74, 9.79, 9.65, 9.36, 8.98, 8.17, 7.83, 8.34, 8.36, 8.01, 8.71, 9.16, 9.21, 9.7, 9.09, 8.35, 9.21, 8.75, 8.97, 8.9, 8.61, 8.57, 8.77, 8.63, 9.05, 8.92, 7.89, 8.07, 7.98, 7.99, 7.54, 6.84, 8.14, 8.68, 7.78, 7.37, 8.43, 8.25, 8.43, 7.99, 8.94, 8.21, 8.92, 8.58, 8, 8.6, 8.62, 8.51, 8.66, 8.82, 9.45, 8.28, 8.26, 8.51, 8.62, 8.23, 9.2, 9.85, 9.69, 10.07, 9.53, 9.58, 10.17, 10.28, 9.55, 9.24, 9.46, 9.63, 9.18, 9.72, 9.59, 9.3, 9.23, 8.77, 8.57, 8.65, 8.33, 8.13, 8.5, 8.96, 9.29, 8.9, 9.66, 9.29, 9.06, 8.57, 9.23, 8.79, 8.89, 8.96],
+    // Stat Showdown pairs: [question, more|less wins, [name, value, shown], [name, value, shown], sources]
+    BB_SHOW = [
+      ["Who hit more career home runs?", "more", ["Barry Bonds", 762, "762"], ["Babe Ruth", 714, "714"], ["hr"]],
+      ["Who hit more career home runs?", "more", ["Hank Aaron", 755, "755"], ["Babe Ruth", 714, "714"], ["hr"]],
+      ["Who hit more home runs in one season?", "more", ["Barry Bonds, 2001", 73, "73"], ["Mark McGwire, 1998", 70, "70"], ["hr"]],
+      ["Whose career batting average is higher?", "more", ["Josh Gibson", 0.372, ".372"], ["Ty Cobb", 0.367, ".367"], ["nlpr"]],
+      ["Whose one-season batting average is higher?", "more", ["Josh Gibson, 1943", 0.466, ".466"], ["Hugh Duffy, 1894", 0.44, ".440"], ["nlpr"]],
+      ["Whose one-season batting average is higher?", "more", ["Ted Williams, 1941", 0.406, ".406"], ["Tony Gwynn, 1994", 0.394, ".394"], ["ted", "gwynn"]],
+      ["Who struck out more batters in his career?", "more", ["Nolan Ryan", 5714, "5,714"], ["Randy Johnson", 4875, "4,875"], ["ryan", "ryanbr"]],
+      ["Who stole more bases in his career?", "more", ["Rickey Henderson", 1406, "1,406"], ["Lou Brock", 938, "938"], ["rickey2"]],
+      ["Who has more career saves?", "more", ["Mariano Rivera", 652, "652"], ["Trevor Hoffman", 601, "601"], ["saves"]],
+      ["Who has more career saves?", "more", ["Trevor Hoffman", 601, "601"], ["Lee Smith", 478, "478"], ["saves2"]],
+      ["Who won more games as a pitcher?", "more", ["Cy Young", 511, "511"], ["Walter Johnson", 417, "417"], ["cy", "w300"]],
+      ["Who got more hits in one season?", "more", ["Ichiro Suzuki, 2004", 262, "262"], ["George Sisler, 1920", 257, "257"], ["ichiro"]],
+      ["Who had the lower (better) season ERA?", "less", ["Dutch Leonard, 1914", 0.96, "0.96"], ["Bob Gibson, 1968", 1.12, "1.12"], ["nlpr", "sabr68"]],
+      ["Who had the lower (better) ERA in 2026?", "less", ["Jacob Misiorowski", 1.8, "1.80"], ["Cam Schlittler", 1.95, "1.95"], ["mlb26"]],
+      ["Who had the higher OPS in 2026?", "more", ["Yordan Alvarez", 1.033, "1.033"], ["Pete Crow-Armstrong", 0.942, ".942"], ["mlb26"]],
+      ["Who hit more home runs in 2026?", "more", ["Kyle Schwarber", 45, "45"], ["Pete Alonso", 43, "43"], ["mlb26"]],
+      ["Who stole more bases in 2026?", "more", ["Nasim Nuñez", 49, "49"], ["Chandler Simpson", 46, "46"], ["mlb26"]],
+      ["Who struck out more batters in 2026?", "more", ["Jacob Misiorowski", 252, "252"], ["Gavin Williams", 248, "248"], ["mlb26"]],
+      ["Who drove in more runs in 2026?", "more", ["Alec Burleson", 116, "116"], ["Pete Alonso", 113, "113"], ["mlb26"]],
+      ["Whose career OPS is higher?", "more", ["Josh Gibson", 1.177, "1.177"], ["Babe Ruth", 1.164, "1.164"], ["nlpr"]],
+      ["Whose one-season OBP is higher?", "more", ["Barry Bonds, 2004", 0.609, ".609"], ["Josh Gibson, 1943", 0.564, ".564"], ["nlpr"]],
+      ["Who hit the ball harder?", "more", ["Oneil Cruz", 122.9, "122.9 mph"], ["Giancarlo Stanton", 122.2, "122.2 mph"], ["hardest"]],
+      ["Whose pitch was faster?", "more", ["Aroldis Chapman", 105.8, "105.8 mph"], ["Jacob Misiorowski", 105.5, "105.5 mph"], ["fast"]],
+      ["Which team won more games in a season?", "more", ["1906 Cubs", 116, "116"], ["1998 Yankees", 114, "114"], ["teams"]],
+      ["Who won more Gold Gloves?", "more", ["Greg Maddux", 18, "18"], ["Brooks Robinson", 16, "16"], ["gold"]],
+      ["Who runs faster?", "more", ["Usain Bolt (top speed)", 37, "about 37 ft/sec"], ["An average MLB runner", 27, "27 ft/sec"], ["bolt"]],
+    ];
+  // ===================== Stat Academy (standalone baseball section) =====================
+  // Lessons, quizzes and review reuse the guided-lesson engine (R/vs/ol), so they get
+  // the number pad, hints, step-by-step, read-aloud and points for free. Everything is
+  // tagged section:"bb", which keeps it out of the math Tutorials and courses.
+  // Facts live in bb-data.js. Names here start with bb/BB to stay out of the app's way.
+  var BB_TIERS = [
+      { n: 1, name: "Rookie", emoji: "\u{1F9E2}", blurb: "Counting stats and simple averages" },
+      { n: 2, name: "Pro", emoji: "⭐", blurb: "The OPS family and pitching rates" },
+      { n: 3, name: "All-Star", emoji: "\u{1F31F}", blurb: "100 is average: fair comparisons" },
+      { n: 4, name: "Hall of Fame", emoji: "\u{1F3DB}️", blurb: "Luck, value and Statcast" },
+      { n: 5, name: "History Hall", emoji: "\u{1F4DC}", blurb: "Where stats came from" },
+    ],
+    BB_MOVED = { avg: "bb_avg", obp: "bb_winpct", era: "bb_era" },
+    BB_MATH = ["bb_runs", "bb_outs", "bb_cards", "bb_diamond", "bb_team_frac", "bb_spin", "bb_speed", "bb_pythag", "bb_prob"],
+    BB_DAY = 864e5,
+    BB_GAPS = [1, 3, 7, 21, 60];
+  function bbF3(x) {
+    let s = (Math.round(x * 1e3) / 1e3).toFixed(3);
+    return s.indexOf("0.") === 0 ? s.slice(1) : s;
+  }
+  function bbF2(x) {
+    return (Math.round(x * 100) / 100).toFixed(2);
+  }
+  function bbN(n) {
+    return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+  function bbFact(id, i, svg) {
+    return u("\u{1F4DC} " + BB_FACTS[id][i].t, svg);
+  }
+  function bbFactQ(r, id, i) {
+    let f = BB_FACTS[id][i];
+    return b(f.q.p, f.q.a, { choices: C(r, f.q.a, f.q.w), explain: f.t });
+  }
+  function bbFactQs(r, id) {
+    return BB_FACTS[id].map((f, i) => (f.q ? bbFactQ(r, id, i) : null)).filter(Boolean);
+  }
+  function bbFormula(lines) {
+    return Z(lines.map((t, i) => (typeof t == "string" ? { t, s: i ? 15 : 19, c: i ? "var(--muted)" : "var(--accent)" } : t)), 40 + lines.length * 30);
+  }
+  // ---------- small pictures ----------
+  function bbBoxes(n, k, cap, marks) {
+    let per = Math.min(10, n),
+      rows = Math.ceil(n / per),
+      sz = 26,
+      gap = 4,
+      x0 = (320 - (per * (sz + gap) - gap)) / 2,
+      s = "";
+    for (let i = 0; i < n; i++) {
+      let x = x0 + (i % per) * (sz + gap),
+        y = 12 + Math.floor(i / per) * (sz + gap),
+        on = i < k;
+      s +=
+        `<rect x="${x}" y="${y}" width="${sz}" height="${sz}" rx="6" fill="${on ? "var(--good)" : "var(--panel)"}" stroke="${on ? "var(--good)" : "var(--border)"}" stroke-width="2"/>` +
+        H(x + sz / 2, y + sz / 2 + 4, on ? (marks ? marks[0] : "H") : marks ? marks[1] : "out", { size: on ? 12 : 8, fill: on ? "#fff" : "var(--muted)" });
+    }
+    let h = 12 + rows * (sz + gap) + 26;
+    return X(s + H(160, h - 10, cap, { size: 13, fill: "var(--muted)" }), h);
+  }
+  function bbBars(items, max, fmt) {
+    let s = "",
+      y = 10;
+    for (let it of items) {
+      let wd = Math.max(3, Math.round(150 * Math.min(1, it.v / max)));
+      s +=
+        H(104, y + 15, it.l, { size: 12, anchor: "end" }) +
+        `<rect x="112" y="${y}" width="${wd}" height="20" rx="6" fill="${it.c || "var(--accent)"}"/>` +
+        H(118 + wd, y + 15, fmt(it.v), { size: 12, anchor: "start" });
+      y += 28;
+    }
+    return X(s, y + 6);
+  }
+  function bbScale(val, lo, hi, cap) {
+    let x = (t) => 30 + ((Math.max(lo, Math.min(hi, t)) - lo) / (hi - lo)) * 260,
+      s = '<line x1="30" y1="50" x2="290" y2="50" stroke="var(--fg)" stroke-width="3"/>';
+    for (let t of [lo, 100, hi])
+      s += `<line x1="${x(t)}" y1="42" x2="${x(t)}" y2="58" stroke="var(--fg)" stroke-width="2"/>` + H(x(t), 76, String(t), { size: 12, fill: "var(--muted)" });
+    s += H(x(100), 92, "100 = average", { size: 11, fill: "var(--muted)" });
+    s += `<circle cx="${x(val)}" cy="50" r="9" fill="var(--accent2)"/>` + H(x(val), 30, String(val), { size: 15, fill: "var(--accent2)" });
+    return X(s + H(160, 112, cap, { size: 12, fill: "var(--muted)" }), 122);
+  }
+  function bbDecades() {
+    let out = [];
+    for (let d = 1870; d <= 2020; d += 10) {
+      let vals = [];
+      for (let y = d; y < d + 10; y++) {
+        let i = y - BB_RPG_START;
+        i >= 0 && i < BB_RPG.length && vals.push(BB_RPG[i]);
+      }
+      vals.length && out.push({ d, v: Math.round((vals.reduce((a, c) => a + c, 0) / vals.length) * 100) / 100, n: vals.length });
+    }
+    return out;
+  }
+  function bbDecadeChart(hi) {
+    let ds = bbDecades(),
+      bw = 15,
+      gap = 2.5,
+      x0 = 28,
+      base = 150,
+      sc = 120 / 14,
+      s = `<line x1="${x0 - 4}" y1="${base}" x2="314" y2="${base}" stroke="var(--fg)" stroke-width="1.5"/>`;
+    for (let t of [0, 7, 14]) s += H(x0 - 8, base - t * sc + 4, String(t), { size: 9, anchor: "end", fill: "var(--muted)" });
+    ds.forEach((o, i) => {
+      let x = x0 + i * (bw + gap),
+        h = o.v * sc,
+        on = hi === o.d;
+      s += `<rect x="${x}" y="${base - h}" width="${bw}" height="${h}" rx="3" fill="${on ? "var(--accent2)" : "var(--accent)"}" opacity="${on || hi == null ? 1 : 0.55}"/>`;
+      i % 3 === 0 && (s += H(x + bw / 2, base + 14, String(o.d), { size: 9, fill: "var(--muted)" }));
+    });
+    s += H(170, 16, "Runs in an average game (both teams), by decade", { size: 11, fill: "var(--muted)" });
+    return X(s, 172);
+  }
+  // ---------- plate appearances (box score & scorekeeper) ----------
+  var BB_PA = [
+    { k: "1B", e: "\u{1F7E2} single", ab: 1, h: 1, tb: 1, on: 1 },
+    { k: "2B", e: "\u{1F7E2} double", ab: 1, h: 1, tb: 2, on: 1 },
+    { k: "3B", e: "\u{1F7E2} triple", ab: 1, h: 1, tb: 3, on: 1 },
+    { k: "HR", e: "\u{1F4A5} home run", ab: 1, h: 1, tb: 4, on: 1 },
+    { k: "BB", e: "\u{1F535} walk", ab: 0, h: 0, tb: 0, on: 1 },
+    { k: "HBP", e: "\u{1F535} hit by pitch", ab: 0, h: 0, tb: 0, on: 1 },
+    { k: "K", e: "❌ strikeout", ab: 1, h: 0, tb: 0, on: 0 },
+    { k: "GO", e: "❌ groundout", ab: 1, h: 0, tb: 0, on: 0 },
+    { k: "FO", e: "❌ flyout", ab: 1, h: 0, tb: 0, on: 0 },
+    { k: "SF", e: "\u{1F7E1} sacrifice fly", ab: 0, h: 0, tb: 0, on: 0, sf: 1 },
+  ];
+  function bbPAs(r, n, t) {
+    let pool = t <= 1 ? ["1B", "1B", "2B", "HR", "BB", "K", "GO", "FO"] : t === 2 ? ["1B", "1B", "2B", "3B", "HR", "BB", "HBP", "K", "GO", "FO"] : ["1B", "1B", "2B", "3B", "HR", "BB", "HBP", "K", "GO", "FO", "SF"];
+    for (;;) {
+      let L = [];
+      for (let i = 0; i < n; i++) {
+        let pick = k(r, pool);
+        L.push(BB_PA.find((o) => o.k === pick));
+      }
+      let ab = L.reduce((a, o) => a + o.ab, 0),
+        h = L.reduce((a, o) => a + o.h, 0);
+      if (ab >= 2 && h >= 1 && ab < n) return L;
+    }
+  }
+  function bbSum(L, f) {
+    return L.reduce((a, o) => a + (o[f] || 0), 0);
+  }
+  function bbPAText(L) {
+    return L.map((o) => o.e).join(" \xB7 ");
+  }
+  // ---------- the stats ----------
+  // Each stat: id, tier, emoji, name, abbr, kid (one line), formula, grown (grown-up note),
+  // why (how it's used), qm (question makers), lesson(r, t).
+  var BB_STATS = [];
+  function bbStat(o) {
+    BB_STATS.push(o);
+  }
+  // ===== Rookie =====
+  (() => {
+    let names = ["Maya", "Leo", "Zoe", "Sam", "Ava", "Kai", "Mia", "Eli"],
+      qAB = (r, t) => {
+        let L = bbPAs(r, t === 1 ? 5 : t === 2 ? 7 : 9, t),
+          ab = bbSum(L, "ab"),
+          nab = L.length - ab;
+        return b(`${k(r, names)}'s game:\n${bbPAText(L)}\nHow many AT-BATS?`, ab, {
+          hint: "Walks, hit-by-pitches and sacrifice flies are not at-bats.",
+          explain: `${L.length} trips to the plate, minus ${nab} that don't count as at-bats = ${ab} at-bats.`,
+        });
+      },
+      qH = (r, t) => {
+        let L = bbPAs(r, t === 1 ? 5 : t === 2 ? 7 : 9, t),
+          h = bbSum(L, "h");
+        return b(`${k(r, names)}'s game:\n${bbPAText(L)}\nHow many HITS?`, h, {
+          hint: "Singles, doubles, triples and home runs are hits. Walks are not.",
+          explain: `Count the green and \u{1F4A5} ones: ${h} hits.`,
+        });
+      },
+      qRBI = (r, t) => {
+        let on = t === 1 ? p(r, 0, 2) : p(r, 0, 3),
+          sf = t >= 2 && r() < 0.35;
+        return sf
+          ? b("Runner on third, one out. The batter hits a sacrifice fly and the runner scores. How many RBI?", 1, { hint: "Did a run score because of the batter?", explain: "The batter drove in 1 run, so 1 RBI, even though it isn't a hit." })
+          : b(`Home run with ${on} runner${on === 1 ? "" : "s"} on base. How many RBI?`, on + 1, { hint: "Everybody on base scores, plus the batter.", explain: `${on} runner${on === 1 ? "" : "s"} + the batter = ${on + 1} RBI.` });
+      },
+      qDiff = (r, t) =>
+        t === 1
+          ? b("In 2026 Kyle Schwarber hit 45 home runs and Pete Alonso hit 43. How many more did Schwarber hit?", 2, { explain: "45 − 43 = 2." })
+          : t === 2
+            ? b("In 2026 Alec Burleson had 116 RBI and Pete Alonso had 113. How many more did Burleson have?", 3, { explain: "116 − 113 = 3." })
+            : b("Barry Bonds hit 762 career home runs. Babe Ruth hit 714. How many more did Bonds hit?", 48, { hint: "762 − 714. Try 762 − 700, then take away 14 more.", explain: "762 − 714 = 48." });
+    bbStat({
+      id: "box", tier: 1, emoji: "\u{1F4CB}", name: "The Box Score", abbr: "AB \xB7 H \xB7 R \xB7 RBI \xB7 HR \xB7 SB",
+      kid: "Counting stats: the numbers that add up what a player did.",
+      formula: "Just count! AB = at-bats, H = hits, R = runs, RBI = runs batted in, HR = home runs, BB = walks, K = strikeouts, SB = stolen bases.",
+      grown: "At-bats leave out walks, hit-by-pitches, sacrifice bunts and sacrifice flies.",
+      why: "Counting stats tell you how much a player did. Leaders in home runs, RBI and steals get headlines every year.",
+      qm: [qAB, qH, qRBI, qDiff],
+      lesson: (r, t) => [
+        u("A box score is baseball's report card for one game. Each batter gets a row of numbers that count what he did.", Z([{ t: "AB  R  H  RBI  BB  K", s: 20 }, { t: "4   1  2   3    1   0", s: 20, c: "var(--accent)" }, { t: "at-bats \xB7 runs \xB7 hits \xB7 runs batted in \xB7 walks \xB7 strikeouts", s: 11, c: "var(--muted)" }], 120)),
+        u("AB means at-bats. A walk, a hit-by-pitch or a sacrifice fly does NOT count as an at-bat, because the batter never got a fair chance to get a hit."),
+        qAB(r, t),
+        qH(r, t),
+        u("RBI means runs batted in: runs that score because of what the batter did. A home run with 2 runners on base is 3 RBI, the 2 runners plus the batter himself.", lt({ runTo: 4, caption: "a home run: everybody scores" })),
+        qRBI(r, t),
+        u("SB means stolen bases. A runner steals when he races to the next base and makes it safely, without a hit or a walk helping him."),
+        bbFact("box", 0),
+        bbFactQ(r, "box", 1),
+        bbFact("box", 2),
+        bbFact("box", 3),
+        qDiff(r, t),
+        bbFact("box", 4),
+        u("Counting stats get bigger the more a player plays. Next, averages show how well he does EACH time."),
+      ],
+    });
+  })();
+  (() => {
+    let qCalc = (r, t) => {
+        if (t === 1) {
+          let h = p(r, 1, 5);
+          return b(`A batter gets ${h} hit${h > 1 ? "s" : ""} in 10 at-bats. What is his batting average?`, bbF3(h / 10), { choices: C(r, bbF3(h / 10), [bbF3(h / 100), bbF3((10 - h) / 10), bbF3(h)]), hint: `${h} out of 10.`, explain: `${h} \xF7 10 = ${bbF3(h / 10)}.` });
+        }
+        if (t === 2) {
+          let [h, a] = k(r, [[1, 4], [2, 4], [3, 4], [5, 20], [6, 20], [8, 20], [9, 20]]);
+          return b(`${h} hit${h > 1 ? "s" : ""} in ${a} at-bats. Batting average?`, bbF3(h / a), { choices: C(r, bbF3(h / a), [bbF3((a - h) / a), bbF3(h / 100), bbF3(h / 10)]), hint: a === 4 ? "1 out of 4 is .250." : "1 out of 20 is .050.", explain: `${h} \xF7 ${a} = ${bbF3(h / a)}.` });
+        }
+        let h = p(r, 20, 35);
+        return b(`${h} hits in 100 at-bats. Type the batting average.`, bbF3(h / 100), { decimal: true, hint: `${h} out of 100 is the same as ${h * 10} out of 1,000.`, explain: `${h} \xF7 100 = ${bbF3(h / 100)}.` });
+      },
+      qCmp = (r, t) => {
+        let a = t === 1 ? k(r, [0.2, 0.25, 0.3]) : p(r, 240, 330) / 1e3,
+          d = t === 1 ? 0.1 : t === 2 ? 0.03 : 0.008,
+          c = a + d,
+          [x, y] = r() < 0.5 ? [a, c] : [c, a];
+        return b(`Who's the better hitter: a ${bbF3(x)} hitter or a ${bbF3(y)} hitter?`, bbF3(c), { choices: [bbF3(x), bbF3(y)], hint: "Compare place by place, like money.", explain: `${bbF3(c)} is more hits per at-bat than ${bbF3(a)}.` });
+      },
+      qHits = (r, t) => {
+        let [avg, ab] = t === 1 ? [0.3, 10] : t === 2 ? k(r, [[0.25, 20], [0.3, 20], [0.25, 40]]) : k(r, [[0.3, 600], [0.25, 500], [0.3, 500]]);
+        return b(`A ${bbF3(avg)} hitter gets ${bbN(ab)} at-bats. About how many hits is that?`, Math.round(avg * ab), { hint: avg === 0.25 ? ".250 is 1 out of every 4." : ".300 is 3 out of every 10.", explain: `${bbF3(avg)} \xD7 ${bbN(ab)} = ${Math.round(avg * ab)} hits.` });
+      };
+    bbStat({
+      id: "avg", tier: 1, emoji: "⚾", name: "Batting Average", abbr: "AVG",
+      kid: "How often a batter gets a hit when he has an at-bat.",
+      formula: "AVG = hits \xF7 at-bats",
+      grown: "Written to three decimal places with no leading zero: .300 is said \"three hundred.\"",
+      why: "The batting title goes to the league leader. It's simple, but it ignores walks and power.",
+      qm: [qCalc, qCmp, qHits],
+      lesson: (r, t) => [
+        u("Batting average answers one question: when a batter has an at-bat, how often does he get a hit?", bbBoxes(10, 3, "3 hits in 10 at-bats")),
+        u("3 hits out of 10 at-bats is 3 \xF7 10 = 0.300. Baseball drops the zero and writes .300. Say it: \"three hundred.\"", bbFormula(["AVG = hits \xF7 at-bats", "3 \xF7 10 = .300", "like 300 out of 1,000"])),
+        qCalc(r, t),
+        u("A .250 hitter gets 1 hit every 4 at-bats. Getting a hit every other time (.500) for a whole season? Nobody has done it. The record is .466!", bbBoxes(4, 1, "1 hit in 4 at-bats = .250")),
+        qCmp(r, t),
+        u("Even great hitters make outs most of the time. A .300 average means 7 outs in every 10 at-bats, and that's still excellent!"),
+        qHits(r, t),
+        bbFact("avg", 0),
+        bbFact("avg", 1),
+        bbFactQ(r, "avg", 2),
+        bbFact("avg", 3),
+        bbFact("avg", 4),
+        u("Batting average is simple and useful, but it ignores walks and power. The Pro tier fixes that with OBP and slugging!"),
+      ],
+    });
+  })();
+  (() => {
+    let qCalc = (r, t) => {
+        if (t === 1) {
+          let er = p(r, 0, 5);
+          return b(`A pitcher pitches 9 innings and allows ${er} earned run${er === 1 ? "" : "s"}. What is his ERA?`, er, { decimal: true, hint: "9 innings is one whole game.", explain: `${er} \xD7 9 \xF7 9 = ${bbF2(er)}.` });
+        }
+        let c = t === 2 ? k(r, [[3, 1], [3, 2], [3, 3], [18, 2], [18, 4], [18, 6]]) : k(r, [[27, 3], [27, 6], [27, 9], [6, 2], [6, 4], [45, 10]]),
+          [ip, er] = c,
+          era = (er * 9) / ip;
+        return b(`${er} earned run${er === 1 ? "" : "s"} in ${ip} innings. What is the ERA?`, era, { decimal: true, hint: ip < 9 ? `Stretch ${ip} innings into 9: multiply by ${9 / ip}.` : `Shrink ${ip} innings into 9: divide by ${ip / 9}.`, explain: `${er} \xD7 9 \xF7 ${ip} = ${bbF2(era)}.` });
+      },
+      qCmp = (r, t) => {
+        let a = t === 1 ? k(r, [2, 3, 4]) : p(r, 200, 450) / 100,
+          d = t === 1 ? 1.5 : t === 2 ? 0.75 : 0.18,
+          x = bbF2(a),
+          y = bbF2(a + d);
+        return b(`Who pitched better: ERA ${x} or ERA ${y}?`, x, { choices: r() < 0.5 ? [x, y] : [y, x], hint: "For ERA, lower is better.", explain: `${x} means fewer runs per 9 innings.` });
+      },
+      qRuns = (r, t) => {
+        let [era, ip] = t === 1 ? [3, 9] : t === 2 ? k(r, [[3, 18], [2, 18], [4, 27]]) : k(r, [[3, 90], [2.5, 180], [4, 45]]),
+          runs = (era * ip) / 9;
+        return b(`A pitcher with a ${bbF2(era)} ERA pitches ${ip} innings. About how many earned runs does he allow?`, runs, { hint: `${ip} innings is ${ip / 9} games of 9 innings.`, explain: `${bbF2(era)} per 9 innings \xD7 ${ip / 9} = ${runs}.` });
+      };
+    bbStat({
+      id: "era", tier: 1, emoji: "\u{1F3AF}", name: "Earned Run Average", abbr: "ERA",
+      kid: "How many earned runs a pitcher allows in a full 9-inning game. Lower is better.",
+      formula: "ERA = earned runs \xD7 9 \xF7 innings pitched",
+      grown: "Earned runs leave out runs that score because of fielding errors. Innings like 6⅔ are written 6.2.",
+      why: "The ERA title goes to the league leader among pitchers with enough innings.",
+      qm: [qCalc, qCmp, qRuns],
+      lesson: (r, t) => [
+        u("ERA (earned run average) tells how many earned runs a pitcher allows in a full 9-inning game, on average. LOWER is better!", $n({ label: "ERA = earned runs \xD7 9 \xF7 innings" })),
+        u("An earned run is a run the pitcher gets the blame for. If a fielder's error lets a run score, that run is unearned, so it doesn't count in ERA."),
+        u("If a pitcher throws exactly 9 innings and allows 2 earned runs, his ERA is 2 \xD7 9 \xF7 9 = 2.00. Easy!"),
+        qCalc(r, t),
+        u("3 innings is one-third of a game. To stretch 3 innings into 9, multiply by 3. So 1 run in 3 innings is like 3 runs in 9 innings: ERA 3.00."),
+        qCalc(r, Math.min(3, t + 1)),
+        qCmp(r, t),
+        qRuns(r, t),
+        bbFact("era", 0),
+        bbFactQ(r, "era", 1),
+        bbFact("era", 2),
+        bbFact("era", 3),
+        bbFact("era", 4),
+      ],
+    });
+  })();
+  (() => {
+    let qRec = (r, t) => {
+        let w2 = t === 1 ? p(r, 5, 12) : p(r, 12, 21),
+          l = t === 1 ? p(r, 1, 5) : p(r, 4, 11);
+        return r() < 0.5
+          ? b(`A pitcher's record is ${w2}-${l}. How many games did he win or lose in all?`, w2 + l, { hint: "Wins + losses.", explain: `${w2} + ${l} = ${w2 + l}.` })
+          : b(`A pitcher's record is ${w2}-${l}. How many more wins than losses?`, w2 - l, { hint: "Wins − losses.", explain: `${w2} − ${l} = ${w2 - l}.` });
+      },
+      qSave = (r, t) =>
+        t === 1
+          ? b("A closer saves 5 games in April and 7 in May. How many saves is that?", 12, { explain: "5 + 7 = 12." })
+          : b("Mariano Rivera has 652 saves and Trevor Hoffman has 601. How many more does Rivera have?", 51, { hint: "652 − 600 = 52. Then take away 1 more.", explain: "652 − 601 = 51." }),
+      qWho = (r) =>
+        b("Who usually gets a save?", "A relief pitcher who finishes a close win", { choices: C(r, "A relief pitcher who finishes a close win", ["The starting pitcher", "Any pitcher with 10 strikeouts", "The losing pitcher"]), explain: "Saves go to relievers who protect a close lead to the end." }),
+      qQuirk = (r) =>
+        b("A pitcher allows only 1 run in 9 innings, but his team scores 0. What does he get?", "A loss", { choices: C(r, "A loss", ["A win", "A save", "Nothing"]), explain: "His team lost 1-0, so he gets the loss, even though he pitched great." });
+    bbStat({
+      id: "wls", tier: 1, emoji: "\u{1F3C6}", name: "Wins, Losses & Saves", abbr: "W \xB7 L \xB7 SV",
+      kid: "Which pitcher gets credit for a win, the blame for a loss, or a save for finishing a close win.",
+      formula: "A record like 18-6 means 18 wins and 6 losses.",
+      grown: "The official scorer decides wins, losses and saves using the rule book.",
+      why: "Wins and saves are famous, but they depend on teammates too, so fans also look at ERA and other stats.",
+      qm: [qRec, qSave, qWho, qQuirk],
+      lesson: (r, t) => [
+        u("When a team wins, one of its pitchers gets the win (W). The pitcher most to blame on the other team gets the loss (L). A record like 18-6 means 18 wins and 6 losses."),
+        qRec(r, t),
+        u("A save goes to a relief pitcher who comes in and finishes a close win for his team. The rule book decides exactly what counts as close."),
+        qWho(r, t),
+        bbFact("wls", 2),
+        qSave(r, t),
+        bbFact("wls", 3),
+        u("Wins depend on the team, too. A pitcher can pitch great and still lose if his hitters don't score. That's why fans also look at ERA."),
+        qQuirk(r, t),
+        bbFactQ(r, "wls", 0),
+        bbFact("wls", 1),
+        bbFact("wls", 4),
+      ],
+    });
+  })();
+  (() => {
+    let qPlays = (r, t) => {
+        if (t === 3) return b("A shortstop has 150 putouts, 75 assists and 25 errors. How many chances is that?", 250, { hint: "Chances = putouts + assists + errors.", explain: "150 + 75 + 25 = 250." });
+        let ch = t === 1 ? 10 : 50,
+          e = p(r, 1, t === 1 ? 3 : 5);
+        return b(`A fielder had ${ch} chances and made ${e} error${e > 1 ? "s" : ""}. How many plays did he make cleanly?`, ch - e, { explain: `${ch} − ${e} = ${ch - e}.` });
+      },
+      qPct = (r, t) => {
+        if (t === 3) return b("150 putouts + 75 assists, out of 250 chances. Fielding percentage?", ".900", { choices: C(r, ".900", [".750", ".225", ".975"]), hint: "225 out of 250 is the same as 9 out of 10.", explain: "225 \xF7 250 = .900." });
+        let ch = t === 1 ? 10 : 100,
+          e = p(r, 1, t === 1 ? 3 : 6),
+          a = bbF3((ch - e) / ch);
+        return b(`${ch} chances, ${e} error${e > 1 ? "s" : ""}. Fielding percentage?`, a, { choices: C(r, a, [bbF3(e / ch), bbF3((ch - e) / 1e3), bbF3((ch - 2 * e) / ch)]), hint: `Plays made \xF7 ${ch}.`, explain: `${ch - e} \xF7 ${ch} = ${a}.` });
+      },
+      qWeak = (r) =>
+        b("Which stat only counts the balls a fielder actually gets to?", "Fielding percentage", { choices: C(r, "Fielding percentage", ["Outs Above Average", "Range factor", "Sprint speed"]), explain: "A fielder can't make an error on a ball he never reaches, so fielding percentage can't see range." });
+    bbStat({
+      id: "fld", tier: 1, emoji: "\u{1F9E4}", name: "Errors & Fielding %", abbr: "PO \xB7 A \xB7 E \xB7 FPCT",
+      kid: "How often a fielder makes the play without an error.",
+      formula: "Fielding % = (putouts + assists) \xF7 (putouts + assists + errors)",
+      grown: "The denominator is called total chances.",
+      why: "It's an old, simple fielding stat. Its weakness is range, which is why Statcast's Outs Above Average exists.",
+      qm: [qPlays, qPct, qWeak],
+      lesson: (r, t) => [
+        u("A fielder gets a putout (PO) when he makes an out, like catching a fly ball. He gets an assist (A) when his throw helps make an out. An error (E) is a mistake that lets a runner be safe."),
+        u("Chances = putouts + assists + errors. Fielding percentage = (putouts + assists) \xF7 chances.", bbFormula(["FPCT = (PO + A) \xF7 chances", "9 plays \xF7 10 chances = .900"])),
+        qPlays(r, t),
+        qPct(r, t),
+        u("Fielding percentage has a weakness: it only counts balls a fielder gets to. A slow fielder who never reaches the hard ones might make fewer errors than a fast one!"),
+        bbFact("fld", 0),
+        qWeak(r, t),
+        bbFact("fld", 1),
+        bbFactQ(r, "fld", 2),
+        u("Today Statcast also measures fielding with Outs Above Average. You'll meet it in the Hall of Fame tier."),
+      ],
+    });
+  })();
+  // ===== Pro =====
+  (() => {
+    let qTB = (r, t) => {
+        if (t === 3) {
+          let s = p(r, 80, 120),
+            d = p(r, 20, 40),
+            tr = p(r, 0, 5),
+            hr = p(r, 10, 40),
+            tb = s + 2 * d + 3 * tr + 4 * hr;
+          return b(`A season: ${s} singles, ${d} doubles, ${tr} triples and ${hr} home runs. Total bases?`, tb, { hint: "singles \xD7 1 + doubles \xD7 2 + triples \xD7 3 + homers \xD7 4", explain: `${s} + ${2 * d} + ${3 * tr} + ${4 * hr} = ${tb}.` });
+        }
+        let n = t === 1 ? p(r, 2, 3) : p(r, 4, 6),
+          L = [];
+        for (let i = 0; i < n; i++) L.push(k(r, BB_PA.slice(0, 4)));
+        let tb = bbSum(L, "tb");
+        return b(`Hits: ${bbPAText(L)}\nHow many total bases?`, tb, { hint: "Single 1, double 2, triple 3, home run 4.", explain: L.map((o) => o.tb).join(" + ") + ` = ${tb}.` });
+      },
+      qCmp = (r) => {
+        let pairs = [["3 singles", 3, "1 home run", 4], ["2 doubles", 4, "1 triple", 3], ["1 triple", 3, "2 singles", 2], ["2 home runs", 8, "3 doubles", 6], ["4 singles", 4, "1 triple", 3]],
+          [a, x, c, y] = k(r, pairs),
+          win = x > y ? a : c;
+        return b(`Which is more total bases: ${a} or ${c}?`, win, { choices: [a, c], explain: `${a} = ${x}, ${c} = ${y}.` });
+      },
+      qFeet = (r, t) => {
+        let [nm, n] = t === 1 ? ["a single", 1] : t === 2 ? k(r, [["a double", 2], ["a triple", 3]]) : ["a home run", 4];
+        return b(`The bases are 90 feet apart. How many feet does a batter run on ${nm}?`, 90 * n, { hint: `${n} base${n > 1 ? "s" : ""} \xD7 90 feet.`, explain: `${n} \xD7 90 = ${90 * n} feet.` });
+      };
+    bbStat({
+      id: "tb", tier: 2, emoji: "\u{1F4CF}", name: "Total Bases", abbr: "TB",
+      kid: "How many bases a batter's hits are worth.",
+      formula: "TB = singles + 2 \xD7 doubles + 3 \xD7 triples + 4 \xD7 home runs",
+      grown: "Walks and hit-by-pitches don't count, only hits.",
+      why: "Total bases measure power and are the top half of slugging percentage.",
+      qm: [qTB, qCmp, qFeet],
+      lesson: (r, t) => [
+        u("Total bases (TB) count how far a batter got on his hits: single = 1, double = 2, triple = 3, home run = 4.", lt({ runTo: 2, caption: "a double = 2 bases" })),
+        u("Example: 2 singles and 1 home run → 1 + 1 + 4 = 6 total bases. Walks don't count, only hits."),
+        qTB(r, t),
+        qCmp(r, t),
+        qFeet(r, t),
+        bbFact("tb", 0),
+        bbFact("tb", 1),
+        qTB(r, Math.min(3, t + 1)),
+        u("Total bases lead to the next stat: slugging percentage!"),
+      ],
+    });
+  })();
+  (() => {
+    let qCalc = (r, t) => {
+        if (t === 3) {
+          let h = p(r, 140, 180),
+            w2 = p(r, 50, 100),
+            hb = p(r, 2, 8),
+            a = bbF3((h + w2 + hb) / 600);
+          return b(`${h} hits, ${w2} walks and ${hb} hit-by-pitches in 600 times up. OBP?`, a, { choices: C(r, a, [bbF3(h / 600), bbF3((h + w2) / 500), bbF3((h + w2 + hb) / 1e3)]), hint: "(hits + walks + HBP) \xF7 600", explain: `${h + w2 + hb} \xF7 600 = ${a}.` });
+        }
+        let n = t === 1 ? 10 : 20,
+          h = p(r, 1, t === 1 ? 4 : 7),
+          w2 = p(r, 1, t === 1 ? 2 : 4),
+          a = bbF3((h + w2) / n);
+        return b(`${n} times up: ${h} hits and ${w2} walk${w2 > 1 ? "s" : ""}. What is the OBP?`, a, { choices: C(r, a, [bbF3(h / n), bbF3((n - h - w2) / n), bbF3((h + w2) / 100)]), hint: `Times on base \xF7 ${n}.`, explain: `${h} + ${w2} = ${h + w2} times on base. ${h + w2} \xF7 ${n} = ${a}.` });
+      },
+      qCmp = (r) => {
+        let a1 = p(r, 270, 300),
+          o1 = a1 + p(r, 25, 40),
+          a2 = a1 - p(r, 15, 30),
+          o2 = o1 + p(r, 40, 70);
+        return b(`Batter A: ${bbF3(a1 / 1e3)} average, ${bbF3(o1 / 1e3)} OBP.\nBatter B: ${bbF3(a2 / 1e3)} average, ${bbF3(o2 / 1e3)} OBP.\nWho gets on base more often?`, "Batter B", { choices: ["Batter A", "Batter B"], hint: "Look at OBP, not average.", explain: `B's OBP (${bbF3(o2 / 1e3)}) is higher: lots of walks!` });
+      },
+      qWalk = (r) =>
+        b("Why does a walk help a team?", "It puts a runner on base without making an out", { choices: C(r, "It puts a runner on base without making an out", ["It counts as a hit", "It scores a run every time", "It is worth two bases"]), explain: "Teams only get 27 outs. Every trip that isn't an out keeps the inning going." });
+    bbStat({
+      id: "obp", tier: 2, emoji: "\u{1F6B6}", name: "On-Base Percentage", abbr: "OBP",
+      kid: "How often a batter gets on base: hits, walks and hit-by-pitches all count.",
+      formula: "OBP = (H + BB + HBP) \xF7 (AB + BB + HBP + SF)",
+      grown: "Sacrifice flies are in the bottom of the fraction; sacrifice bunts are left out.",
+      why: "Not making outs helps teams score. OBP is one half of OPS.",
+      qm: [qCalc, qCmp, qWalk],
+      lesson: (r, t) => [
+        u("On-base percentage (OBP) answers: how often does a batter get on base? Hits count, and so do walks and hit-by-pitches.", bbBoxes(10, 4, "on base 4 times in 10 trips", ["ON", "out"])),
+        u("OBP = (hits + walks + hit-by-pitches) \xF7 times up. The official 'times up' leaves out sacrifice bunts.", bbFormula(["OBP = times on base \xF7 times up", "4 \xF7 10 = .400"])),
+        qCalc(r, t),
+        u("A walk isn't as exciting as a hit, but it isn't an out. A team only gets 27 outs a game, so not making outs helps it score."),
+        qWalk(r, t),
+        qCmp(r, t),
+        bbFactQ(r, "obp", 0),
+        bbFact("obp", 1),
+        bbFactQ(r, "obp", 2),
+        u("OBP shows getting on base. Next, slugging shows power."),
+      ],
+    });
+  })();
+  (() => {
+    let qCalc = (r, t) => {
+        if (t === 3) {
+          let tb = p(r, 250, 340),
+            ab = 550,
+            a = bbF3(tb / ab);
+          return b(`${tb} total bases in ${ab} at-bats. Slugging percentage?`, a, { choices: C(r, a, [bbF3(tb / 1e3), bbF3(ab / tb / 10), bbF3((tb - 100) / ab)]), hint: "total bases \xF7 at-bats", explain: `${tb} \xF7 ${ab} = ${a}.` });
+        }
+        let ab = t === 1 ? 10 : 20,
+          tb = p(r, 2, t === 1 ? 12 : 18),
+          a = bbF3(tb / ab);
+        return b(`${tb} total bases in ${ab} at-bats. Slugging percentage?`, a, { choices: C(r, a, [bbF3(tb / 100), bbF3(ab / 100), bbF3((tb + 2) / ab)]), hint: `${tb} \xF7 ${ab}`, explain: `${tb} \xF7 ${ab} = ${a}.` });
+      },
+      qCmp = (r) => {
+        let s = p(r, 6, 10),
+          hr = k(r, [1, 2, 3].filter((x) => 4 * x !== s)),
+          A = bbF3(s / 20),
+          B = bbF3((4 * hr) / 20),
+          win = s > 4 * hr ? "Batter A" : "Batter B";
+        return b(`In 20 at-bats, Batter A hits ${s} singles. Batter B hits ${hr} home run${hr > 1 ? "s" : ""} and nothing else. Who has the higher slugging?`, win, { choices: ["Batter A", "Batter B"], hint: "Total bases \xF7 20 for each.", explain: `A: ${s} \xF7 20 = ${A}. B: ${4 * hr} \xF7 20 = ${B}.` });
+      },
+      qOver = (r) =>
+        b("Can slugging percentage be more than 1.000?", "Yes, with more than 1 base per at-bat", { choices: C(r, "Yes, with more than 1 base per at-bat", ["No, never", "Only for pitchers", "Only in the World Series"]), explain: "4 home runs in 4 at-bats is 16 \xF7 4 = 4.000!" });
+    bbStat({
+      id: "slg", tier: 2, emoji: "\u{1F4AA}", name: "Slugging Percentage", abbr: "SLG",
+      kid: "How many bases a batter gets per at-bat. It shows power.",
+      formula: "SLG = total bases \xF7 at-bats",
+      grown: "It's an average of bases per at-bat, so it can be higher than 1.000.",
+      why: "Slugging rewards extra-base hits. It's the other half of OPS.",
+      qm: [qCalc, qCmp, qOver],
+      lesson: (r, t) => [
+        u("Slugging percentage (SLG) = total bases \xF7 at-bats. It shows POWER: how many bases a batter gets per at-bat."),
+        u("Example: 6 total bases in 10 at-bats → 6 \xF7 10 = .600.", bbFormula(["SLG = total bases \xF7 at-bats", "6 \xF7 10 = .600"])),
+        qCalc(r, t),
+        qCmp(r, t),
+        u("Slugging can go above 1.000! That means more than one base per at-bat, which is super rare for a season."),
+        qOver(r, t),
+        bbFactQ(r, "slg", 0),
+        bbFact("slg", 1),
+        u("Add OBP and slugging together and you get OPS. That's next!"),
+      ],
+    });
+  })();
+  (() => {
+    let qAdd = (r, t) => {
+        let o = t === 1 ? k(r, [300, 350, 400]) : t === 2 ? k(r, [315, 335, 345, 365]) : p(r, 300, 420),
+          s = t === 1 ? k(r, [400, 450, 500]) : t === 2 ? k(r, [415, 455, 465, 485]) : p(r, 400, 620),
+          a = bbF3((o + s) / 1e3);
+        return t === 3
+          ? b(`OBP ${bbF3(o / 1e3)} + SLG ${bbF3(s / 1e3)}. Type the OPS.`, a, { decimal: true, hint: "Line up the decimal points, then add.", explain: `${bbF3(o / 1e3)} + ${bbF3(s / 1e3)} = ${a}.` })
+          : b(`OBP ${bbF3(o / 1e3)} + SLG ${bbF3(s / 1e3)} = ? (That's the OPS.)`, a, { choices: C(r, a, [bbF3((o + s + 100) / 1e3), bbF3((s - o) / 1e3), bbF3((o + s) / 2e3)]), hint: `Like ${o / 10}\xA2 + ${s / 10}\xA2.`, explain: `${bbF3(o / 1e3)} + ${bbF3(s / 1e3)} = ${a}.` });
+      },
+      qCmp = (r, t) => {
+        let a = p(r, 780, 950),
+          c = a + (t === 1 ? 100 : t === 2 ? 35 : 9),
+          [x, y] = r() < 0.5 ? [a, c] : [c, a];
+        return b(`Which OPS is better: ${bbF3(x / 1e3)} or ${bbF3(y / 1e3)}?`, bbF3(c / 1e3), { choices: [bbF3(x / 1e3), bbF3(y / 1e3)], explain: `${bbF3(c / 1e3)} is higher, and higher is better.` });
+      },
+      qMean = (r) =>
+        b("An OPS of .800 or higher usually means…", "a very good hitter", { choices: C(r, "a very good hitter", ["a below-average hitter", "a pitcher", "an average hitter"]), explain: "Around .800 and up is very good. League leaders are often near 1.000." });
+    bbStat({
+      id: "ops", tier: 2, emoji: "➕", name: "On-Base Plus Slugging", abbr: "OPS",
+      kid: "OBP plus slugging: one number for getting on base AND hitting for power.",
+      formula: "OPS = OBP + SLG",
+      grown: "It adds two fractions with different bottoms, so it's a handy shortcut, not a perfect measure.",
+      why: "It's easy to figure from two common stats, and a team's OPS goes along well with how many runs it scores. It's even printed on baseball cards.",
+      qm: [qAdd, qCmp, qMean],
+      lesson: (r, t) => [
+        u("OPS = OBP + SLG. One number for getting on base AND hitting for power."),
+        u("Adding these decimals is like adding money: .350 + .450 is like 35\xA2 + 45\xA2 = 80\xA2. So the OPS is .800.", bbFormula(["OPS = OBP + SLG", ".350 + .450 = .800"])),
+        qAdd(r, t),
+        u("A rough guide: an OPS of .800 or more is a very good hitter. A league leader is often near 1.000."),
+        qMean(r, t),
+        qCmp(r, t),
+        bbFactQ(r, "ops", 0),
+        bbFact("ops", 1),
+        bbFact("ops", 2),
+        bbFact("ops", 3),
+        qAdd(r, Math.min(3, t + 1)),
+        u("OPS isn't perfect: it adds OBP and slugging as if they mattered equally. The Hall of Fame tier shows a fancier way."),
+      ],
+    });
+  })();
+  (() => {
+    let qCalc = (r, t) => {
+        if (t === 1) {
+          let ip = p(r, 2, 6),
+            m2 = k(r, [1, 2]),
+            w2 = p(r, 0, ip * m2);
+          return b(`${w2} walks and ${ip * m2 - w2} hits in ${ip} innings. What is the WHIP?`, m2, { decimal: true, hint: "(walks + hits) \xF7 innings", explain: `${ip * m2} \xF7 ${ip} = ${bbF2(m2)}.` });
+        }
+        if (t === 2) {
+          let tot = p(r, 8, 15),
+            w2 = p(r, 1, 4);
+          return b(`${w2} walks and ${tot - w2} hits in 10 innings. What is the WHIP?`, tot / 10, { decimal: true, hint: "Divide by 10: move the decimal point one place.", explain: `${tot} \xF7 10 = ${bbF2(tot / 10)}.` });
+        }
+        return b("Pedro Martinez in 2000: 128 hits + 32 walks in 217 innings. His WHIP was…", ".737", { choices: C(r, ".737", ["1.737", ".160", "7.37"]), hint: "160 \xF7 217 is less than 1.", explain: "160 \xF7 217 = .737. That's fewer than 3 baserunners every 4 innings!" });
+      },
+      qBR = (r) => b("Pedro Martinez in 2000 allowed 128 hits and 32 walks. How many baserunners is that?", 160, { explain: "128 + 32 = 160." }),
+      qCmp = (r, t) => {
+        let a = t === 1 ? k(r, [1, 1.1]) : p(r, 95, 130) / 100,
+          d = t === 1 ? 0.3 : t === 2 ? 0.15 : 0.04,
+          x = bbF2(a),
+          y = bbF2(a + d);
+        return b(`Who allowed fewer baserunners: WHIP ${x} or WHIP ${y}?`, x, { choices: r() < 0.5 ? [x, y] : [y, x], hint: "Lower WHIP = fewer runners.", explain: `${x} is lower.` });
+      },
+      qMean = (r) => b("A WHIP of 1.00 means…", "about 1 baserunner per inning", { choices: C(r, "about 1 baserunner per inning", ["1 run per game", "1 strikeout per inning", "1 home run per game"]), explain: "WHIP counts walks + hits for each inning." });
+    bbStat({
+      id: "whip", tier: 2, emoji: "\u{1F9F9}", name: "Walks + Hits per Inning", abbr: "WHIP",
+      kid: "How many batters reach base against a pitcher each inning. Lower is better.",
+      formula: "WHIP = (walks + hits) \xF7 innings pitched",
+      grown: "Hit batters aren't included, because newspapers didn't list them in 1979.",
+      why: "It shows how often a pitcher lets runners on, without waiting to see if they score.",
+      qm: [qCalc, qBR, qCmp, qMean],
+      lesson: (r, t) => [
+        u("WHIP = (walks + hits) \xF7 innings pitched. It counts how many batters reach base against a pitcher each inning. LOWER is better!"),
+        u("Example: 3 walks + 6 hits in 9 innings → 9 \xF7 9 = 1.00, about one baserunner per inning. That's excellent.", bbFormula(["WHIP = (BB + H) \xF7 IP", "(3 + 6) \xF7 9 = 1.00"])),
+        qCalc(r, Math.min(t, 2)),
+        qMean(r, t),
+        qCmp(r, t),
+        bbFactQ(r, "whip", 0),
+        qBR(r, t),
+        bbFact("whip", 1),
+        t === 3 ? qCalc(r, 3) : bbFact("whip", 2),
+      ],
+    });
+  })();
+  (() => {
+    let qK9 = (r, t) => {
+        let [ip, kk] = t === 1 ? [9, p(r, 4, 12)] : t === 2 ? [3, p(r, 2, 5)] : k(r, [[18, 2 * p(r, 8, 13)], [27, 3 * p(r, 7, 11)]]),
+          a = (kk * 9) / ip;
+        return b(`${kk} strikeouts in ${ip} innings. What is his K/9 (strikeouts per 9 innings)?`, a, { decimal: true, hint: ip < 9 ? `Multiply by ${9 / ip}.` : ip > 9 ? `Divide by ${ip / 9}.` : "It's already 9 innings!", explain: `${kk} \xD7 9 \xF7 ${ip} = ${a}.` });
+      },
+      qKBB = (r, t) => {
+        let [kk, bb] = t === 1 ? k(r, [[10, 2], [12, 3], [8, 4], [15, 3]]) : t === 2 ? k(r, [[100, 20], [90, 30], [120, 40], [80, 20]]) : k(r, [[248, 62], [200, 40], [252, 63], [210, 35]]);
+        return b(`A pitcher has ${kk} strikeouts and ${bb} walks. What is his K/BB?`, kk / bb, { hint: "strikeouts \xF7 walks", explain: `${kk} \xF7 ${bb} = ${kk / bb}.` });
+      },
+      qCmp = (r) => {
+        let x = p(r, 75, 95) / 10,
+          y = x + p(r, 10, 30) / 10,
+          [a, c] = r() < 0.5 ? [x, y] : [y, x];
+        return b(`Who strikes out more batters per game: a K/9 of ${a.toFixed(1)} or ${c.toFixed(1)}?`, y.toFixed(1), { choices: [a.toFixed(1), c.toFixed(1)], explain: `${y.toFixed(1)} is more strikeouts per 9 innings.` });
+      };
+    bbStat({
+      id: "k9", tier: 2, emoji: "\u{1F525}", name: "Strikeout Rates", abbr: "K/9 \xB7 BB/9 \xB7 K/BB",
+      kid: "How often a pitcher strikes batters out, and how that compares with his walks.",
+      formula: "K/9 = strikeouts \xD7 9 \xF7 innings.  K/BB = strikeouts \xF7 walks.",
+      grown: "BB/9 works the same way as K/9, using walks.",
+      why: "Strikeouts are outs the fielders don't have to make, and walks are free baserunners, so a high K/BB is a good sign.",
+      qm: [qK9, qKBB, qCmp],
+      lesson: (r, t) => [
+        u("K is the scorecard letter for a strikeout. K/9 = strikeouts per 9 innings. It's the same trick as ERA: strikeouts \xD7 9 \xF7 innings."),
+        qK9(r, t),
+        u("K/BB = strikeouts \xF7 walks. It shows control: lots of strikeouts and few walks is great. 200 strikeouts and 40 walks → K/BB of 5."),
+        qKBB(r, t),
+        bbFactQ(r, "k9", 0),
+        bbFact("k9", 1),
+        qCmp(r, t),
+        bbFactQ(r, "k9", 2),
+        bbFact("k9", 3),
+      ],
+    });
+  })();
+  (() => {
+    let qPct = (r, t) => {
+        if (t === 3) {
+          let [w2, a] = k(r, [[81, ".500"], [108, ".667"], [54, ".333"], [97, ".599"]]);
+          return b(`A team wins ${w2} of its 162 games. Winning percentage?`, a, { choices: C(r, a, [bbF3((162 - w2) / 162), bbF3(w2 / 100), bbF3(w2 / 1e3)]), hint: "wins \xF7 162", explain: `${w2} \xF7 162 = ${a}.` });
+        }
+        let g = t === 1 ? 10 : 20,
+          w2 = p(r, 2, g - 2),
+          a = bbF3(w2 / g);
+        return b(`A team wins ${w2} of ${g} games. Winning percentage?`, a, { choices: C(r, a, [bbF3((g - w2) / g), bbF3(w2 / 100), bbF3(w2 / (g + 10))]), hint: `wins \xF7 ${g}`, explain: `${w2} \xF7 ${g} = ${a}.` });
+      },
+      qDiff = (r, t) => {
+        let [rs, ra] = t === 1 ? [p(r, 5, 9) * 10, p(r, 2, 4) * 10] : t === 2 ? [p(r, 70, 85) * 10, p(r, 60, 69) * 10] : [p(r, 700, 860), p(r, 600, 699)];
+        return b(`A team scored ${rs} runs and allowed ${ra}. What is its run differential?`, rs - ra, { hint: "scored − allowed", explain: `${rs} − ${ra} = +${rs - ra}.` });
+      },
+      qGuess = (r) => {
+        let a = p(r, 760, 850),
+          aa = a - p(r, 80, 140),
+          c = p(r, 640, 720),
+          cc = c + p(r, 30, 80);
+        return b(`Team A scored ${a} and allowed ${aa}. Team B scored ${c} and allowed ${cc}. Which team probably won more games?`, "Team A", { choices: ["Team A", "Team B"], explain: `Team A outscored opponents by ${a - aa}. Team B was outscored by ${cc - c}.` });
+      };
+    bbStat({
+      id: "win", tier: 2, emoji: "\u{1F4C8}", name: "Win % & Run Differential", abbr: "PCT \xB7 RD",
+      kid: "How often a team wins, and how many more runs it scores than it allows.",
+      formula: "Win % = wins \xF7 games.  Run differential = runs scored − runs allowed.",
+      grown: "The Pythagorean record estimates win % as RS\xB2 \xF7 (RS\xB2 + RA\xB2).",
+      why: "Standings use win %. Run differential helps predict which teams are really good.",
+      qm: [qPct, qDiff, qGuess],
+      lesson: (r, t) => [
+        u("Winning percentage = wins \xF7 games played. A team that wins half its games is at .500."),
+        qPct(r, t),
+        u("Run differential = runs scored − runs allowed. Teams that outscore opponents by a lot usually win a lot."),
+        qDiff(r, t),
+        qGuess(r, t),
+        u("Baseball analysts even use a formula called the Pythagorean record, which estimates a team's winning percentage from its runs scored and allowed."),
+        bbFactQ(r, "win", 0),
+        bbFact("win", 1),
+      ],
+    });
+  })();
+  // ===== All-Star =====
+  (() => {
+    let qAbove = (r) => {
+        let v = k(r, [125, 140, 85, 70, 100, 160]),
+          a = v > 100 ? "Better than average" : v < 100 ? "Worse than average" : "Exactly average";
+        return b(`An OPS+ of ${v} is…`, a, { choices: ["Better than average", "Worse than average", "Exactly average"], explain: `100 is average, so ${v} is ${a.toLowerCase()}.` });
+      },
+      qPts = (r, t) => {
+        let v = t === 1 ? k(r, [110, 120, 130]) : k(r, [135, 145, 85, 75]),
+          up = v > 100;
+        return b(`How many points ${up ? "above" : "below"} average is an OPS+ of ${v}?`, Math.abs(v - 100), { hint: "Average is 100.", explain: `${up ? `${v} − 100` : `100 − ${v}`} = ${Math.abs(v - 100)}.` });
+      },
+      qCalc = (r, t) => {
+        let [x, y] = t === 1 ? [1.1, 1.1] : t === 2 ? k(r, [[1.2, 1.3], [1.1, 1.4], [0.9, 1]]) : k(r, [[1.25, 1.35], [1.15, 1.45], [0.95, 0.85]]),
+          a = Math.round(100 * (x + y - 1));
+        return b(`A hitter's OBP is ${x} times the league's, and his SLG is ${y} times the league's.\nOPS+ = 100 \xD7 (${x} + ${y} − 1) = ?`, a, { hint: `${x} + ${y} = ${Math.round((x + y) * 100) / 100}. Take away 1, then \xD7 100.`, explain: `100 \xD7 ${Math.round((x + y - 1) * 100) / 100} = ${a}.` });
+      };
+    bbStat({
+      id: "opsp", tier: 3, emoji: "\u{1F4AF}", name: "OPS+", abbr: "OPS+",
+      kid: "OPS turned into a score where 100 is league average, adjusted for ballparks and the year.",
+      formula: "OPS+ = 100 \xD7 (OBP \xF7 league OBP + SLG \xF7 league SLG − 1)",
+      grown: "League OBP and SLG are park-adjusted. OPS+ 200 does NOT mean twice the league OPS.",
+      why: "It lets you compare hitters from different years and ballparks fairly.",
+      qm: [qAbove, qPts, qCalc],
+      lesson: (r, t) => [
+        u("OPS+ turns OPS into a score where 100 is exactly league average. It also adjusts for ballparks and for how much scoring there was that year.", bbScale(140, 50, 200, "an OPS+ of 140")),
+        u("Above 100 = better than average. Below 100 = worse."),
+        qAbove(r, t),
+        bbFact("opsp", 0),
+        qPts(r, t),
+        u("Why adjust? Some years and some ballparks make hitting easier. OPS+ lets us compare a hitter from 1930 with one from 2026 more fairly."),
+        qCalc(r, t),
+        bbFact("opsp", 1),
+      ],
+    });
+  })();
+  (() => {
+    let qCalc = (r, t) => {
+        let [lg, era] = t === 1 ? k(r, [[4, 2], [4, 4], [4, 8], [3, 3]]) : t === 2 ? k(r, [[3, 1.5], [4.5, 3], [4, 5], [6, 4]]) : k(r, [[4.2, 2.8], [3.6, 2.4], [4.5, 3.6], [4, 3.2]]),
+          a = Math.round((100 * lg) / era);
+        return b(`League ERA ${bbF2(lg)}, pitcher's ERA ${bbF2(era)}.\nERA+ = 100 \xD7 ${bbF2(lg)} \xF7 ${bbF2(era)} = ?`, a, { hint: `How many times does ${bbF2(era)} go into ${bbF2(lg)}?`, explain: `${bbF2(lg)} \xF7 ${bbF2(era)} = ${a / 100}, \xD7 100 = ${a}.` });
+      },
+      qDir = (r) => b("For ERA+, is higher or lower better?", "Higher", { choices: ["Higher", "Lower"], explain: "ERA+ flips ERA around so that higher is better, like OPS+." }),
+      qCmp = (r) =>
+        b("Pitcher A: ERA 2.00 in a year when the league ERA was 3.00.\nPitcher B: ERA 2.50 in a year when the league ERA was 5.00.\nWho has the higher ERA+?", "Pitcher B", { choices: ["Pitcher A", "Pitcher B"], hint: "Figure 100 \xD7 league \xF7 ERA for each.", explain: "A: 100 \xD7 3 \xF7 2 = 150. B: 100 \xD7 5 \xF7 2.5 = 200. B was better compared with his league." });
+    bbStat({
+      id: "erap", tier: 3, emoji: "⚖️", name: "ERA+", abbr: "ERA+",
+      kid: "ERA turned into a score where 100 is average and higher is better.",
+      formula: "ERA+ = 100 \xD7 league ERA \xF7 pitcher's ERA (adjusted for ballparks)",
+      grown: "Baseball-Reference's version; it uses the pitcher's park-adjusted league ERA.",
+      why: "It compares pitchers from high-scoring and low-scoring years fairly.",
+      qm: [qCalc, qDir, qCmp],
+      lesson: (r, t) => [
+        u("ERA+ is like OPS+ for pitchers: 100 is average and HIGHER is better, even though for plain ERA, lower is better!"),
+        bbFact("erap", 0),
+        u("Example: league ERA 4.00, pitcher's ERA 2.00 → 100 \xD7 4.00 \xF7 2.00 = 200. He allowed half as many runs as an average pitcher.", bbFormula(["ERA+ = 100 \xD7 league ERA \xF7 ERA", "100 \xD7 4.00 \xF7 2.00 = 200"])),
+        qCalc(r, t),
+        qDir(r, t),
+        bbFact("erap", 1),
+        qCmp(r, t),
+        bbFactQ(r, "erap", 2),
+      ],
+    });
+  })();
+  (() => {
+    let qPct = (r, t) => {
+        let [pc, d] = t === 1 ? [10, 400] : t === 2 ? k(r, [[10, 350], [10, 420]]) : k(r, [[5, 400], [5, 360]]);
+        return b(`${pc}% of ${d} feet is how many feet?`, (pc * d) / 100, { hint: pc === 10 ? "10% is one-tenth: divide by 10." : "5% is half of 10%.", explain: `${pc}% of ${d} = ${(pc * d) / 100} feet.` });
+      },
+      qFac = (r) => {
+        let v = k(r, [115, 120, 90, 85]),
+          a = v > 100 ? "Hitters" : "Pitchers";
+        return b(`A park factor of ${v} helps…`, a, { choices: ["Hitters", "Pitchers"], explain: `Over 100 means more runs than an average park; under 100 means fewer.` });
+      },
+      qWhy = (r) => b("Why do OPS+ and ERA+ adjust for ballparks?", "Some parks make hitting easier or harder", { choices: C(r, "Some parks make hitting easier or harder", ["Bigger parks sell more tickets", "Every park has the same rules", "Pitchers only play at home"]), explain: "Adjusting makes it fair to compare a Coors Field hitter with everybody else." });
+    bbStat({
+      id: "park", tier: 3, emoji: "\u{1F3DF}️", name: "Park Factors", abbr: "PF",
+      kid: "A number that shows whether a ballpark helps hitters or pitchers. 100 is average.",
+      formula: "Park factor: 100 = an average ballpark. Over 100 helps hitters; under 100 helps pitchers.",
+      grown: "OPS+, ERA+ and wRC+ all use park-adjusted numbers.",
+      why: "Park factors make it fair to compare a player in a hitter's park with a player in a pitcher's park.",
+      qm: [qPct, qFac, qWhy],
+      lesson: (r, t) => [
+        u("Every ballpark is different: wall distances, wind, weather, even how high above the sea it is. A park factor shows whether a park helps hitters or pitchers. 100 means an average park."),
+        bbFact("park", 0),
+        bbFact("park", 1),
+        qPct(r, t),
+        u("That's a science lesson too: a prediction is a careful guess, and you check it by measuring!"),
+        bbFactQ(r, "park", 2),
+        qFac(r, t),
+        qWhy(r, t),
+      ],
+    });
+  })();
+  // ===== Hall of Fame =====
+  (() => {
+    let qCalc = (r, t) => {
+        if (t === 3) {
+          let H2 = p(r, 140, 170),
+            hr = p(r, 15, 35),
+            ab = p(r, 530, 580),
+            kk = p(r, 90, 140),
+            sf = p(r, 2, 7),
+            a = bbF3((H2 - hr) / (ab - kk - hr + sf));
+          return b(`${H2} hits, ${hr} home runs, ${ab} at-bats, ${kk} strikeouts, ${sf} sacrifice flies. BABIP = (H − HR) \xF7 (AB − K − HR + SF) = ?`, a, { choices: C(r, a, [bbF3(H2 / ab), bbF3((H2 - hr) / ab), bbF3(H2 / (ab - kk))]), explain: `(${H2} − ${hr}) \xF7 (${ab} − ${kk} − ${hr} + ${sf}) = ${H2 - hr} \xF7 ${ab - kk - hr + sf} = ${a}.` });
+        }
+        let n = t === 1 ? 10 : 20,
+          h = p(r, 2, t === 1 ? 5 : 9),
+          a = bbF3(h / n);
+        return b(`${n} balls were hit into the field, and ${h} of them fell in for hits. BABIP?`, a, { choices: C(r, a, [bbF3((n - h) / n), bbF3(h / 100), bbF3((h + 1) / n)]), explain: `${h} \xF7 ${n} = ${a}.` });
+      },
+      qLuck = (r) => b("This month a hitter's BABIP is .420, way above his usual .300. What will probably happen?", "It will probably come back down", { choices: C(r, "It will probably come back down", ["It will keep going up forever", "It will drop to zero", "Nothing can change it"]), explain: "Balls in play have a lot of luck in them. Over time, BABIP tends to settle near normal." }),
+      qWhat = (r) => b("Which of these does BABIP leave out?", "Home runs", { choices: C(r, "Home runs", ["Singles", "Doubles", "Ground ball hits"]), explain: "Home runs leave the field, so they aren't balls in play. Strikeouts are left out too." });
+    bbStat({
+      id: "babip", tier: 4, emoji: "\u{1F340}", name: "BABIP", abbr: "BABIP",
+      kid: "Batting average on balls hit into the field. It helps spot luck.",
+      formula: "BABIP = (H − HR) \xF7 (AB − K − HR + SF)",
+      grown: "Speed and line drives can raise a hitter's BABIP; pitchers have less control over it.",
+      why: "It helps tell luck from skill, for hitters and for pitchers.",
+      qm: [qCalc, qLuck, qWhat],
+      lesson: (r, t) => [
+        u("BABIP = batting average on balls in play. It only looks at balls hit into the field: no strikeouts, and no home runs (those leave the field!)."),
+        u("Formula: (hits − home runs) \xF7 (at-bats − strikeouts − home runs + sacrifice flies).", bbFormula(["BABIP = (H − HR) \xF7 (AB − K − HR + SF)", "only balls hit into the field"])),
+        qCalc(r, t),
+        qWhat(r, t),
+        bbFact("babip", 0),
+        qLuck(r, t),
+        u("A high BABIP can mean luck. It can also mean a fast runner beating out grounders, or a hitter crushing lots of line drives."),
+        bbFactQ(r, "babip", 1),
+      ],
+    });
+  })();
+  (() => {
+    let qPts = (r, t) => {
+        let hr = t === 1 ? 1 : p(r, 1, 2),
+          bb = p(r, 1, t === 1 ? 2 : 4),
+          kk = p(r, 2, t === 1 ? 5 : 8),
+          a = 13 * hr + 3 * bb - 2 * kk;
+        return b(`FIP points: ${hr} home run${hr > 1 ? "s" : ""}, ${bb} walk${bb > 1 ? "s" : ""}, ${kk} strikeouts.\n13 \xD7 ${hr} + 3 \xD7 ${bb} − 2 \xD7 ${kk} = ?`, a, { signed: a < 0, hint: `${13 * hr} + ${3 * bb} − ${2 * kk}`, explain: `${13 * hr} + ${3 * bb} − ${2 * kk} = ${a}.` });
+      },
+      qFull = (r) => {
+        let hr = p(r, 0, 2),
+          bb = p(r, 1, 4),
+          kk = p(r, 4, 12),
+          pts = 13 * hr + 3 * bb - 2 * kk,
+          a = bbF2(pts / 9 + 3.1);
+        return b(`In 9 innings: ${hr} HR, ${bb} BB, ${kk} K. FIP = (13\xD7HR + 3\xD7BB − 2\xD7K) \xF7 9 + 3.10 = ?`, a, { choices: C(r, a, [bbF2(pts + 3.1), bbF2(pts / 9), bbF2((pts + 4) / 9 + 3.1)]), explain: `(${13 * hr} + ${3 * bb} − ${2 * kk}) \xF7 9 = ${bbF2(pts / 9)}, + 3.10 = ${a}.` });
+      },
+      qWhat = (r) => b("Which of these does FIP NOT use?", "Hits on balls in play", { choices: C(r, "Hits on balls in play", ["Strikeouts", "Walks", "Home runs"]), explain: "FIP skips balls hit into the field, because fielders and luck matter a lot there." });
+    bbStat({
+      id: "fip", tier: 4, emoji: "\u{1F9EA}", name: "Fielding Independent Pitching", abbr: "FIP",
+      kid: "Grades a pitcher only on what he controls: strikeouts, walks, hit batters and home runs.",
+      formula: "FIP = (13\xD7HR + 3\xD7(BB+HBP) − 2\xD7K) \xF7 IP + constant (about 3.10)",
+      grown: "The constant changes each year so league FIP equals league ERA.",
+      why: "It shows how a pitcher did on the things he controls, and FanGraphs uses it to build pitcher WAR.",
+      qm: [qPts, qFull, qWhat],
+      lesson: (r, t) => [
+        u("FIP = fielding independent pitching. It grades a pitcher only on what he controls by himself: strikeouts, walks, hit batters and home runs."),
+        u("Home runs hurt a lot (13 points each). Walks and hit batters hurt some (3 points). Strikeouts help (take away 2 points).", bbFormula(["FIP = (13\xD7HR + 3\xD7BB − 2\xD7K) \xF7 IP + 3.1", "home runs hurt most; strikeouts help"])),
+        qPts(r, t),
+        qWhat(r, t),
+        bbFact("fip", 1),
+        bbFact("fip", 2),
+        t === 3 ? qFull(r, t) : qPts(r, t),
+        bbFactQ(r, "fip", 0),
+        u("If a pitcher's ERA is much higher than his FIP, he may have had bad luck or a shaky defense behind him."),
+      ],
+    });
+  })();
+  (() => {
+    let qSingles = (r) => b("A single is worth about 0.47 runs and a home run about 1.40. About how many singles equal one home run?", "3", { choices: ["2", "3", "4", "5"], hint: "0.47 + 0.47 + 0.47 = ?", explain: "3 \xD7 0.47 = 1.41, almost exactly 1.40." }),
+      qMore = (r) => b("Which is worth more runs: a walk (0.33) or a single (0.47)?", "A single", { choices: ["A walk", "A single"], explain: "A single can move runners more than a walk, so it's worth a bit more." }),
+      qWRC = (r) => {
+        let v = k(r, [120, 150, 80, 90]),
+          a = v > 100 ? `${v - 100}% better than average` : `${100 - v}% worse than average`;
+        return b(`A wRC+ of ${v} means…`, a, { choices: C(r, a, [`${Math.abs(v - 100)}% ${v > 100 ? "worse" : "better"} than average`, `${v} runs scored`, "exactly average"]), explain: "100 is average; each point is 1%." });
+      },
+      qAdd = (r) => {
+        let [nm, a] = k(r, [["2 singles and 1 home run", "2.34"], ["1 double and 1 walk", "1.16"], ["3 singles", "1.41"]]);
+        return b(`Using Pete Palmer's run values (walk 0.33, single 0.47, double 0.83, home run 1.40): ${nm} = ?`, a, { choices: C(r, a, ["1.00", "3.00", "0.80", "2.80"]), explain: `Add the run values: ${a} runs.` });
+      };
+    bbStat({
+      id: "woba", tier: 4, emoji: "⚖️", name: "wOBA & wRC+", abbr: "wOBA \xB7 wRC+",
+      kid: "Gives each kind of hit (and walk) its fair value in runs, then compares hitters to average.",
+      formula: "wOBA = weighted walks + HBP + 1B + 2B + 3B + HR, scaled like OBP.  wRC+: 100 = average.",
+      grown: "The weights change every season with the run environment (FanGraphs publishes them).",
+      why: "They value each way of reaching base by the runs it usually creates, so they're more exact than OPS.",
+      qm: [qSingles, qMore, qWRC, qAdd],
+      lesson: (r, t) => [
+        u("OPS adds OBP and slugging as if they mattered the same. But how many runs is each kind of hit REALLY worth?"),
+        bbFact("woba", 0, bbBars([{ l: "walk", v: 0.33 }, { l: "single", v: 0.47 }, { l: "double", v: 0.83 }, { l: "triple", v: 1.02 }, { l: "home run", v: 1.4, c: "var(--accent2)" }], 1.4, (x) => x.toFixed(2))),
+        qSingles(r, t),
+        qMore(r, t),
+        bbFactQ(r, "woba", 1),
+        u("wOBA (weighted on-base average) gives each event its own weight, then scales the answer to look like OBP."),
+        bbFact("woba", 2),
+        qWRC(r, t),
+        t >= 2 ? qAdd(r, t) : u("Next time, try the harder level to add run values yourself!"),
+      ],
+    });
+  })();
+  (() => {
+    let qRW = (r, t) => {
+        if (t === 1) {
+          let runs = k(r, [20, 30, 40, 50]);
+          return b(`A player is worth ${runs} runs more than a replacement player. About how much WAR is that?`, runs / 10, { hint: "About 10 runs make 1 win.", explain: `${runs} \xF7 10 = ${runs / 10} WAR.` });
+        }
+        if (t === 2) {
+          let runs = k(r, [45, 35, 65]),
+            a = (runs / 10).toFixed(1);
+          return b(`${runs} runs better than a replacement player. About how much WAR?`, a, { choices: C(r, a, [String(runs), (runs / 100).toFixed(2), String(Math.round(runs / 5))]), explain: `${runs} \xF7 10 = ${a}.` });
+        }
+        let [bt, rn, fd, ps, rp] = [p(r, 15, 35), p(r, 0, 6), p(r, 0, 12), k(r, [-5, 0, 5, 7]), 20],
+          tot = bt + rn + fd + ps + rp,
+          a = (tot / 10).toFixed(1);
+        return b(`Pretend numbers: batting ${bt} runs, running ${rn}, fielding ${fd}, position ${ps}, replacement ${rp}. Add them and divide by 10. WAR = ?`, a, { choices: C(r, a, [String(tot), (tot / 100).toFixed(2), ((tot - rp) / 10).toFixed(1)]), explain: `${tot} runs \xF7 10 = ${a} WAR.` });
+      },
+      qRepl = (r) => b("A team of only replacement players would win about how many of its 162 games?", "48", { choices: C(r, "48", ["81", "100", "20"]), explain: "About 48 wins and 114 losses: a .294 winning percentage." }),
+      qAvg = (r) => b("An average everyday player is worth about how much WAR in a season?", "2", { choices: ["0", "2", "8", "20"], explain: "About 2 WAR is a solid regular. 8 or more is an MVP-type season." });
+    bbStat({
+      id: "war", tier: 4, emoji: "\u{1F451}", name: "Wins Above Replacement", abbr: "WAR",
+      kid: "How many wins a player added, compared with a bench player a team could easily find.",
+      formula: "WAR = (batting + baserunning + fielding + position + league + replacement runs) \xF7 runs per win",
+      grown: "fWAR (FanGraphs) and bWAR/rWAR (Baseball-Reference) share a replacement level since 2013 but differ in fielding and pitching inputs.",
+      why: "It puts hitting, running, fielding and pitching on one scale (wins), so you can compare very different players.",
+      qm: [qRW, qRepl, qAvg],
+      lesson: (r, t) => [
+        u("WAR = wins above replacement. It asks: how many more games did a team win because of this player, compared with a bench player it could easily find?"),
+        bbFact("war", 0),
+        qRepl(r, t),
+        u("WAR adds up runs from hitting, running, fielding and the player's position. Then it turns runs into wins."),
+        bbFact("war", 2),
+        qRW(r, t),
+        bbFact("war", 3),
+        qAvg(r, t),
+        bbFact("war", 1),
+        bbFactQ(r, "war", 4),
+        bbFact("war", 5),
+        u("Stats are models made by people. Smart people can disagree about them, and that's part of the fun!"),
+      ],
+    });
+  })();
+  (() => {
+    let qHard = (r) => {
+        let ev = k(r, [86, 91, 93, 97, 102, 108]),
+          a = ev >= 95 ? "Yes" : "No";
+        return b(`A ball comes off the bat at ${ev} mph. Is it hard-hit?`, a, { choices: ["Yes", "No"], hint: "Hard-hit means 95 mph or faster.", explain: `${ev} is ${ev >= 95 ? "at least" : "less than"} 95 mph.` });
+      },
+      qAngle = (r) => {
+        let la = k(r, [-5, 3, 7, 14, 18, 22, 30, 38, 45, 58, 65]),
+          a = la < 10 ? "Ground ball" : la <= 25 ? "Line drive" : la <= 50 ? "Fly ball" : "Pop-up";
+        return b(`A ball is hit at a launch angle of ${la}\xB0. What kind of batted ball is it?`, a, { choices: ["Ground ball", "Line drive", "Fly ball", "Pop-up"], hint: "Under 10\xB0 ground ball \xB7 10-25\xB0 line drive \xB7 25-50\xB0 fly ball \xB7 over 50\xB0 pop-up", explain: `${la}\xB0 is a ${a.toLowerCase()}.` });
+      },
+      qBarrel = (r) => {
+        let [ev, la, yes] = k(r, [[98, 27, 1], [98, 29, 1], [99, 25, 1], [99, 31, 1], [100, 24, 1], [100, 33, 1], [116, 10, 1], [116, 45, 1], [90, 28, 0], [95, 30, 0], [97, 28, 0], [110, 2, 0], [116, 60, 0]]);
+        return b(`${ev} mph at ${la}\xB0. Is it a barrel?`, yes ? "Yes" : "No", { choices: ["Yes", "No"], hint: "At least 98 mph, at the right angle (26-30\xB0 at 98 mph; wider when harder, up to 8-50\xB0 at 116 mph).", explain: ev < 98 ? "Under 98 mph is never a barrel." : yes ? "Fast enough and in the window." : "Fast enough, but the angle is outside the window." });
+      };
+    bbStat({
+      id: "ev", tier: 4, emoji: "\u{1F4E1}", name: "Exit Velocity, Launch Angle & Barrels", abbr: "EV \xB7 LA \xB7 Barrel",
+      kid: "Statcast measures how hard and how high the ball is hit.",
+      formula: "Hard-hit: 95+ mph.  Sweet spot: 8-32\xB0.  Barrel: 98+ mph in the right angle window.",
+      grown: "A barrel's exit velocity and launch angle have historically produced at least a .500 average and 1.500 slugging.",
+      why: "It shows how well a ball was hit, even when a hard-hit ball happens to be caught.",
+      qm: [qHard, qAngle, qBarrel],
+      lesson: (r, t) => [
+        u("Statcast measures the ball with cameras and radar."),
+        bbFact("ev", 0),
+        u("Exit velocity = how fast the ball comes off the bat, in miles per hour. A ball hit 95 mph or faster is called hard-hit.", _s({ label: "exit velocity", caption: "how hard the ball is hit" })),
+        qHard(r, t),
+        u("Launch angle = how steeply the ball goes up. Under 10\xB0 is a ground ball, 10-25\xB0 a line drive, 25-50\xB0 a fly ball, and over 50\xB0 a pop-up."),
+        qAngle(r, t),
+        u("A barrel is the best kind of contact: at least 98 mph at just the right angle. At 98 mph the angle must be 26-30\xB0. The harder the ball is hit, the wider the window gets."),
+        qBarrel(r, t),
+        bbFactQ(r, "ev", 1),
+        bbFact("ev", 2),
+      ],
+    });
+  })();
+  (() => {
+    let qDiff = (r, t) => (t === 1 ? b("How much faster is 30 feet per second than 27 feet per second?", 3, { explain: "30 − 27 = 3." }) : b("Usain Bolt reached about 37 feet per second. The MLB average is 27. How much faster is Bolt?", 10, { explain: "37 − 27 = 10 feet per second." })),
+      qBase = (r, t) => (t === 3 ? b("A runner goes 30 feet per second for 3 seconds. How far does he go?", 90, { hint: "30 + 30 + 30", explain: "30 \xD7 3 = 90 feet: exactly one base!" }) : b("At 30 feet per second, how many seconds does it take to run 90 feet?", 3, { hint: "30 + 30 + 30 = 90", explain: "90 \xF7 30 = 3 seconds." })),
+      qOAA = (r) => b("A fielder's Outs Above Average is +10. That means…", "he made 10 more outs than an average fielder would", { choices: C(r, "he made 10 more outs than an average fielder would", ["he made 10 errors", "he caught 10 balls", "he played 10 games"]), explain: "OAA compares a fielder's outs with what an average fielder would make on the same balls." }),
+      qSteal = (r, t) => {
+        let n = t === 1 ? 10 : t === 2 ? 20 : 50;
+        return b(`Each stolen base is 90 feet. How many feet are ${n} steals?`, 90 * n, { hint: `90 \xD7 ${n}`, explain: `90 \xD7 ${n} = ${bbN(90 * n)} feet.` });
+      };
+    bbStat({
+      id: "speed", tier: 4, emoji: "⚡", name: "Sprint Speed & Outs Above Average", abbr: "ft/sec \xB7 OAA",
+      kid: "Statcast measures how fast players run and how many outs fielders save.",
+      formula: "Sprint speed = feet per second in a runner's fastest one-second window.  OAA = outs made − outs an average fielder would make.",
+      grown: "MLB average sprint speed is 27 ft/sec; 30+ is elite (a Bolt). OAA started for outfielders and was expanded to infielders in 2020.",
+      why: "It measures speed and defense directly, instead of guessing from steals or errors.",
+      qm: [qDiff, qBase, qOAA, qSteal],
+      lesson: (r, t) => [
+        u("Sprint speed = a runner's top speed in feet per second, in his fastest one-second burst. The MLB average is 27. Running 30 or faster is elite, and Statcast calls it a Bolt."),
+        qDiff(r, t),
+        bbFact("speed", 0),
+        qBase(r, t),
+        u("Outs Above Average (OAA) counts how many outs a fielder saved compared with an average fielder."),
+        qOAA(r, t),
+        bbFactQ(r, "speed", 1),
+        qSteal(r, t),
+        bbFact("speed", 2),
+      ],
+    });
+  })();
+  // ===== History Hall =====
+  (() => {
+    let TL = [[1859, "the box score"], [1871, "batting average"], [1912, "official ERA"], [1920, "the official RBI"], [1969, "the official save"], [1971, "SABR"], [1979, "WHIP"], [1984, "official OBP"], [2015, "Statcast"]],
+      qOrder = (r) => {
+        let [x, y] = Ji(r, TL).slice(0, 2),
+          a = x[0] < y[0] ? x[1] : y[1];
+        return b(`Which came first: ${x[1]} or ${y[1]}?`, a, { choices: [x[1], y[1]], explain: `${x[1]}: ${x[0]}. ${y[1]}: ${y[0]}.` });
+      };
+    bbStat({
+      id: "origins", tier: 5, emoji: "\u{1F570}️", name: "How Stats Began", abbr: "1859 → today",
+      kid: "From the first box score to Statcast cameras.",
+      formula: "1859 box score → 1871 batting average → 1912 ERA → 1920 RBI → 1969 save → 1984 OBP → 2015 Statcast",
+      grown: "Many stats were invented long before they were official.",
+      why: "New stats appear when people ask better questions, and when new tools can measure more.",
+      qm: [qOrder],
+      lesson: (r, t) => [
+        u("Baseball fans have been counting things for more than 160 years. Let's see where the stats came from!"),
+        bbFact("origins", 0),
+        bbFact("origins", 1),
+        qOrder(r, t),
+        bbFact("origins", 2),
+        bbFact("origins", 3),
+        qOrder(r, t),
+        bbFactQ(r, "origins", 4),
+        bbFact("origins", 5),
+        qOrder(r, t),
+        u("Every stat started as somebody's idea. Maybe you'll invent the next one!"),
+      ],
+    });
+  })();
+  (() => {
+    let qShort = (r) => b("Season A has 60 games. Season B has 160 games. In which season can a few lucky days change a batting average more?", "The 60-game season", { choices: ["The 60-game season", "The 160-game season"], explain: "With fewer at-bats, each hit or out moves the average more." });
+    bbStat({
+      id: "negro", tier: 5, emoji: "⭐", name: "The Negro Leagues in the Record Book", abbr: "1920-1948",
+      kid: "Great players, their own leagues, and how their numbers joined MLB's records in 2024.",
+      formula: "Seven Negro Leagues, 1920-1948, are now part of MLB's official records.",
+      grown: "Research by the Seamheads Negro Leagues Database and others may still change leaderboards.",
+      why: "Records are only complete when everybody who played major league ball is counted.",
+      qm: [qShort],
+      lesson: (r, t) => [
+        bbFact("negro", 6),
+        bbFact("negro", 0),
+        bbFactQ(r, "negro", 0),
+        bbFact("negro", 7),
+        bbFact("negro", 1),
+        bbFactQ(r, "negro", 1),
+        bbFact("negro", 4),
+        bbFact("negro", 3),
+        u("With fewer games, a few hot or cold days change an average more. Statisticians always think about how much data they have."),
+        qShort(r, t),
+        bbFact("negro", 2),
+        u("When new box scores are found, the records can change. Good scientists update their answers when they learn something new."),
+        bbFact("negro", 5),
+        bbFactQ(r, "negro", 5),
+        bbFact("era", 2),
+      ],
+    });
+  })();
+  (() => {
+    let yr = (y) => BB_RPG[y - BB_RPG_START],
+      qMore = (r) => {
+        let pairs = [[1908, 1930], [1968, 2000], [1894, 1968], [1943, 1950], [2014, 2019], [1919, 1921], [1972, 1977]],
+          [x, y] = Ji(r, k(r, pairs)),
+          a = yr(x) > yr(y) ? String(x) : String(y);
+        return b(`Which year had more runs per game: ${x} or ${y}?`, a, { choices: [String(x), String(y)], explain: `${x}: ${yr(x)} runs. ${y}: ${yr(y)} runs (both teams together).` });
+      },
+      qRead = (r) => {
+        let ds = Ji(r, bbDecades().filter((o) => o.n >= 5)).slice(0, 4),
+          most = r() < 0.5,
+          best = ds.reduce((a, c) => ((most ? c.v > a.v : c.v < a.v) ? c : a)),
+          lbl = (o) => o.d + "s";
+        return b(`On the chart, which decade had the ${most ? "MOST" : "FEWEST"} runs per game?`, lbl(best), { choices: ds.map(lbl), svg: bbDecadeChart(), explain: ds.map((o) => `${lbl(o)}: ${o.v}`).join(" \xB7 ") });
+      },
+      qWhy = (r) => b("Why do fans compare a player with others from his own time?", "Scoring was easier or harder in different years", { choices: C(r, "Scoring was easier or harder in different years", ["Old players were not real major leaguers", "The bases used to be closer", "Stats only started in 2015"]), explain: "That's exactly why OPS+ and ERA+ exist." });
+    bbStat({
+      id: "eras", tier: 5, emoji: "\u{1F680}", name: "Time Machine: Eras of Baseball", abbr: "1876 → 2026",
+      kid: "Why a .300 average or a 2.00 ERA meant different things in different years.",
+      formula: "Runs per game (both teams) went from 6.77 in 1908 to 11.10 in 1930 to 8.96 in 2026.",
+      grown: "Runs per game come from Baseball-Reference's year-by-year major league table.",
+      why: "Knowing the era helps you judge any stat fairly. Try the Time Machine game too!",
+      qm: [qMore, qRead, qWhy],
+      lesson: (r, t) => [
+        u("Baseball keeps changing, so the numbers change too. Let's ride the time machine!", bbDecadeChart()),
+        bbFact("eras", 0),
+        bbFact("eras", 1),
+        qMore(r, t),
+        bbFact("eras", 2),
+        bbFactQ(r, "eras", 3),
+        qRead(r, t),
+        bbFact("k9", 2),
+        bbFact("eras", 4),
+        bbFact("eras", 5),
+        qWhy(r, t),
+      ],
+    });
+  })();
+  // ---------- registration with the guided-lesson engine ----------
+  function bbStatById(id) {
+    return BB_STATS.find((s) => s.id === id) || null;
+  }
+  function bbQuiz(r, t, S) {
+    let qs = S.qm.map((f) => f(r, t)).concat(bbFactQs(r, S.id));
+    for (; qs.length < 5; ) qs.push(k(r, S.qm)(r, t));
+    return [u(`Quick quiz: 5 questions about ${S.name}. You've got this!`)].concat(Ji(r, qs).slice(0, 5));
+  }
+  function bbTierQuiz(r, t, n) {
+    let qs = [];
+    let list = BB_STATS.filter((s) => s.tier === n),
+      per = Math.ceil(8 / list.length);
+    for (let S of list) {
+      let mine = Ji(r, S.qm.map((f) => f(r, t)).concat(bbFactQs(r, S.id)));
+      qs = qs.concat(mine.slice(0, per));
+    }
+    let T = BB_TIERS[n - 1],
+      pick = Ji(r, qs).slice(0, 8);
+    return [u(`${T.emoji} ${T.name} quiz: ${pick.length} questions from the whole tier.`)].concat(pick);
+  }
+  function bbReviewSteps(r) {
+    let now = Date.now(),
+      due = m.bb.review.filter((it) => it.due <= now).sort((a, c) => a.due - c.due).slice(0, 8);
+    if (!due.length) return [u("Nothing to review right now. Great job! Missed questions come back here a day later.")];
+    return [u(`Review time: ${due.length} question${due.length > 1 ? "s" : ""} you missed before. Each one you get right comes back later, then retires.`)].concat(
+      due.map((it) => {
+        let s = b(it.p, it.a, { choices: it.c ? Ji(r, it.c) : void 0, hint: it.h, explain: it.x, decimal: it.d });
+        return ((s.bbKey = it.k), s);
+      }),
+    );
+  }
+  for (let S of BB_STATS) {
+    R({ id: "bbl_" + S.id, title: S.name, emoji: S.emoji, topic: "bb", grades: [2, 3, 4, 5, 6, 7, 8], tiers: 3, section: "bb", gen: (r, t) => S.lesson(r, t) });
+    R({ id: "bbq_" + S.id, title: S.name + " quiz", emoji: S.emoji, topic: "bb", grades: [2, 3, 4, 5, 6, 7, 8], tiers: 3, section: "bb", gen: (r, t) => bbQuiz(r, t, S) });
+  }
+  for (let T of BB_TIERS) R({ id: "bbt_" + T.n, title: T.emoji + " " + T.name + " quiz", emoji: T.emoji, topic: "bb", grades: [2, 3, 4, 5, 6, 7, 8], tiers: 3, section: "bb", gen: (r, t) => bbTierQuiz(r, t, T.n) });
+  R({ id: "bb_review", title: "\u{1F501} Stat review", emoji: "\u{1F501}", topic: "bb", grades: [2, 3, 4, 5, 6, 7, 8], tiers: 1, section: "bb", gen: (r) => bbReviewSteps(r) });
+  for (let id in BB_MOVED) {
+    let L = dt(BB_MOVED[id]);
+    L && (L.section = "bb");
+  }
+  // ---------- saved state ----------
+  function bbSanitize(x) {
+    let s = x && typeof x == "object" && !Array.isArray(x) ? x : {},
+      int = (v, lo, hi, d) => {
+        let n = Math.floor(Number(v));
+        return Number.isFinite(n) ? Math.max(lo, Math.min(hi, n)) : d;
+      },
+      str = (v, n) => (typeof v == "string" ? v.slice(0, n) : ""),
+      quiz = Object.create(null),
+      q = s.quiz && typeof s.quiz == "object" && !Array.isArray(s.quiz) ? s.quiz : {};
+    for (let id of BB_STATS.map((o) => "bbq_" + o.id).concat(BB_TIERS.map((o) => "bbt_" + o.n))) {
+      let n = int(q[id], 0, 8, 0);
+      n > 0 && (quiz[id] = n);
+    }
+    let review = [];
+    for (let it of Array.isArray(s.review) ? s.review.slice(0, 60) : []) {
+      if (!it || typeof it != "object") continue;
+      let o = { k: str(it.k, 40), p: str(it.p, 400), a: str(it.a, 80), h: str(it.h, 300), x: str(it.x, 500), d: it.d === true, due: int(it.due, 0, 9e15, 0), lv: int(it.lv, 0, 5, 0) };
+      Array.isArray(it.c) && it.c.length >= 2 && (o.c = it.c.slice(0, 4).map((c) => str(c, 80)));
+      o.k && o.p && o.a && !review.some((z) => z.k === o.k) && review.push(o);
+    }
+    let g2 = s.games && typeof s.games == "object" && !Array.isArray(s.games) ? s.games : {};
+    return { quiz, review, goals: int(s.goals, 0, 1023, 0), games: { hl: int(g2.hl, 0, 99, 0), tm: int(g2.tm, 0, 99, 0), sc: int(g2.sc, 0, 99, 0) } };
+  }
+  function bbKey(step) {
+    let s = step.prompt + "|" + step.answer,
+      h = 5381;
+    for (let i = 0; i < s.length; i++) h = ((h * 33) ^ s.charCodeAt(i)) >>> 0;
+    return "q" + h.toString(36);
+  }
+  function bbReviewAdd(step) {
+    let k2 = bbKey(step),
+      it = m.bb.review.find((z) => z.k === k2),
+      due = Date.now() + BB_DAY;
+    if (it) return ((it.due = due), (it.lv = 0));
+    let o = { k: k2, p: step.prompt, a: step.answer, h: step.hint || "", x: step.explain || "", d: !!step.decimal, due, lv: 0 };
+    step.choices && (o.c = step.choices.slice());
+    m.bb.review.push(o);
+    m.bb.review.length > 60 && m.bb.review.shift();
+  }
+  function bbReviewMark(step, ok) {
+    let it = m.bb.review.find((z) => z.k === step.bbKey);
+    if (!it) return;
+    if (!ok) return ((it.lv = 0), (it.due = Date.now() + BB_DAY));
+    it.lv++;
+    it.lv >= BB_GAPS.length ? (m.bb.review = m.bb.review.filter((z) => z !== it)) : (it.due = Date.now() + BB_GAPS[it.lv] * BB_DAY);
+  }
+  function bbReviewDue() {
+    let now = Date.now();
+    return m.bb.review.filter((z) => z.due <= now).length;
+  }
+  // Called by the guided engine (Qn) after each answer, and (al) when a run finishes.
+  function bbIsBB(id) {
+    let L = dt(id);
+    return !!(L && L.section === "bb") || bbFrom === id;
+  }
+  function bbOnAnswer(step, st) {
+    if (!N || !step || !st || !st.answered || st.bbDone) return;
+    let L = dt(N.run.id);
+    if (!L || L.section !== "bb") return;
+    st.bbDone = true;
+    N.run.id === "bb_review" ? bbReviewMark(step, st.correct) : st.correct || bbReviewAdd(step);
+  }
+  function bbOnDone() {
+    if (!N || !/^bb[qt]_/.test(N.run.id)) return;
+    let c = N.states.filter((s, i) => N.run.steps[i].kind === "try" && s.correct).length;
+    m.bb.quiz[N.run.id] = Math.max(m.bb.quiz[N.run.id] || 0, c);
+  }
+  function bbLessonDone(id) {
+    return gs("bbl_" + id) > 0;
+  }
+  function bbTierDone(n) {
+    return BB_STATS.filter((s) => s.tier === n).every((s) => bbLessonDone(s.id));
+  }
+  // ---------- screens ----------
+  var bbReturn = "bb-home",
+    bbFrom = null,
+    bbCur = "avg",
+    bbG = null;
+  function bbTop(title, back) {
+    return `<div class="topbar"><button class="back" data-action="${back || "bb-home"}">‹ ${back === "home" ? "Back" : "Stat Academy"}</button><div class="topic-name">${title}</div><span></span></div>`;
+  }
+  function bbRender() {
+    switch (E) {
+      case "bb-stat":
+        return bbStatPage();
+      case "bb-slug":
+        return bbSlugPage();
+      case "bb-show":
+        return bbShowPage();
+      case "bb-time":
+        return bbTimePage();
+      case "bb-score":
+        return bbScorePage();
+      case "bb-card":
+        return bbCardPage();
+      case "bb-src":
+        return bbSrcPage();
+      default:
+        return bbHome();
+    }
+  }
+  function bbTile(S) {
+    let done = bbLessonDone(S.id),
+      best = m.bb.quiz["bbq_" + S.id];
+    return `<button class="bbtile ${done ? "done" : ""}" data-action="bb-stat" data-id="${S.id}"><span class="bbe">${S.emoji}</span><span class="bbn">${v(S.name)}</span><span class="bba">${v(S.abbr)}</span>${done || best ? `<span class="bbp">${done ? "✓ learned" : ""}${done && best ? " \xB7 " : ""}${best ? `quiz ${best}/5` : ""}</span>` : ""}</button>`;
+  }
+  function bbHome() {
+    let done = BB_STATS.filter((s) => bbLessonDone(s.id)).length,
+      due = bbReviewDue(),
+      tiers = BB_TIERS.map((T) => {
+        let list = BB_STATS.filter((s) => s.tier === T.n),
+          best = m.bb.quiz["bbt_" + T.n];
+        return `<div class="bbtier"><h2>${T.emoji} ${v(T.name)}${bbTierDone(T.n) ? " ✅" : ""}</h2><span class="sub">${v(T.blurb)}</span></div>
+        <div class="bbgrid">${list.map(bbTile).join("")}</div>
+        <button class="bbquiz" data-action="bb-tquiz" data-n="${T.n}">\u{1F393} ${v(T.name)} quiz${best ? ` \xB7 best ${best}/8` : ""}</button>`;
+      }).join("");
+    return `<div class="bbhome">${bbTop("⚾ Stat Academy", "home")}
+      <div class="coachbox">${Vn()}<span>Every stat has a lesson, a quick quiz and real records. Start with Rookie, or jump to any stat you like!</span></div>
+      <div class="bbbox bbprog"><b>${done} of ${BB_STATS.length}</b> lessons learned${due ? ` \xB7 <button class="bbquiz" data-action="bb-review">\u{1F501} Review ${due} missed question${due > 1 ? "s" : ""}</button>` : ""}</div>
+      <h2 class="section">\u{1F3AE} Stat games</h2>
+      <div class="gamegrid">
+        <button class="gtile" data-action="bb-slug"><span class="ge">\u{1F9EA}</span><span class="gt">Build a Slugger</span><span class="gs">${bbGoalsDone()} of 4 challenges</span></button>
+        <button class="gtile" data-action="bb-show"><span class="ge">\u{1F94A}</span><span class="gt">Stat Showdown</span><span class="gs">Best: ${m.bb.games.hl}/10</span></button>
+        <button class="gtile" data-action="bb-time"><span class="ge">\u{1F680}</span><span class="gt">Time Machine</span><span class="gs">Best: ${m.bb.games.tm}/6</span></button>
+        <button class="gtile" data-action="bb-score"><span class="ge">\u{1F4DD}</span><span class="gt">Scorekeeper</span><span class="gs">Best: ${m.bb.games.sc}/6</span></button>
+        <button class="gtile" data-action="bb-card"><span class="ge">\u{1F0CF}</span><span class="gt">My Baseball Card</span><span class="gs">From Season Mode</span></button>
+      </div>
+      ${tiers}
+      <h2 class="section">\u{1F522} More baseball math</h2>
+      <div class="pathlist">${BB_MATH.map((id) => dt(id)).filter(Boolean).map((L) => `<button class="pathrow" data-action="bb-math" data-id="${L.id}"><span class="pnum ginf">⚾</span><span class="pinfo"><span class="ptitle">${v(L.title.replace(/^⚾\s*/, ""))}</span><span class="psub">${v(L.emoji)} a math lesson from Tutorials</span></span><span class="lgo">›</span></button>`).join("")}</div>
+      <p class="parent-note">Stats and records are as of ${v(BB_ASOF)} and won't update by themselves. MLB and Negro Leagues (1920-1948) records are included. <button class="linkish" data-action="bb-src">Sources for grown-ups</button></p>
+    </div>`;
+  }
+  function bbStatPage() {
+    let S = bbStatById(bbCur) || BB_STATS[0],
+      T = BB_TIERS[S.tier - 1],
+      runs = gs("bbl_" + S.id),
+      best = m.bb.quiz["bbq_" + S.id],
+      mv = BB_MOVED[S.id] && dt(BB_MOVED[S.id]),
+      facts = BB_FACTS[S.id] || [],
+      srcs = (s) => s.map((k2) => BB_SRC[k2][0]).join("; ");
+    return `<div class="bbstatpg">${bbTop(S.emoji + " " + v(S.abbr))}
+      <div class="bbhead"><span class="bbe">${S.emoji}</span><div><h2 style="margin:0">${v(S.name)}</h2><span class="sub">${T.emoji} ${v(T.name)} tier</span></div></div>
+      <p class="bbkid">${v(S.kid)}</p>
+      <button class="next" data-action="bb-learn" data-id="${S.id}">▶ ${runs ? "Learn it again (new numbers)" : "Learn it"}</button>
+      <button class="hint wide3" data-action="bb-quiz" data-id="${S.id}">✏️ Quick quiz${best ? ` \xB7 best ${best}/5` : ""}</button>
+      ${mv ? `<button class="hint wide3" data-action="bb-practice" data-id="${mv.id}">\u{1F4AA} Extra practice with bigger numbers: ${v(mv.title.replace(/^⚾\s*/, ""))}</button>` : ""}
+      <div class="bbbox"><h3>\u{1F9EE} The math</h3><div class="bbformula">${v(S.formula)}</div><p class="bbsmall">For grown-ups: ${v(S.grown)}</p>${(BB_DEFSRC[S.id] || []).length ? `<span class="bbsrc">Source: ${v(srcs(BB_DEFSRC[S.id]))}</span>` : ""}</div>
+      <div class="bbbox"><h3>\u{1F914} Why it matters</h3><p>${v(S.why)}</p></div>
+      ${facts.length ? `<div class="bbbox"><h3>\u{1F4DC} Records, history & fun facts</h3><ul class="bbfacts">${facts.map((f) => `<li>${v(f.t)}${f.s.length ? `<span class="bbsrc">${v(srcs(f.s))}</span>` : ""}</li>`).join("")}</ul></div>` : ""}
+      <p class="parent-note">As of ${v(BB_ASOF)}.</p>
+    </div>`;
+  }
+  function bbSrcPage() {
+    let used = new Set();
+    for (let id in BB_FACTS) for (let f of BB_FACTS[id]) f.s.forEach((k2) => used.add(k2));
+    for (let id in BB_DEFSRC) BB_DEFSRC[id].forEach((k2) => used.add(k2));
+    for (let s of BB_SHOW) s[4].forEach((k2) => used.add(k2));
+    return `<div>${bbTop("\u{1F4DA} Sources")}
+      <p class="parent-note">Facts were checked on ${v(BB_CHECKED)} and are as of ${v(BB_ASOF)}. Web addresses are listed as text on purpose, so nothing opens from inside the app. The full fact sheet is docs/baseball-facts.md in the GitHub repo.</p>
+      <ul class="bbfacts">${[...used].sort().map((k2) => `<li>${v(BB_SRC[k2][0])}<span class="bbsrc">${v(BB_SRC[k2][1])}</span></li>`).join("")}</ul></div>`;
+  }
+  // ----- Build a Slugger -----
+  var BB_GOALS = [
+    ["Hit .300 or better (at least 10 at-bats)", (s) => s.ab >= 10 && s.avg >= 0.3],
+    ["Power hitter: slugging .500+ but average under .250 (10+ at-bats)", (s) => s.ab >= 10 && s.slg >= 0.5 && s.avg < 0.25],
+    ["Walk machine: OBP at least .100 higher than average (10+ trips)", (s) => s.pa >= 10 && s.ab > 0 && s.obp - s.avg >= 0.1],
+    ["MVP level: OPS of 1.000 or more (10+ trips)", (s) => s.pa >= 10 && s.ops >= 1],
+  ];
+  function bbGoalsDone() {
+    let n = 0;
+    for (let i = 0; i < BB_GOALS.length; i++) m.bb.goals & (1 << i) && n++;
+    return n;
+  }
+  function bbSlugStats(c) {
+    let h = c.s1 + c.s2 + c.s3 + c.hr,
+      ab = h + c.out,
+      pa = ab + c.bb,
+      tb = c.s1 + 2 * c.s2 + 3 * c.s3 + 4 * c.hr,
+      avg = ab ? h / ab : 0,
+      obp = pa ? (h + c.bb) / pa : 0,
+      slg = ab ? tb / ab : 0;
+    return { h, ab, pa, tb, avg, obp, slg, ops: obp + slg };
+  }
+  function bbSlugPage() {
+    bbG && bbG.kind === "slug" || (bbG = { kind: "slug", c: { s1: 3, s2: 1, s3: 0, hr: 1, bb: 1, out: 6 }, msg: "" });
+    let c = bbG.c,
+      s = bbSlugStats(c),
+      rows = [["s1", "\u{1F7E2} Singles"], ["s2", "\u{1F7E2} Doubles"], ["s3", "\u{1F7E2} Triples"], ["hr", "\u{1F4A5} Home runs"], ["bb", "\u{1F535} Walks"], ["out", "❌ Outs"]],
+      meter = (lbl, val, max) => `<div class="bbstat"><b>${lbl}</b><div class="bbmeter"><span style="width:${Math.round(100 * Math.min(1, val / max))}%"></span></div><span class="bbval">${bbF3(val)}</span></div>`;
+    return `<div class="game">${bbTop("\u{1F9EA} Build a Slugger")}
+      <p class="ghint">Tap + and − to build a batter. Watch his stats change!</p>
+      ${rows.map(([key, lbl]) => `<div class="bbrow"><span class="lbl">${lbl}</span><button class="bbstep" data-action="bb-slug-inc" data-k="${key}" data-d="-1" aria-label="fewer ${lbl}">−</button><span class="bbcount">${c[key]}</span><button class="bbstep" data-action="bb-slug-inc" data-k="${key}" data-d="1" aria-label="more ${lbl}">+</button></div>`).join("")}
+      <div class="bbbox">
+        ${meter("AVG", s.avg, 1)}${meter("OBP", s.obp, 1)}${meter("SLG", s.slg, 2)}${meter("OPS", s.ops, 3)}
+        <p class="bbsmall">AVG = ${s.h} hits \xF7 ${s.ab} at-bats \xB7 OBP = ${s.h + c.bb} on base \xF7 ${s.pa} trips \xB7 SLG = ${s.tb} total bases \xF7 ${s.ab} at-bats</p>
+      </div>
+      <div class="bbbox"><h3>\u{1F3C5} Challenges (+10 points each)</h3>${BB_GOALS.map((g, i) => `<div class="bbgoal ${m.bb.goals & (1 << i) ? "ok" : ""}">${m.bb.goals & (1 << i) ? "✅" : "⬜"} ${v(g[0])}</div>`).join("")}</div>
+      ${bbG.msg ? `<div class="gmsg big" role="status" aria-live="polite">${v(bbG.msg)}</div>` : ""}
+      <button class="ghost2 wide2" data-action="bb-slug-reset">↺ Start over</button>
+    </div>`;
+  }
+  function bbSlugInc(key, d) {
+    let c = bbG.c;
+    if (!(key in c)) return;
+    c[key] = Math.max(0, Math.min(30, c[key] + d));
+    let s = bbSlugStats(c);
+    bbG.msg = "";
+    BB_GOALS.forEach((g, i) => {
+      !(m.bb.goals & (1 << i)) && g[1](s) && ((m.bb.goals |= 1 << i), le(10), me(), (bbG.msg = "\u{1F3C5} Challenge done: " + g[0]), ue("\u{1F3C5} Slugger challenge!", "+10 points"), Y());
+    });
+  }
+  // ----- Stat Showdown -----
+  function bbShowStart() {
+    bbG = { kind: "show", order: Ji(ne, BB_SHOW.map((x, i) => i)).slice(0, 10), i: 0, score: 0, pick: null, flip: ne() < 0.5, over: false };
+  }
+  function bbShowPage() {
+    bbG && bbG.kind === "show" || bbShowStart();
+    let G = bbG;
+    if (G.over)
+      return `<div class="game">${bbTop("\u{1F94A} Stat Showdown")}<div class="gover"><div class="goe">\u{1F94A}</div><div class="got">${G.score} of 10 right!</div><div class="gos">Best: ${m.bb.games.hl}/10 \xB7 +${G.score} points</div>
+      <div class="btnrow2"><button class="next" data-action="bb-show-new">Play again ▶</button></div></div></div>`;
+    let q = BB_SHOW[G.order[G.i]],
+      [A, B2] = G.flip ? [q[3], q[2]] : [q[2], q[3]],
+      win = (q[1] === "more" ? q[2][1] > q[3][1] : q[2][1] < q[3][1]) ? q[2] : q[3],
+      btn = (o) => `<button class="gopt ${G.pick ? (o === win ? "right" : o === G.pick ? "wrong" : "") : ""}" data-action="bb-show-pick" data-c="${o === A ? 0 : 1}" ${G.pick ? "disabled" : ""}>${v(o[0])}${G.pick ? `<br><small>${v(o[2])}</small>` : ""}</button>`;
+    return `<div class="game">${bbTop("\u{1F94A} Stat Showdown")}
+      <p class="ghint">Round ${G.i + 1} of 10 \xB7 Score ${G.score}</p>
+      <div class="gprompt">${v(q[0])}</div>
+      <div class="gopts">${btn(A)}${btn(B2)}</div>
+      ${G.pick ? `<div class="gmsg big" role="status" aria-live="polite">${G.pick === win ? zn(true) : "Not this time!"}</div><p class="bbsrc" style="text-align:center">${v(q[4].map((k2) => BB_SRC[k2][0]).join("; "))}</p><button class="next" data-action="bb-show-next">${G.i < 9 ? "Next →" : "See score"}</button>` : ""}
+    </div>`;
+  }
+  function bbShowPick(c) {
+    let G = bbG;
+    if (!G || G.pick || G.over) return;
+    let q = BB_SHOW[G.order[G.i]],
+      [A, B2] = G.flip ? [q[3], q[2]] : [q[2], q[3]],
+      o = c === 0 ? A : B2,
+      win = (q[1] === "more" ? q[2][1] > q[3][1] : q[2][1] < q[3][1]) ? q[2] : q[3];
+    G.pick = o;
+    o === win ? (G.score++, me()) : Te();
+  }
+  function bbShowNext() {
+    let G = bbG;
+    if (!G || !G.pick) return;
+    G.i++;
+    G.pick = null;
+    G.flip = ne() < 0.5;
+    if (G.i >= 10) {
+      G.over = true;
+      G.score > m.bb.games.hl && (m.bb.games.hl = G.score);
+      le(G.score);
+      Y();
+    }
+  }
+  // ----- Time Machine -----
+  function bbTimeQ() {
+    let ds = bbDecades().filter((o) => o.n >= 5),
+      kind = Math.floor(ne() * 3);
+    if (kind < 2) {
+      let four = Ji(ne, ds).slice(0, 4),
+        most = kind === 0,
+        best = four.reduce((a, c) => ((most ? c.v > a.v : c.v < a.v) ? c : a));
+      return { p: `Which decade had the ${most ? "MOST" : "FEWEST"} runs per game?`, a: best.d + "s", c: four.map((o) => o.d + "s"), x: four.map((o) => `${o.d}s: ${o.v}`).join(" \xB7 ") };
+    }
+    let y = BB_RPG_START + Math.floor(ne() * BB_RPG.length),
+      val = BB_RPG[y - BB_RPG_START],
+      a = val >= 9 ? "9 or more" : "Fewer than 9";
+    return { p: `In ${y}, did an average game have 9 or more runs?`, a, c: ["9 or more", "Fewer than 9"], x: `${y}: ${val} runs per game (both teams).`, y };
+  }
+  function bbTimePage() {
+    bbG && bbG.kind === "time" || (bbG = { kind: "time", hi: null, quiz: null });
+    let G = bbG,
+      ds = bbDecades(),
+      sel = G.hi != null ? ds.find((o) => o.d === G.hi) : null,
+      Q2 = G.quiz;
+    if (Q2 && Q2.over)
+      return `<div class="game">${bbTop("\u{1F680} Time Machine")}<div class="gover"><div class="goe">\u{1F680}</div><div class="got">${Q2.score} of 6 right!</div><div class="gos">Best: ${m.bb.games.tm}/6 \xB7 +${Q2.score} points</div><div class="btnrow2"><button class="next" data-action="bb-time-quiz">Play again ▶</button><button class="ghost2" data-action="bb-time">Back to the chart</button></div></div></div>`;
+    let chart = `<div class="lessfig">${bbDecadeChart(Q2 ? (Q2.q.y ? Math.floor(Q2.q.y / 10) * 10 : null) : G.hi)}</div>`;
+    if (Q2) {
+      let q = Q2.q;
+      return `<div class="game">${bbTop("\u{1F680} Time Machine")}<p class="ghint">Question ${Q2.i + 1} of 6 \xB7 Score ${Q2.score}</p>${chart}
+        <div class="gprompt" style="font-size:1.2rem">${v(q.p)}</div>
+        <div class="gopts">${q.c.map((c) => `<button class="gopt ${Q2.pick ? (c === q.a ? "right" : c === Q2.pick ? "wrong" : "") : ""}" data-action="bb-time-pick" data-c="${v(c)}" ${Q2.pick ? "disabled" : ""}>${v(c)}</button>`).join("")}</div>
+        ${Q2.pick ? `<div class="gmsg" role="status" aria-live="polite">${Q2.pick === q.a ? zn(true) : "Not quite!"} ${v(q.x)}</div><button class="next" data-action="bb-time-next">${Q2.i < 5 ? "Next →" : "See score"}</button>` : ""}</div>`;
+    }
+    return `<div class="game">${bbTop("\u{1F680} Time Machine")}
+      <p class="ghint">How many runs were scored in an average game (both teams together)? Tap a decade.</p>${chart}
+      <div class="bbdec">${ds.map((o) => `<button class="${G.hi === o.d ? "on" : ""}" data-action="bb-time-dec" data-d="${o.d}">${o.d}s</button>`).join("")}</div>
+      ${sel ? `<div class="bbbox" role="status" aria-live="polite"><b>${sel.d}s:</b> about ${sel.v} runs per game${sel.n < 10 ? ` (${sel.n} seasons so far)` : ""}. ${v(bbEraNote(sel.d))}</div>` : ""}
+      <button class="next" data-action="bb-time-quiz">\u{1F3AF} Quiz me on the chart</button>
+      <p class="bbsrc">${v(BB_SRC.brmisc[0])}. Each decade is the average of its seasons.</p>
+    </div>`;
+  }
+  function bbEraNote(d) {
+    return d < 1900 ? "Early baseball: lots of runs." : d < 1920 ? "The dead-ball era: runs were scarce." : d < 1940 ? "The 1920s and 30s: hitting boomed." : d === 1960 ? "Pitching ruled, ending with the 1968 Year of the Pitcher." : d === 1990 || d === 2000 ? "Lots of runs again." : d === 2010 ? "The first season with more strikeouts than hits: 2018." : d === 2020 ? "The pitch clock arrived in 2023." : "";
+  }
+  function bbTimePick(c) {
+    let Q2 = bbG && bbG.quiz;
+    if (!Q2 || Q2.pick || Q2.over) return;
+    Q2.pick = c;
+    c === Q2.q.a ? (Q2.score++, me()) : Te();
+  }
+  function bbTimeNext() {
+    let Q2 = bbG && bbG.quiz;
+    if (!Q2 || !Q2.pick) return;
+    Q2.i++;
+    Q2.pick = null;
+    if (Q2.i >= 6) return ((Q2.over = true), Q2.score > m.bb.games.tm && (m.bb.games.tm = Q2.score), le(Q2.score), Y());
+    Q2.q = bbTimeQ();
+  }
+  // ----- Scorekeeper -----
+  function bbScoreStart() {
+    let L = bbPAs(ne, 8, 3),
+      ab = bbSum(L, "ab"),
+      h = bbSum(L, "h"),
+      tb = bbSum(L, "tb"),
+      on = bbSum(L, "on"),
+      sf = bbSum(L, "sf"),
+      hbp = L.filter((o) => o.k === "HBP").length,
+      bb = L.filter((o) => o.k === "BB").length,
+      avg = bbF3(h / ab),
+      obp = bbF3(on / (ab + bb + hbp + sf)),
+      slg = bbF3(tb / ab),
+      nums = (a, spread) => {
+        let set = [String(a)];
+        for (let d of spread) {
+          let x = a + d;
+          x >= 0 && !set.includes(String(x)) && set.length < 4 && set.push(String(x));
+        }
+        return Ji(ne, set);
+      },
+      dec = (a, w2) => {
+        let set = [a];
+        for (let x of w2.concat([bbF3(Number(a) + 0.05), bbF3(Math.max(0, Number(a) - 0.05)), bbF3(Number(a) + 0.1)])) set.includes(x) || set.length >= 4 || set.push(x);
+        return Ji(ne, set);
+      };
+    bbG = {
+      kind: "score",
+      L,
+      i: 0,
+      score: 0,
+      pick: null,
+      over: false,
+      qs: [
+        { p: "How many AT-BATS?", a: String(ab), c: nums(ab, [1, -1, 2]), x: `${L.length} trips minus walks, hit-by-pitches and sac flies = ${ab}.` },
+        { p: "How many HITS?", a: String(h), c: nums(h, [1, -1, 2]), x: `Singles, doubles, triples and homers: ${h}.` },
+        { p: "How many TOTAL BASES?", a: String(tb), c: nums(tb, [1, -1, 2, 3]), x: `Single 1, double 2, triple 3, homer 4: ${tb}.` },
+        { p: "What is his BATTING AVERAGE for the game?", a: avg, c: dec(avg, [bbF3(h / L.length), bbF3(on / ab), bbF3(ab / 10)]), x: `${h} hits \xF7 ${ab} at-bats = ${avg}.` },
+        { p: "What is his ON-BASE PERCENTAGE?", a: obp, c: dec(obp, [avg, bbF3(on / L.length + 0.05), bbF3(h / (ab + bb))]), x: `On base ${on} times \xF7 ${ab + bb + hbp + sf} (at-bats + walks + HBP + sac flies) = ${obp}.` },
+        { p: "What is his SLUGGING PERCENTAGE?", a: slg, c: dec(slg, [avg, bbF3(tb / L.length), bbF3((tb + 1) / ab)]), x: `${tb} total bases \xF7 ${ab} at-bats = ${slg}.` },
+      ],
+    };
+  }
+  function bbScorePage() {
+    bbG && bbG.kind === "score" || bbScoreStart();
+    let G = bbG;
+    if (G.over)
+      return `<div class="game">${bbTop("\u{1F4DD} Scorekeeper")}<div class="gover"><div class="goe">\u{1F4DD}</div><div class="got">${G.score} of 6 right!</div><div class="gos">Best: ${m.bb.games.sc}/6 \xB7 +${G.score * 2} points</div><div class="btnrow2"><button class="next" data-action="bb-score-new">New game ▶</button></div></div></div>`;
+    let q = G.qs[G.i];
+    return `<div class="game">${bbTop("\u{1F4DD} Scorekeeper")}
+      <p class="ghint">You're the official scorer! Here's one batter's day. Question ${G.i + 1} of 6 \xB7 Score ${G.score}</p>
+      <div class="bbpa">${G.L.map((o) => `<span>${v(o.e)}</span>`).join("")}</div>
+      <div class="gprompt" style="font-size:1.2rem">${v(q.p)}</div>
+      <div class="gopts">${q.c.map((c) => `<button class="gopt ${G.pick ? (c === q.a ? "right" : c === G.pick ? "wrong" : "") : ""}" data-action="bb-score-pick" data-c="${v(c)}" ${G.pick ? "disabled" : ""}>${v(c)}</button>`).join("")}</div>
+      ${G.pick ? `<div class="gmsg" role="status" aria-live="polite">${G.pick === q.a ? zn(true) : "Not quite!"} ${v(q.x)}</div><button class="next" data-action="bb-score-next">${G.i < 5 ? "Next →" : "See score"}</button>` : ""}
+    </div>`;
+  }
+  function bbScorePick(c) {
+    let G = bbG;
+    if (!G || G.kind !== "score" || G.pick || G.over) return;
+    G.pick = c;
+    c === G.qs[G.i].a ? (G.score++, me()) : Te();
+  }
+  function bbScoreNext() {
+    let G = bbG;
+    if (!G || !G.pick) return;
+    G.i++;
+    G.pick = null;
+    if (G.i >= 6) ((G.over = true), G.score > m.bb.games.sc && (m.bb.games.sc = G.score), le(G.score * 2), Y());
+  }
+  // ----- My Baseball Card -----
+  function bbCardPage() {
+    let s = m.season || {},
+      ab = s.ab || 0,
+      h = s.h || 0,
+      badges = BB_TIERS.slice(0, 4).map((T) => `<span class="${bbTierDone(T.n) ? "" : "off"}" title="${v(T.name)}">${T.emoji}</span>`).join("");
+    return `<div class="game">${bbTop("\u{1F0CF} My Baseball Card")}
+      <div class="bbcard"><div class="nm">${v(m.name || "Slugger")}</div><div class="sub">Math Tutor All-Stars</div>
+        <div class="row3"><div><b>${ab ? bbF3(h / ab) : "—"}</b>AVG</div><div><b>${s.hr || 0}</b>HR</div><div><b>${s.rbi || 0}</b>RBI</div></div>
+        <p class="bbsmall">${h} hits in ${ab} at-bats</p>
+        <div class="bbbadges" aria-label="tier badges">${badges}</div></div>
+      ${ab ? `<div class="bbbox"><h3>\u{1F9EE} How your average is figured</h3><p>${h} hits \xF7 ${ab} at-bats = ${bbF3(h / ab)}. Batting average, home runs and RBI are the three Triple Crown stats!</p></div>` : `<div class="bbbox"><p>Your card fills in when you play <b>Season Mode</b>: every right answer there is a swing.</p><button class="next" data-action="season">\u{1F3DF}️ Go to Season Mode</button></div>`}
+      <p class="parent-note">Badges: finish every lesson in a tier to light it up (${BB_TIERS.slice(0, 4).map((T) => T.emoji + " " + T.name).join(", ")}).</p>
+    </div>`;
+  }
+  // ---------- actions ----------
+  function bbOpen(id) {
+    bbReturn = E.indexOf("bb-") === 0 ? E : "bb-home";
+    bbFrom = id;
+    V = null;
+    vs(id);
+  }
+  function bbAction(t, el) {
+    if (t.indexOf("bb-") !== 0) return;
+    let id = el.getAttribute("data-id");
+    switch (t) {
+      case "bb-home":
+        (E = "bb-home"), (bbG = null);
+        break;
+      case "bb-back":
+        (E = bbReturn || "bb-home"), (bbFrom = null);
+        break;
+      case "bb-stat":
+        bbStatById(id) && ((bbCur = id), (E = "bb-stat"));
+        break;
+      case "bb-learn":
+        bbStatById(id) && bbOpen("bbl_" + id);
+        break;
+      case "bb-quiz":
+        bbStatById(id) && bbOpen("bbq_" + id);
+        break;
+      case "bb-tquiz":
+        bbOpen("bbt_" + Math.max(1, Math.min(5, Number(el.getAttribute("data-n")) || 1)));
+        break;
+      case "bb-review":
+        bbReviewDue() && bbOpen("bb_review");
+        break;
+      case "bb-practice":
+        Object.values(BB_MOVED).includes(id) && bbOpen(id);
+        break;
+      case "bb-math":
+        BB_MATH.includes(id) && bbOpen(id);
+        break;
+      case "bb-src":
+        E = "bb-src";
+        break;
+      case "bb-slug":
+        (bbG = null), (E = "bb-slug");
+        break;
+      case "bb-slug-inc":
+        bbG && bbG.kind === "slug" && bbSlugInc(el.getAttribute("data-k"), Number(el.getAttribute("data-d")) < 0 ? -1 : 1);
+        break;
+      case "bb-slug-reset":
+        bbG = null;
+        break;
+      case "bb-show":
+        (bbG = null), (E = "bb-show");
+        break;
+      case "bb-show-new":
+        bbShowStart();
+        break;
+      case "bb-show-pick":
+        bbShowPick(Number(el.getAttribute("data-c")) === 1 ? 1 : 0);
+        break;
+      case "bb-show-next":
+        bbShowNext();
+        break;
+      case "bb-time":
+        (bbG = { kind: "time", hi: null, quiz: null }), (E = "bb-time");
+        break;
+      case "bb-time-dec":
+        bbG && bbG.kind === "time" && (bbG.hi = Number(el.getAttribute("data-d")));
+        break;
+      case "bb-time-quiz":
+        (bbG = { kind: "time", hi: null, quiz: { i: 0, score: 0, pick: null, over: false, q: bbTimeQ() } }), (E = "bb-time");
+        break;
+      case "bb-time-pick":
+        bbTimePick(el.getAttribute("data-c"));
+        break;
+      case "bb-time-next":
+        bbTimeNext();
+        break;
+      case "bb-score":
+        (bbG = null), (E = "bb-score");
+        break;
+      case "bb-score-new":
+        bbScoreStart();
+        break;
+      case "bb-score-pick":
+        bbScorePick(el.getAttribute("data-c"));
+        break;
+      case "bb-score-next":
+        bbScoreNext();
+        break;
+      case "bb-card":
+        E = "bb-card";
+        break;
+      default:
+        return;
+    }
+    w();
+  }
+  function bbSummary() {
+    let n = BB_STATS.filter((s) => bbLessonDone(s.id)).length;
+    return n ? `⚾ Stat Academy: ${n}/${BB_STATS.length} lessons learned` : "";
   }
   function Un() {
     return si({});
@@ -14902,6 +16834,7 @@ What is \u2610?`,
           `${_[s].emoji} ${_[s].label}: Level ${t.level} (best ${t.best}) \u2014 ${t.correct}/${t.attempts} right`,
         );
     }
+    bbSummary() && e.push("", bbSummary());
     return e.join(`
 `);
   }
@@ -15246,6 +17179,7 @@ What is \u2610?`,
         <button class="bigbtn quest" data-action="quest">\u{1F5FA}\uFE0F Quest Board</button>
         <button class="bigbtn mastery" data-action="mastery">\u{1F3C5} Mastery</button>
       </div>
+      <button class="bigbtn bbbtn" data-action="bb-home">\u26BE Stat Academy \u2014 learn every baseball stat</button>
       <h2 class="section">\u{1F3AE} Games <span class="sub">\u2014 new stuff to try!</span></h2>
       <div class="gamegrid">
         <button class="gtile g-monsters" data-action="g-monsters"><span class="ge">\u{1F47E}</span><span class="gt">Math Monsters</span><span class="gs">Battle bosses!</span></button>
@@ -15665,6 +17599,7 @@ What is \u2610?`,
   function al() {
     if (!N || N.awarded) return;
     N.awarded = true;
+    bbOnDone();
     let e = N.run.id,
       s = N.run.tier,
       t = (m.guided && m.guided[e]) || { runs: 0, tier: 1 };
@@ -15723,6 +17658,7 @@ What is \u2610?`,
             : ((t.answered = true),
               (t.correct = false),
               Ne(`The answer is ${s.answer}. ` + s.explain))),
+      bbOnAnswer(s, t),
       w());
   }
   function Lo(e) {
@@ -15741,7 +17677,8 @@ What is \u2610?`,
       a = Xo()
         ? '<button class="hint saybtn" data-action="gd-say" aria-label="Read this step aloud">\u{1F50A}</button>'
         : "<span></span>",
-      o = `<div class="topbar"><button class="back" data-action="learn">\u2039 Lessons</button>
+      isBB = bbIsBB(e.id),
+      o = `<div class="topbar">${isBB ? '<button class="back" data-action="bb-back">\u2039 Stat Academy</button>' : '<button class="back" data-action="learn">\u2039 Lessons</button>'}
       <div class="topic-name">${e.emoji} ${v(e.title)}</div>${a}</div>`;
     if (t >= s) {
       let $ = N.states.filter((S, q) => e.steps[q].kind === "try").length,
@@ -15771,8 +17708,8 @@ What is \u2610?`,
         <button class="next" data-action="gd-again">\u{1F501} Another one \u2014 new numbers \u25B6</button>
         ${T ? '<button class="next alt2" data-action="gd-harder">\u{1F4AA} Level up: harder numbers</button>' : `<div class="pathnote">\u{1F3D4}\uFE0F Top level \u2014 you've mastered the hardest numbers!</div>`}
         ${e.tier > 1 ? '<button class="hint wide3" data-action="gd-easier">\u{1F60C} A bit easier next time</button>' : ""}
-        ${_[e.topic] ? `<button class="practice-this" data-action="practice-topic" data-topic="${e.topic}">\u270F\uFE0F Practice ${v(_[e.topic].label)}</button>` : ""}
-        <button class="hint wide3" data-action="learn">\u2039 Back to lessons</button>
+        ${!isBB && _[e.topic] ? `<button class="practice-this" data-action="practice-topic" data-topic="${e.topic}">\u270F\uFE0F Practice ${v(_[e.topic].label)}</button>` : ""}
+        ${isBB ? '<button class="hint wide3" data-action="bb-back">\u2039 Back to Stat Academy</button>' : '<button class="hint wide3" data-action="learn">\u2039 Back to lessons</button>'}
       </div></div>`;
     }
     let i = e.steps[t],
@@ -17539,7 +19476,9 @@ What is \u2610?`,
     } catch (s) {}
     let e;
     if (
-      (E === "home"
+      (E.indexOf("bb-") === 0
+        ? (e = bbRender())
+        : E === "home"
         ? (e = zc())
         : E === "report"
           ? (e = Nl())
@@ -17864,7 +19803,7 @@ What is \u2610?`,
         (el(s.getAttribute("data-id")), w());
         break;
       case "open-guided":
-        ((V = null), vs(s.getAttribute("data-id")), w());
+        ((bbFrom = null), (V = null), vs(s.getAttribute("data-id")), w());
         break;
       case "gd-stream":
         (zo(s.getAttribute("data-strand")), w());
@@ -18252,6 +20191,8 @@ What is \u2610?`,
           (g.mode === "sprint" ? Wn(g.input) : On(g.input));
         break;
       }
+      default:
+        bbAction(t, s);
     }
   }
   function dd(e) {
